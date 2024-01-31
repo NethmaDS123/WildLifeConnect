@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Home/home.dart';
+import 'package:wildlifeconnect/pages/Login/login.dart';
 // import '../Login/login.dart'; // Import the login page.
 
 class SplashPage extends StatelessWidget {
@@ -9,7 +9,7 @@ class SplashPage extends StatelessWidget {
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     });
 
