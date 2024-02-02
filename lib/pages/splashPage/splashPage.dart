@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Home/navBar.dart';
+// import '../Login/login.dart'; // Import the login page.
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -14,12 +15,10 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     // Simulate a delay to view the splash screen, then navigate to the HomePage.
     Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const NavBar()),
-        );
-      }
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const NavBar()),
+      );
     });
   }
 
