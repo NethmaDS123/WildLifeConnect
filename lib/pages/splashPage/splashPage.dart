@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Login/login.dart';
+import 'package:wildlifeconnect/pages/Home/navBar.dart';
 // import '../Login/login.dart'; // Import the login page.
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
-    // Simulate a delay to view the splash screen, then navigate to the login page.
+  _SplashPageState createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    // Simulate a delay to view the splash screen, then navigate to the HomePage.
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
+        MaterialPageRoute(builder: (context) => const NavBar()),
       );
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.green,
       body: Center(

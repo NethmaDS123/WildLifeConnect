@@ -1,23 +1,9 @@
-// import 'package:flutter/material.dart';
-
-// class navBar extends StatelessWidget {
-//   const navBar({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BottomNavigationBar(
-//       items: const [
-//         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-//         // BottomNavigationBarItem(icon: Icon(Icons.map), label: 'map'),
-//         BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search'),
-//         // BottomNavigationBarItem(icon: Icon(Icons.book), label: 'library'),
-//         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile'),
-//       ],
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
+import 'package:wildlifeconnect/pages/Home/home.dart';
+import 'package:wildlifeconnect/pages/Library/library.dart';
+import 'package:wildlifeconnect/pages/Map/map.dart';
+import 'package:wildlifeconnect/pages/Profile/profile.dart';
+import 'package:wildlifeconnect/pages/Search/search.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -27,8 +13,53 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: const [
+          HomePage(),
+          MapPage(),
+          SearchPage(),
+          LibraryPage(),
+          ProfilePage(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Map',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Library',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.grey, // Set color for unselected items
+        onTap: (int index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
+    );
   }
 }

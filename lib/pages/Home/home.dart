@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Home/navBar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,9 +7,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('WildLifeConnect'),
+        title: const Text('Home Page'),
       ),
-      bottomNavigationBar: const NavBar(),
+      body: const Center(
+        child: Text('Welcome to the Home Page!'),
+      ),
     );
   }
 }

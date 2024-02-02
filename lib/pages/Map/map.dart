@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class MapPage extends StatelessWidget {
+  const MapPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Page'),
+        title: const Text('Map Page'),
       ),
       body: const Center(
-        child: Text('Welcome to the Profile Page!'),
+        child: Text('Welcome to the Map Page!'),
       ),
     );
   }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'pages/splashPage/splashPage.dart'; // Import the splash page.
 
-void main() => runApp(WildlifeConnectApp());
+void main() => runApp(const WildlifeConnectApp());
 
 class WildlifeConnectApp extends StatelessWidget {
+  const WildlifeConnectApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,11 +13,7 @@ class WildlifeConnectApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: SplashPage(), // Set the SplashPage as the home.
-      routes: {
-        '/splash': (context) => SplashPage(),
-        // Define other routes here.
-      },
+      home: const SplashPage(), // Initially show the SplashPage
     );
   }
 }
