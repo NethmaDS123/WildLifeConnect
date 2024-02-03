@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Home/navBar.dart';
+import 'package:wildlifeconnect/pages/Home/nav_bar.dart';
+import 'package:wildlifeconnect/pages/Login/login.dart';
 // import '../Login/login.dart'; // Import the login page.
 
 class SplashPage extends StatefulWidget {

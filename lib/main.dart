@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/splashPage/splashPage.dart'; // Import the splash page.
+import 'pages/splashPage/splash_page.dart'; // Import the splash page.
 
 void main() => runApp(const WildlifeConnectApp());
 
