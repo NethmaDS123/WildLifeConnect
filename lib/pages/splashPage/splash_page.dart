@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Home/nav_bar.dart';
-import 'package:wildlifeconnect/pages/Login/login.dart';
+import 'package:wildlifeconnect/pages/Signup/signup.dart';
 // import '../Login/login.dart'; // Import the login page.
 
 class SplashPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const NavBar()),
+        MaterialPageRoute(builder: (context) => const SignUpPage()),
       );
     });
   }
