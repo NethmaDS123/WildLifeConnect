@@ -1,5 +1,6 @@
 // library_page.dart
 import 'package:flutter/material.dart';
+import 'package:wildlifeconnect/pages/Library/animal_info_page.dart';
 import 'package:wildlifeconnect/pages/Library/components/animal_card.dart';
 import 'components/search_bar.dart' as wb; // Alias for the search bar import
 
@@ -35,7 +36,16 @@ class LibraryPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: animals.length,
               itemBuilder: (context, index) {
-                return AnimalCard(animalName: animals[index]);
+                return AnimalCard(
+                  animalName: animals[index],
+                  // Navigate to the animal info page when the card is tapped
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          AnimalInfoPage(animalName: animals[index]),
+                    ));
+                  },
+                );
               },
             ),
           ),

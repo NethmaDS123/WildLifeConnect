@@ -1,3 +1,4 @@
+import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
 import 'package:wildlifeconnect/pages/Signup/signup.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class SplashScreen extends StatelessWidget {
           ),
         ],
       ),
-      nextScreen: const SignUpPage(),
+      nextScreen: const NavBar(),
       splashIconSize: 400,
       backgroundColor: const Color.fromARGB(255, 107, 248, 173),
     );
