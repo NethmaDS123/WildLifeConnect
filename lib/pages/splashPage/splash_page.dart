@@ -1,42 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Home/nav_bar.dart';
 import 'package:wildlifeconnect/pages/Signup/signup.dart';
-// import '../Login/login.dart'; // Import the login page.
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
-  @override
-  _SplashPageState createState() => _SplashPageState();
-}
-
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    super.initState();
-    // Simulate a delay to view the splash screen, then navigate to the HomePage.
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const SignUpPage()),
-      );
-    });
-  }
+  get splash => null;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.green,
-      body: Center(
-        child: Text(
-          'Wildlife Connect',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+    return AnimatedSplashScreen(
+      splash: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: LottieBuilder.asset(
+              "assets/animations/splashAnimation.json",
+            ),
           ),
-        ),
+          const SizedBox(height: 20),
+          const Text(
+            "Wildlife Connect",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ],
       ),
+      nextScreen: const SignUpPage(),
+      splashIconSize: 400,
+      backgroundColor: const Color.fromARGB(255, 107, 248, 173),
     );
   }
 }

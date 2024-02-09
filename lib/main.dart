@@ -13,7 +13,7 @@ class WildlifeConnectApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const SplashPage(), // Initially show the SplashPage
+      home: const SplashScreen(), // Initially show the SplashPage
     );
   }
 }
