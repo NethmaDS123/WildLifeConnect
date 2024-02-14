@@ -14,7 +14,7 @@ class AnimalCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 10,
-        color: Colors.green,
+        color: const Color.fromARGB(255, 6, 118, 10),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(

@@ -1,6 +1,6 @@
 // library_page.dart
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Library/animal_info_page.dart';
+import 'package:wildlifeconnect/pages/Library/AnimalInfoPage/animal_info_page.dart';
 import 'package:wildlifeconnect/pages/Library/components/animal_card.dart';
 import 'components/search_bar.dart' as wb; // Alias for the search bar import
 

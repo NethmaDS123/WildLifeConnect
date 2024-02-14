@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
-import 'package:wildlifeconnect/pages/Login/login.dart';
+import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:wildlifeconnect/pages/Map/map.dart';
 import 'package:wildlifeconnect/pages/Profile/profile.dart';
 import 'package:wildlifeconnect/pages/Search/search.dart';
-import 'package:wildlifeconnect/pages/Signup/signup.dart';
-import 'pages/splashPage/splash_page.dart';
+import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
+import 'pages/SplashPage/splash_page.dart';
 
 void main() => runApp(const WildlifeConnectApp());
 
@@ -21,16 +21,16 @@ class WildlifeConnectApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const SplashScreen(),
+      home: const SplashScreen(), // Initially show the SplashPage
       routes: {
-        '/homepage': (context) => HomePage(),
-        '/librarypage': (context) => LibraryPage(),
-        '/mappage': (context) => MapPage(),
-        '/profilepage': (context) => ProfilePage(),
-        '/search': (context) => SearchPage(),
-        '/loginpage': (context) => LoginPage(),
-        '/signuppage': (context) => SignUpPage()
-      }, // Initially show the SplashPage
+        '/homepage': (context) => const HomePage(),
+        '/librarypage': (context) => const LibraryPage(),
+        '/mappage': (context) => const MapPage(),
+        '/profilepage': (context) => const ProfilePage(),
+        '/search': (context) => const SearchPage(),
+        '/loginpage': (context) => const LoginPage(),
+        '/signuppage': (context) => const SignUpPage()
+      },
     );
   }
 }

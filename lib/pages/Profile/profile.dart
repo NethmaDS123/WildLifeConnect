@@ -13,7 +13,7 @@ class ProfilePage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
         body: Column(
           children: [
             Stack(

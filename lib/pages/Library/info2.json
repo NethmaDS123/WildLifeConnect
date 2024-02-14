@@ -1,0 +1,972 @@
+[
+  {
+    "conservation_status": "Critically Endangered",
+    "name": "Pangolin",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Pholidota"
+    },
+    "locations": ["Africa", "Asia"],
+    "characteristics": {
+      "prey": "Ants, Termites, Larvae",
+      "habitat": "Various",
+      "predators": "Humans, Lions, Hyena, Snakes",
+      "average_litter_size": "1 - 3",
+      "diet": "Carnivore",
+      "type": "Mammal",
+      "color": "BrownGrey",
+      "skin_type": "Scales",
+      "top_speed": "3 mph",
+      "lifespan": "240 months"
+    }
+  },
+
+  {
+    "conservation_status": "Endangered",
+    "name": "Shrew",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Soricidae"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Insects and other small invertebrates, small aquatic animals",
+      "average_litter_size": "Two to 10 babies",
+      "habitat": "Gardens, burrows, near small bodies of water in temperate, subtropical and tropical climates",
+      "predators": "Birds of prey, snakes, pet cats, foxes, weasels",
+      "diet": "Omnivore",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Fur",
+      "top_speed": "8 mph",
+      "lifespan": "12 to 30 months"
+    }
+  },
+
+  {
+    "conservation_status": "Least Concern",
+    "name": "Bat",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Chiroptera"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Mice, Frogs, Fruit",
+      "habitat": "Woodland and caves",
+      "predators": "Owls, Eagles, Snakes",
+      "diet": "Omnivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Fur",
+      "top_speed": "25 mph",
+      "lifespan": "10 - 30 years"
+    }
+  },
+
+  {
+    "conservation_status": "Endangered",
+    "name": "Monkey",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Macaca Fascicularis"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Fruit, Seeds, Insects",
+      "habitat": "Tropical forests, grasslands and mountainous plains",
+      "predators": "Birds, Snakes, Wildcats",
+      "diet": "Omnivore",
+      "average_litter_size": "1",
+      "lifestyle": "Troop",
+      "type": "Mammal",
+      "color": "BrownGreyYellowBlackWhiteTan",
+      "skin_type": "Hair",
+      "top_speed": "35 mph",
+      "lifespan": "10-30 years"
+    }
+  },
+
+  {
+    "conservation_status": "Least Concern",
+    "name": "Jackal",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Canis Aureus"
+    },
+    "locations": ["Africa", "Asia", "Europe"],
+    "characteristics": {
+      "prey": "Antelope, Reptiles, Insects",
+      "habitat": "Grass plains and dry woodland",
+      "predators": "Hyena, Leopard, Eagles",
+      "diet": "Carnivore",
+      "average_litter_size": "5",
+      "type": "Mammal",
+      "color": "BrownGreyWhiteTan",
+      "skin_type": "Fur",
+      "top_speed": "20 mph",
+      "lifespan": "8-15 years"
+    }
+  },
+
+  {
+    "conservation_status": "Critically Endangered",
+    "name": "Leopard",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Panthera pardus"
+    },
+    "locations": ["Africa", "Asia"],
+    "characteristics": {
+      "prey": "Deer, Warthog, Rodents",
+      "predators": "Hyena, Lions, Crocodiles",
+      "habitat": "Rainforest, grassland and mountainous regions",
+      "diet": "Carnivore",
+      "average_litter_size": "3",
+      "color": "YellowBlackDark BrownGolden",
+      "skin_type": "Fur",
+      "top_speed": "6 mph",
+      "lifespan": "10 - 15 years"
+    }
+  },
+
+  {
+    "conservation_status": "Vulnerable",
+    "name": "Fishing Cat",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Prionailurus viverrinus"
+    },
+    "locations": ["Asia"],
+    "characteristics": {
+      "predators": "Humans",
+      "prey": "Fish, Shellfish, Snakes",
+      "habitat": "wetland",
+      "diet": "Carnivore",
+      "average_litter_size": "2",
+      "color": "BlackOlive-Grey",
+      "skin_type": "Fur",
+      "top_speed": "34 mph",
+      "lifespan": "10 - 12 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Mongoose",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Helogale Parvula"
+    },
+    "locations": ["Africa", "Asia"],
+    "characteristics": {
+      "prey": "Rats, Eggs, Insects",
+      "predators": "Snakes, Jackals, Eagles",
+      "habitat": "Open forests and grass plains",
+      "diet": "Omnivore",
+      "average_litter_size": "4",
+      "lifestyle": "Gang",
+      "color": "BrownGreyTan",
+      "skin_type": "Fur",
+      "top_speed": "20 mph",
+      "lifespan": "10-15 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Otter",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Lutra Canadensis"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Fish, Crabs, Frogs",
+      "habitat": "River banks, lakes and streams",
+      "predators": "Birds, Fox, Wolves",
+      "diet": "Carnivore",
+      "average_litter_size": "3",
+      "type": "Mammal",
+      "color": "BrownWhiteTan",
+      "skin_type": "Fur",
+      "top_speed": "7 mph",
+      "lifespan": "15-25 years"
+    }
+  },
+
+  {
+    "conservation_status": "Vulnerable",
+    "name": "Sloth Bear",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Ursidae"
+    },
+    "locations": [
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Fish, Nectar, Insects",
+      "habitat": "Forest and mountainous regions",
+      "predators": "Human, Wolf, Wildcats",
+      "diet": "Omnivore",
+      "average_litter_size": "2",
+      "type": "Mammal",
+      "color": "BrownBlackWhite",
+      "skin_type": "Fur",
+      "top_speed": "35 mph",
+      "lifespan": "15 - 35 years"
+    }
+  },
+
+  {
+    "conservation_status": "Least Concern",
+    "name": "Asian Palm Civet",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Paradoxurus hermaphroditus"
+    },
+    "locations": ["Asia"],
+    "characteristics": {
+      "prey": "Rodents, Snakes, Frogs",
+      "habitat": "Tropical rainforest",
+      "predators": "Lions, Snakes, Leopards",
+      "diet": "Carnivore",
+      "average_litter_size": "2",
+      "top_speed": " 31 mph",
+      "type": "Mammal",
+      "color": "BrownGreyYellowBlackWhiteTan",
+      "skin_type": "Fur",
+      "lifespan": "15 - 20 years"
+    }
+  },
+
+  {
+    "conservation_status": "Endangered",
+    "name": "Asian Elephant",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Elephas maximus"
+    },
+    "locations": ["Asia"],
+    "characteristics": {
+      "prey": "Grass, Fruit, Roots",
+      "habitat": "Rainforest and tropical woodland",
+      "predators": "Human, Tiger",
+      "diet": "Herbivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Leather",
+      "top_speed": "27 mph",
+      "lifespan": "55 - 70 years"
+    }
+  },
+  {
+    "conservation_status": "Endangered",
+    "name": "Borneo Elephant",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Elephas maximus borneensis"
+    },
+    "locations": ["Asia", "Ocean"],
+    "characteristics": {
+      "prey": "Grass, Fruit, Roots",
+      "habitat": "Rainforest and tropical woodland",
+      "predators": "Human, Tiger",
+      "diet": "Herbivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Leather",
+      "top_speed": "27 mph",
+      "lifespan": "55 - 70 years"
+    }
+  },
+  {
+    "conservation_status": "Endangered",
+    "name": "Water Buffalo",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Bubalus bubalis"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania"
+    ],
+    "characteristics": {
+      "prey": "Grass, Leaves, Aquatic plants",
+      "predators": "Crocodiles, Bears, Wolves",
+      "habitat": "Marsh and swampland",
+      "diet": "Herbivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyTan",
+      "skin_type": "Leather",
+      "top_speed": "30 mph",
+      "lifespan": "15-25 years"
+    }
+  },
+
+  {
+    "conservation_status": "Least Concern",
+    "name": "Wild Boar",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Sus scrofa"
+    },
+    "locations": ["Asia", "Eurasia", "Europe"],
+    "characteristics": {
+      "prey": "Berries, Roots, Worms",
+      "habitat": "Deciduous broad-leaf forests",
+      "predators": "Tiger, Wolves, Humans",
+      "diet": "Omnivore",
+      "average_litter_size": "5",
+      "type": "Mammal",
+      "color": "BrownGreyRedBlack",
+      "skin_type": "Fur",
+      "top_speed": "30 mph",
+      "lifespan": "15 - 20 years"
+    }
+  },
+
+  {
+    "conservation_status": "Least Concern",
+    "name": "Donkey",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Equus Asinus"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Grass, Weeds, Vegetables",
+      "habitat": "Arid forests and deserts",
+      "predators": "Fox, Wolf, Lion",
+      "diet": "Herbivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Fur",
+      "top_speed": "15 mph",
+      "lifespan": "15 - 30 years"
+    }
+  },
+  {
+    "conservation_status": "Endangered",
+    "name": "Horse",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Equus caballus"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Grass, Fruit, Leaves",
+      "habitat": "Small forests and grassland",
+      "predators": "Human, Wolf, Bears",
+      "diet": "Herbivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownBlackWhite",
+      "skin_type": "Hair",
+      "top_speed": "40 mph",
+      "lifespan": "25-30 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Horsefly",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Tabanidae"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Mammals",
+      "average_litter_size": "100 to 1000 eggs",
+      "habitat": "A variety of habitats, but not those that are too high, too dry or too cold.",
+      "predators": "Parasitic wasps, birds, horse guard wasp",
+      "diet": "Omnivore",
+      "type": "Insect",
+      "color": "GreyBlack",
+      "top_speed": "90 mph",
+      "lifespan": "30 to 60 days as an adult"
+    }
+  },
+  {
+    "conservation_status": "Vulnerable",
+    "name": "Horseshoe Crab",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Limulidae"
+    },
+    "locations": [
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "North-America",
+      "Ocean"
+    ],
+    "characteristics": {
+      "prey": "Worms, algae, small invertebrates, detritus",
+      "predators": "Shorebirds who eat the eggs, sea turtles, fish",
+      "habitat": "Shallow coastal waters",
+      "diet": "Omnivore",
+      "average_litter_size": "90,000",
+      "top_speed": "4.7 mph",
+      "type": "Arthropod",
+      "color": "BrownGreyTanGreen",
+      "skin_type": "Shell",
+      "lifespan": "Over 30 years"
+    }
+  },
+  {
+    "conservation_status": "Vulnerable",
+    "name": "Seahorse",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Hippocampus"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Ocean",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Tiny Fish, Brine Shrimp, Plankton",
+      "average_litter_size": "Between 10 and 30",
+      "habitat": "Shallow tropical waters and coral reefs",
+      "predators": "Fish, Crabs, Rays",
+      "diet": "Omnivore",
+      "top_speed": "0.5 mph",
+      "skin_type": "Skin",
+      "color": "PurpleGrayWhiteBlueOrangePink",
+      "lifespan": "2 - 6 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Porcupine",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Erethizon Dorsaum"
+    },
+    "locations": [
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Roots, Leaves, Berries",
+      "habitat": "Dense forests and grassland",
+      "predators": "Owl, Eagles, Wolves",
+      "diet": "Omnivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyYellowBlack",
+      "skin_type": "Spikes",
+      "top_speed": "2 mph",
+      "lifespan": "8-12 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Muskrat",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Ondatra zibethicus"
+    },
+    "locations": [
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America"
+    ],
+    "characteristics": {
+      "prey": "Vegetation, mussels, fish, frogs, crayfish, and turtles",
+      "average_litter_size": "6-8",
+      "habitat": "Lakes, ponds, and wetlands",
+      "predators": "Snakes, eagles, hawks, alligators, raccoons, coyotes, bobcats",
+      "diet": "Omnivore",
+      "color": "BrownBlack",
+      "skin_type": "Hair",
+      "top_speed": "3 mph",
+      "lifespan": "1-10 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Rat",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Rattus rattus"
+    },
+    "locations": [
+      "Africa",
+      "Antarctica",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Eggs, Nuts, Potatoes, Corn",
+      "habitat": "Underground close to human settlements",
+      "predators": "Owls, Snakes, Raccoon, Cats",
+      "diet": "Omnivore",
+      "average_litter_size": "8",
+      "type": "Mammal",
+      "color": "BrownGreyBlackWhite",
+      "skin_type": "Fur",
+      "top_speed": "8 mph",
+      "lifespan": "2-5 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Rat Snakes",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Colubrinae"
+    },
+    "locations": [
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Rats, mice, birds, bird eggs, lizards",
+      "average_litter_size": "Anywhere from 3-20 eggs",
+      "habitat": "Dense rainforest jungles to arid deserts.",
+      "color": "BlackRedTanCream",
+      "top_speed": "5.97 mph",
+      "lifespan": "10-15 years",
+      "predators": "Birds of prey, other snakes, weasels, coyotes, badgers.",
+      "diet": "Carnivore"
+    }
+  },
+  {
+    "conservation_status": "Near Threatened",
+    "name": "Dormouse",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Gliridae"
+    },
+    "locations": ["Africa", "Asia", "Eurasia", "Europe"],
+    "characteristics": {
+      "prey": "Fruits, Nuts, Insects",
+      "habitat": "Dense woodlands and shrub land",
+      "predators": "Owls, Snakes, Weasels",
+      "diet": "Omnivore",
+      "average_litter_size": "4",
+      "type": "Mammal",
+      "color": "BrownGreyBlackWhiteGoldTan",
+      "skin_type": "Fur",
+      "top_speed": "8 mph",
+      "lifespan": "2 - 5 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Mouse",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Mus musculus"
+    },
+    "locations": [
+      "Africa",
+      "Antarctica",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "Oceania",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Fruit, Seeds, Grasses",
+      "habitat": "Open fields and woodland areas",
+      "predators": "Bird, Cat, Fox, Reptiles",
+      "diet": "Herbivore",
+      "average_litter_size": "6",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Fur",
+      "top_speed": "8 mph",
+      "lifespan": "2-5 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Flying Squirrel",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Pteromyini"
+    },
+    "locations": [
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Nuts, Berries, Eggs",
+      "habitat": "Forest and woodland",
+      "predators": "Cats. Coyote, Raccoon",
+      "diet": "Omnivore",
+      "average_litter_size": "4",
+      "type": "Mammal",
+      "color": "BrownGreyBlackWhiteTan",
+      "skin_type": "Fur",
+      "top_speed": "15 mph",
+      "lifespan": "5 - 8 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Japanese Squirrel",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Sciurus lis"
+    },
+    "locations": ["Asia"],
+    "characteristics": {
+      "average_litter_size": "2-6 kits",
+      "habitat": "Mixed forests",
+      "predators": "Foxes, martens, crows, raptors, and domesticated cats and dogs",
+      "diet": "Omnivore",
+      "type": "Mammal",
+      "color": "BrownGreyRedWhite",
+      "skin_type": "Hair",
+      "lifespan": "Up to 15 years",
+      "top_speed": "20 mph"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Squirrel",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Sciuridae"
+    },
+    "locations": [
+      "Africa",
+      "Asia",
+      "Central-America",
+      "Eurasia",
+      "Europe",
+      "North-America",
+      "South-America"
+    ],
+    "characteristics": {
+      "prey": "Fruit, Seeds, Insects",
+      "habitat": "Woodland and dense forests",
+      "predators": "Snakes, Coyote, Weasels",
+      "diet": "Omnivore",
+      "average_litter_size": "3",
+      "type": "Mammal",
+      "color": "BrownGreyRedBlackTan",
+      "skin_type": "Fur",
+      "top_speed": "16 mph",
+      "lifespan": "2-8 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Indian Palm Squirrel",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Funambulus Palmarum"
+    },
+    "locations": ["Asia", "Ocean"],
+    "characteristics": {
+      "prey": "Eggs, Fruit, Insects",
+      "habitat": "Thick forest and tropical jungles",
+      "predators": "Human, Snakes, Wildcats",
+      "diet": "Omnivore",
+      "average_litter_size": "3",
+      "type": "Mammal",
+      "color": "BrownYellowTan",
+      "skin_type": "Fur",
+      "top_speed": "10 mph",
+      "lifespan": "2-4 years"
+    }
+  },
+  {
+    "conservation_status": "Least Concern",
+    "name": "Indian Giant Squirrel",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Ratufa indica"
+    },
+    "locations": ["Asia"],
+    "characteristics": {
+      "prey": "insects, bird eggs",
+      "predators": "Snake, Eagle",
+      "average_litter_size": "1-3",
+      "habitat": "Tropical forest",
+      "diet": "Omnivore",
+      "type": "mammal",
+      "color": "BrownRedBlackWhitePurple",
+      "skin_type": "Fur",
+      "top_speed": "32 mph",
+      "lifespan": "20 years"
+    }
+  },
+
+  {
+    "conservation_status": "Endangered",
+    "name": "Blue Whale",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Balsenoptera musculus"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": "Krill, Crustaceans, Small Fish",
+      "habitat": "Polar and subtropical waters",
+      "predators": "Humans, Killer Whale pods",
+      "diet": "Carnivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "GreyBlueBlackWhite",
+      "skin_type": "Smooth",
+      "top_speed": "13 mph",
+      "lifespan": "30 - 45 years"
+    }
+  },
+  {
+    "conservation_status": "Endangered",
+    "name": "Fin Whale",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Balaenoptera Physalus"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": "Krill, Fish, Squid",
+      "habitat": "Deep offshore waters",
+      "predators": "Human, Large Sharks",
+      "diet": "Carnivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "GreyBlueBlackWhite",
+      "skin_type": "Smooth",
+      "top_speed": "25 mph",
+      "lifespan": "50 - 60 years"
+    }
+  },
+  {
+    "conservation_status": "Endangered",
+    "name": "Sei Whale",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Balaenoptera borealis"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": " Krill and other euphausiids, copepods, small fish and squid",
+      "habitat": "Deep offshore waters",
+      "average_litter_size": "1",
+      "predators": "Humans",
+      "diet": "Carnivore",
+      "type": "Mammal",
+      "color": "GreyWhite",
+      "skin_type": "Skin",
+      "top_speed": "32 mph",
+      "lifespan": "70 years plus"
+    }
+  },
+  {
+    "conservation_status": "Not Threatened",
+    "name": "False Killer Whale",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Pseudorca crassidens"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": "Fish, squid, and marine mammals",
+      "habitat": "Coastal and deep ocean regions",
+      "predators": "Sharks and killer whales",
+      "diet": "Carnivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "GreyBlackWhite",
+      "skin_type": "Skin",
+      "top_speed": "18 mph",
+      "lifespan": "Around 60 years"
+    }
+  },
+  {
+    "conservation_status": "Critically Endangered",
+    "name": "Killer Whale",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Orcinus orca"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": "Seal, Fish, Squid",
+      "habitat": "Ocean and coastal waters worldwide",
+      "predators": "Human, Larger Sharks",
+      "diet": "Carnivore",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BlackWhite",
+      "skin_type": "Smooth",
+      "top_speed": "30 mph",
+      "lifespan": "50-60 years"
+    }
+  },
+  {
+    "conservation_status": "Endangered",
+    "name": "Sperm Whale",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Physeter macrocephalus"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": "Squid, sharks, skates, fish",
+      "habitat": "Ocean",
+      "predators": "Sharks, Humans, Killer Whales",
+      "diet": "Carnivore",
+      "average_litter_size": "1",
+      "type": "Cetacean Common nam",
+      "color": "GreyWhite",
+      "skin_type": "Smooth",
+      "top_speed": "3 mph",
+      "lifespan": "Up to 60 years"
+    }
+  },
+  {
+    "conservation_status": "Extinct",
+    "name": "Steller’s Sea Cow",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": "Hydrodamalis Gigas"
+    },
+    "locations": ["Ocean"],
+    "characteristics": {
+      "prey": "Sea Grasses, Algae, Flowers",
+      "habitat": "Arctic Tundra",
+      "predators": "Large sharks and humans",
+      "diet": "Herbivore",
+      "top_speed": "16 mph",
+      "average_litter_size": "1",
+      "type": "Mammal",
+      "color": "BrownGreyBlack",
+      "skin_type": "Smooth",
+      "lifespan": "50 - 80 years"
+    }
+  },
+  {
+    "conservation_status": "Vulnerable",
+    "name": "Leatherback Sea Turtle",
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "scientific_name": " Dermochelys coriacea"
+    },
+    "locations": ["Africa", "Asia", "Central-America", "North-America"],
+    "characteristics": {
+      "prey": "jellyfish, sea squirts",
+      "habitat": "moderate to tropical coastal ocean waters",
+      "predators": "Crabs, racoons",
+      "diet": "Omnivore",
+      "average_litter_size": "100",
+      "type": "Reptile",
+      "color": "GreyBlack",
+      "skin_type": "Leather",
+      "top_speed": "6 mph",
+      "lifespan": "up to 50 years"
+    }
+  }
+]
