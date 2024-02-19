@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AnimalImageBox extends StatelessWidget {
-  const AnimalImageBox({super.key});
+  final String? imageUrl; // Make sure this is correctly typed as a parameter
+
+  const AnimalImageBox({super.key, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
-      width: 300,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        // image: DecorationImage(
-        //   image: AssetImage('assets/images/animal.jpg'),
-        //   fit: BoxFit.cover,
-        // ),
+        borderRadius: BorderRadius.circular(0),
+        color: const Color.fromARGB(255, 255, 255, 255),
+        image: imageUrl != null
+            ? DecorationImage(
+                image: NetworkImage(imageUrl!),
+                fit: BoxFit.cover,
+              )
+            : null,
       ),
     );
   }

@@ -1,12 +1,10 @@
-// animal_card.dart
 import 'package:flutter/material.dart';
 
 class AnimalCard extends StatelessWidget {
   final String animalName;
   final VoidCallback onTap;
 
-  const AnimalCard({Key? key, required this.animalName, required this.onTap})
-      : super(key: key);
+  const AnimalCard({super.key, required this.animalName, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +14,17 @@ class AnimalCard extends StatelessWidget {
         elevation: 10,
         color: const Color.fromARGB(255, 6, 118, 10),
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment
+                .center, // Align items to the center along the main axis
             children: <Widget>[
               Text(
                 animalName,
-                style: TextStyle(color: Colors.white, fontSize: 24),
+                style: const TextStyle(color: Colors.white, fontSize: 18),
+                textAlign: TextAlign.center, // Center text alignment
               ),
-              SizedBox(height: 150),
-              // Add more information and styling as needed
             ],
           ),
         ),
