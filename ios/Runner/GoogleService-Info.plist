@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCAAnj6J85IWKSZ7fH9KQ9FM9EYCPaZnnU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>942334150260</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.wildlifeconnect</string>
+	<key>PROJECT_ID</key>
+	<string>wildconnect-293a8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wildconnect-293a8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:942334150260:ios:59036c156ac9ab50d3b321</string>
+</dict>
+</plist>

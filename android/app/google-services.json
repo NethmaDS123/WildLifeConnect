@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942334150260",
+    "project_id": "wildconnect-293a8",
+    "storage_bucket": "wildconnect-293a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942334150260:android:ccdba96089bef989d3b321",
+        "android_client_info": {
+          "package_name": "com.example.wildlifeconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2ztasJx4mQ1ErVUm8_Vqa2jwANgdcL1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

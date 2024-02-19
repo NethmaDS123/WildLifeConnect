@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
 import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
@@ -8,8 +10,13 @@ import 'package:wildlifeconnect/pages/Search/search.dart';
 import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'pages/SplashPage/splash_page.dart';
 
-void main() => runApp(const WildlifeConnectApp());
-
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const WildlifeConnectApp());
+}
 class WildlifeConnectApp extends StatelessWidget {
   const WildlifeConnectApp({super.key});
 
@@ -21,7 +28,7 @@ class WildlifeConnectApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const SplashScreen(), // Initially show the SplashPage
+      home: const LoginPage(), // Initially show the SplashPage
       routes: {
         '/homepage': (context) => const HomePage(),
         '/librarypage': (context) => const LibraryPage(),
