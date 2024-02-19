@@ -10,6 +10,6 @@ class CreatePost extends StatefulWidget {
 class _CreatePostState extends State<CreatePost> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container();
   }
 }
