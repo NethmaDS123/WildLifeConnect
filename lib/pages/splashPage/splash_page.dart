@@ -1,3 +1,4 @@
+import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
 import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -31,7 +32,7 @@ class SplashScreen extends StatelessWidget {
           ),
         ],
       ),
-      nextScreen: const NavBar(),
+      nextScreen: NavBar(),
       splashIconSize: 400,
       backgroundColor: const Color.fromARGB(255, 107, 248, 173),
     );

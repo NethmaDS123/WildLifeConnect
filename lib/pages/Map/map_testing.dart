@@ -15,7 +15,7 @@ class MapIntegrationState extends State<MapIntegration> {
 
   static const CameraPosition yalaLocation = CameraPosition(
       bearing: 192.8334901395799,
-      target: LatLng(6.4913811683654785,81.4261703491211),
+      target: LatLng(6.4913811683654785, 81.4261703491211),
       tilt: 0.0,
       zoom: 14.151926040649414);
 
