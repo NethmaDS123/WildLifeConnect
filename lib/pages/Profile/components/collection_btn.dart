@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wildlifeconnect/pages/Profile/update-profile/update_profile.dart';
+import 'package:get/get.dart';
 
 class CollectionBtn extends StatelessWidget {
   final double height;
@@ -11,7 +13,7 @@ class CollectionBtn extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
       child: ElevatedButton(
-        onPressed: () => {},
+        onPressed: () => Get.to(() => const UpdateProfile()),
         style: ElevatedButton.styleFrom(
           elevation: 4,
           shadowColor: const Color.fromARGB(255, 120, 120, 120),
@@ -22,10 +24,10 @@ class CollectionBtn extends StatelessWidget {
           minimumSize: Size(width / 1.1, height / 14),
         ),
         child: const Text(
-          'My Collection',
+          'Edit Profile',
           style: TextStyle(
               color: Color.fromARGB(255, 133, 255, 129),
-              fontSize: 28,
+              fontSize: 24,
               fontWeight: FontWeight.w400),
         ),
       ),
