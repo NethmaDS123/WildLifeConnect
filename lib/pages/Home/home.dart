@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:wildlifeconnect/pages/Home/components/camera_page.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,6 +13,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+        title: const Text('Home Page'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+          ),
+        ],
+
         backgroundColor: Colors.green,
         leading: IconButton(
           icon: const Icon(Icons.camera_alt),
@@ -25,6 +41,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+
       ),
       body: Container(
         decoration: const BoxDecoration(

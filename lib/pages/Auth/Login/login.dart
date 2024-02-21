@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -22,12 +23,9 @@ class _LoginPageState extends State<LoginPage> {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       _formKey.currentState!.save();
-      print(_enteredEmail);
-      print(_enteredPassword);
       try {
         final userCredentials = await _firebase.signInWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
-        print(userCredentials);
       } on FirebaseAuthException catch (error) {
         ScaffoldMessenger.of(context).clearSnackBars();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -163,7 +161,7 @@ class _LoginPageState extends State<LoginPage> {
                                   "Don't have an account? Sign up",
                                 ),
                                 onPressed: () {
-                                  //nav to signup
+                                  //nav to sign up page
                                 },
                               ),
                             ),
