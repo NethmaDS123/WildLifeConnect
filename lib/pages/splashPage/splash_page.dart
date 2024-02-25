@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
-import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -19,18 +18,10 @@ class SplashScreen extends StatelessWidget {
         children: [
           Center(
             child: LottieBuilder.asset(
-              "assets/animations/splashAnimation.json",
+              "assets/animations/splashAnimation1.json",
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-            "Wildlife Connect",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
         ],
       ),
       //Checks to see if user is logged in or not
@@ -44,8 +35,8 @@ class SplashScreen extends StatelessWidget {
           }
         },
       ),
-      splashIconSize: 400,
-      backgroundColor: const Color.fromARGB(255, 107, 248, 173),
+      splashIconSize: 800,
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
     );
   }
 }
