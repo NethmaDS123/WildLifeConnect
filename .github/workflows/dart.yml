@@ -1,8 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Dart
 
 on:
@@ -18,10 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Setup Flutter SDK
+      # Setup Flutter SDK with a specific version
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: 'latest' # Specify the Flutter version or use 'latest'
+          flutter-version: '3.16.3' # Replace 'x.y.z' with the desired version
 
       - name: Install dependencies
         run: flutter pub get
@@ -35,8 +30,8 @@ jobs:
       - name: Run tests
         run: flutter test
 
-      - name: Cache Dart packages
-        uses: actions/cache@v2
+      # Cache Dart packages
+      - uses: actions/cache@v2
         with:
           path: |
             ~/.pub-cache
