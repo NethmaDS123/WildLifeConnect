@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
 import 'package:wildlifeconnect/pages/Map/map.dart';
-import 'package:wildlifeconnect/pages/Profile/profile.dart';
+import 'package:wildlifeconnect/pages/Profile/pages/profile.dart';
 import 'package:wildlifeconnect/pages/Search/search.dart';
 
 class NavBar extends StatefulWidget {
