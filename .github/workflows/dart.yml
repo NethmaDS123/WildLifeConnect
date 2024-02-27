@@ -1,4 +1,4 @@
-name: Dart
+name: Dart CI
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       # Setup Flutter SDK with a specific version
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '3.16.3' # Replace 'x.y.z' with the desired version
+          flutter-version: '3.16.3' # Ensure this version supports the 'flutter format' command
 
       - name: Install dependencies
         run: flutter pub get
@@ -31,7 +31,8 @@ jobs:
         run: flutter test
 
       # Cache Dart packages
-      - uses: actions/cache@v2
+      - name: Cache Dart packages
+        uses: actions/cache@v2
         with:
           path: |
             ~/.pub-cache
