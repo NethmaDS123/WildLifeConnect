@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+
 class CameraPage extends StatelessWidget {
   const CameraPage({super.key});
 
