@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:wildlifeconnect/pages/Profile/pages/profile.dart';
 import 'firebase_options.dart';
 import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
 import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:wildlifeconnect/pages/Map/map.dart';
-import 'package:wildlifeconnect/pages/Profile/profile.dart';
 import 'package:wildlifeconnect/pages/Search/search.dart';
 import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'pages/SplashPage/splash_page.dart';
