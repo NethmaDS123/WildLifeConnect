@@ -16,8 +16,7 @@ jobs:
       # Setup Flutter SDK with a specific version
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '3.16.3' # Ensure this version supports the required commands
-
+          flutter-version: '3.16.3' 
       - name: Install dependencies
         run: flutter pub get
 
