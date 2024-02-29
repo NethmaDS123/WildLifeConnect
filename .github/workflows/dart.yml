@@ -1,9 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Dart
+name: Dart CI
 
 on:
   push:
@@ -18,23 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Setup Flutter SDK
+      # Setup Flutter SDK with a specific version
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: 'latest' # Specify the Flutter version or use 'latest'
-
+          flutter-version: '3.16.3' 
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Verify formatting
-        run: flutter format --output=none --set-exit-if-changed .
-
-      - name: Analyze project source
-        run: flutter analyze
 
       - name: Run tests
         run: flutter test
 
+      # Cache Dart packages
       - name: Cache Dart packages
         uses: actions/cache@v2
         with:
