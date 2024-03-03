@@ -13,7 +13,7 @@ class RecentSightingsState extends State<RecentSightings> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
-  static const CameraPosition yalaLocation = CameraPosition(
+  static const CameraPosition locationMiddle = CameraPosition(
     bearing: 0.0,
     target: LatLng(7.712227821350098,80.650390625),
     tilt: 0.0,
@@ -34,7 +34,7 @@ class RecentSightingsState extends State<RecentSightings> {
       ),
       body: GoogleMap(
         mapType: MapType.normal,
-        initialCameraPosition: yalaLocation,
+        initialCameraPosition: locationMiddle,
         myLocationButtonEnabled: true,
         zoomControlsEnabled: true,
         onMapCreated: (GoogleMapController controller) {
