@@ -1,47 +1,52 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'sidebar.dart'; // Import the file where SideBar is defined
 
 class PostView extends StatelessWidget {
   final String imgUrl;
 
   const PostView({
-    super.key,
+    Key? key,
     required this.imgUrl,
-  });
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        home: Scaffold(
-          backgroundColor: Colors.black,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            leading: BackButton(
-              color: Colors.white,
-              onPressed: () => Get.back(),
-            ),
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: BackButton(
+            color: Colors.white,
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          body: Column(
-            children: [
-              buildTopBar(),
-              Container(
-                height: 400,
-                width: 400,
-                color: Colors.white,
-                child: Image(
-                  image: NetworkImage(
-                    imgUrl,
-                  ),
+        ),
+        body: Column(
+          children: [
+            buildTopBar(context), // Pass context to buildTopBar
+            Container(
+              height: 400,
+              width: 400,
+              color: Colors.white,
+              child: Image(
+                image: NetworkImage(
+                  imgUrl,
                 ),
               ),
-              buildBottomBar(),
-            ],
-          ),
+            ),
+            buildBottomBar(),
+            SizedBox(height: 20), // Add space for the "Report Crimes" button
+            FloatingActionButton( // Button to report crimes
+              onPressed: () {
+                Get.to(SideBar());
+              },
+              backgroundColor: Colors.black,
+              child: const Icon(Icons.phone_forwarded),
+            ),
+          ],
         ),
       );
 
-  Widget buildTopBar() => Container(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+  Widget buildTopBar(BuildContext context) => Container(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
           children: [
             Row(
@@ -73,12 +78,12 @@ class PostView extends StatelessWidget {
       );
 
   Widget buildBottomBar() => Container(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: EdgeInsets.symmetric(vertical: 20),
         child: GestureDetector(
           onTap: () => {},
-          child: const Icon(
-            CupertinoIcons.heart_fill,
-            color: Color.fromARGB(255, 255, 0, 0),
+          child: Icon(
+            Icons.favorite,
+            color: const Color.fromARGB(255, 255, 0, 0),
             size: 30,
           ),
         ),

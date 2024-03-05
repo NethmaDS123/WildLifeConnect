@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const SideBar());
+  runApp(SideBar());
 }
 
 class SideBar extends StatelessWidget {
-  const SideBar({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.amber, //testing only
       ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -42,20 +38,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
+          // Main content
           Container(
             color: Colors.white,
           ),
-          
-          // Contents of the SideBar
+
           if (_isSidebarOpen && !_isFirstToggle)
             Positioned(
-              top: 30,
-              right: 0,
-              bottom: 0,
-              width: 300,
+              top: 30, // Adjust the top spacing as needed
+              right: 0, // Adjust the right spacing as needed
+              bottom: 0, // Extend to the bottom of the screen
+              width: 300, // Adjust the width of the sidebar as needed
               child: Container(
                 color: const Color.fromRGBO(41, 56, 39, 1.0),
-                padding: const EdgeInsets.only(top: 55, left: 10),
+                padding: const EdgeInsets.only(
+                    top: 55, left: 10), // Add left padding
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -77,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     const SizedBox(
                         height:
-                            30), // spacing between main title-text and contacts
+                            30), // spacing between main text and emergency contacts
                     const Padding(
                       padding: EdgeInsets.only(left: 20.0),
                       child: Column(
@@ -100,46 +97,47 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-          // Button for report crimes sidebar
-          Positioned(
-            top: 150,
-            right: 0,
-            child: Stack(
-              children: [
-                SizedBox(
-                  width: 60,
-                  height: 80,
-                  child: FloatingActionButton(
-                    onPressed: _toggleSidebar,
-                    backgroundColor: Colors.black,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.phone_forwarded,
-                          size: 30,
-                          color: Colors.white,
-                        ),
-                        SizedBox(height: 2.5),
-                        Text(
-                          'Report\nCrimes',
-                          style: TextStyle(
+          // Floating action button for sidebar toggle
+          if (!_isSidebarOpen || _isFirstToggle)
+            Positioned(
+              top: 150,
+              right: 0,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: 60,
+                    height: 80,
+                    child: FloatingActionButton(
+                      onPressed: _toggleSidebar,
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.phone_forwarded,
+                            size: 30,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                          SizedBox(height: 2.5),
+                          Text(
+                            'Report\nCrimes',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
         ],
       ),
     );
