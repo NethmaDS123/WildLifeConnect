@@ -6,9 +6,9 @@ class PostView extends StatelessWidget {
   final String imgUrl;
 
   const PostView({
-    Key? key,
+    super.key,
     required this.imgUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -41,7 +41,7 @@ class PostView extends StatelessWidget {
       );
 
   Widget buildTopBar() => Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
           children: [
             Row(
@@ -73,12 +73,12 @@ class PostView extends StatelessWidget {
       );
 
   Widget buildBottomBar() => Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: GestureDetector(
           onTap: () => {},
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.heart_fill,
-            color: const Color.fromARGB(255, 255, 0, 0),
+            color: Color.fromARGB(255, 255, 0, 0),
             size: 30,
           ),
         ),
