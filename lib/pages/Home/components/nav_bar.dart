@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
 import 'package:wildlifeconnect/pages/Map/map.dart';
+import 'package:wildlifeconnect/pages/Posts/create_post.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/profile.dart';
-import 'package:wildlifeconnect/pages/Search/search.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -23,7 +23,7 @@ class _NavBarState extends State<NavBar> {
         children: const [
           HomePage(),
           MapPage(),
-          SearchPage(),
+          CreatePost(),
           LibraryPage(),
           ProfilePage(),
         ],
@@ -39,8 +39,8 @@ class _NavBarState extends State<NavBar> {
             label: 'Map',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.post_add),
+            label: 'Post',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
@@ -52,7 +52,7 @@ class _NavBarState extends State<NavBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 16, 16, 15),
+        selectedItemColor: const Color.fromARGB(255, 16, 16, 15),
         unselectedItemColor: Colors.grey, // Set color for unselected items
         onTap: (int index) {
           setState(() {
