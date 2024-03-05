@@ -51,5 +51,15 @@
     <string>This app requires access to the microphone to record videos with sound.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>This app requires access to the photo library to select photos and videos.</string>
+    <!-- Location Permissions -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to your location to provide navigation and location tracking functionalities.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app requires access to your location even when the app is closed or not in use to offer background location tracking for enhanced user experiences.</string>
+    <!-- Optional for background location updates -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array>
 </dict>
 </plist>

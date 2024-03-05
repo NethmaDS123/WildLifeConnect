@@ -30,8 +30,6 @@ class _CreatePostState extends State<CreatePost> {
       return;
     }
     // Here you would add your function to upload the image file and caption to your backend.
-    // For example, uploadPost(_image.path, _captionController.text);
-    // The actual implementation of this function depends on your backend.
   }
 
   @override
