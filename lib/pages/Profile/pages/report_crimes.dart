@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SideBar());
-}
-
-class SideBar extends StatelessWidget {
+class SideBar extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '',
-      theme: ThemeData(
-        primarySwatch: Colors.amber, //testing only
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _SideBarState createState() => _SideBarState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _SideBarState extends State<SideBar> {
   bool _isSidebarOpen = false;
   bool _isFirstToggle = true;
 
