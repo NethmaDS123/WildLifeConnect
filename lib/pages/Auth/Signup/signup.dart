@@ -1,42 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
-final _firebase = FirebaseAuth.instance;
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   @override
-  State<SignUpPage> createState() {
-    return _SignUpPageState();
-  }
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
 
-  var _enteredEmail = '';
-  var _enteredPassword = '';
+  String _enteredEmail = '';
+  String _enteredPassword = '';
+  String _enteredFName = '';
+  String _enteredLName = '';
+  String _enteredUName = '';
+  String _errorMessage = ''; // For displaying error messages
 
-  void _submit() async {
-    final isValid = _formKey.currentState!.validate();
-    if (isValid) {
-      _formKey.currentState!.save();
-      print(_enteredEmail);
-      print(_enteredPassword);
-      try {
-        final userCredentials = await _firebase.createUserWithEmailAndPassword(
-            email: _enteredEmail, password: _enteredPassword);
-        print(userCredentials);
-      } on FirebaseAuthException catch (error) {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(error.message ?? 'Authentication Failed'),
-        ));
+  Future<void> _submit() async {
+    final isValid = _formKey.currentState?.validate() ?? false;
+    if (!isValid) {
+      return;
+    }
+    _formKey.currentState?.save();
+
+    try {
+      final response = await http.post(
+        Uri.parse(
+            'http://localhost:3000/users/register'), // Update with actual endpoint
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({
+          'email': _enteredEmail,
+          'password': _enteredPassword,
+          'firstName': _enteredFName,
+          'lastName': _enteredLName,
+          'username': _enteredUName,
+        }),
+      );
+      print('Status Code: ${response.statusCode}');
+      print('Response Body: ${response.body}');
+
+      if (response.statusCode == 201) {
+        Navigator.of(context)
+            .pushReplacementNamed('/loginpage'); // Navigate to login page
+        print('Status Code: ${response.statusCode}');
+        print('Response Body: ${response.body}');
+      } else {
+        setState(() {
+          _errorMessage = 'Failed to register. Please try again.';
+        });
       }
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'An error occurred. Please try again later.';
+      });
     }
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -45,110 +70,74 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Card(
-                  margin: const EdgeInsets.all(20),
-                  child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Form(
-                          key: _formKey,
-                          child:
-                              Column(mainAxisSize: MainAxisSize.min, children: [
-                            const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text("Create Account",
-                                  style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.left),
-                            ),
-                            const SizedBox(height: 16.0),
-                            const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text("Email ID",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.left),
-                            ),
-                            // Email input field
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'example123@gmail.com',
-                                border: OutlineInputBorder(),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              autocorrect: false,
-                              textCapitalization: TextCapitalization.none,
-                              validator: (value) {
-                                if (value == null ||
-                                    value.trim().isEmpty ||
-                                    !value.contains('@')) {
-                                  return 'Please enter a valid email address';
-                                }
-                                return null;
-                              },
-                              onSaved: (value) {
-                                _enteredEmail = value!;
-                              },
-                            ),
-                            const SizedBox(height: 16.0),
-                            const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text("Password",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
-                            ),
-                            // Password input field
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                labelText: 'Must have atleast 8 characters',
-                                border: OutlineInputBorder(),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.trim().length < 8) {
-                                  return 'Password mnust have atleast 8 characters';
-                                }
-                                return null;
-                              },
-                              onSaved: (value) {
-                                _enteredPassword = value!;
-                              },
-                              obscureText: true,
-                            ),
-                            // Sign Up button
-                            SizedBox(
-                              width: double
-                                  .infinity, // Replace with your desired width
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.all(16.0),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                ),
-                                child: const Text(
-                                  'Create Account',
-                                  style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                onPressed: () {
-                                  _submit();
-                                },
-                              ),
-                            ),
-                            // Navigate to sign up page
-                            Align(
-                                alignment: Alignment.centerRight,
-                                child: TextButton(
-                                  child: const Text(
-                                    "Already have an account? Login",
-                                  ),
-                                  onPressed: () {
-                                    //login page
-                                  },
-                                )),
-                          ]))))
+                margin: const EdgeInsets.all(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'First Name'),
+                          validator: (value) => value!.isEmpty
+                              ? 'Please enter your first name'
+                              : null,
+                          onSaved: (value) => _enteredFName = value!,
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Last Name'),
+                          validator: (value) => value!.isEmpty
+                              ? 'Please enter your last name'
+                              : null,
+                          onSaved: (value) => _enteredLName = value!,
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Username'),
+                          validator: (value) =>
+                              value!.isEmpty ? 'Please enter a username' : null,
+                          onSaved: (value) => _enteredUName = value!,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(labelText: 'Email'),
+                          validator: (value) => !value!.contains('@')
+                              ? 'Please enter a valid email'
+                              : null,
+                          onSaved: (value) => _enteredEmail = value!,
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Password'),
+                          obscureText: true,
+                          validator: (value) => value!.length < 8
+                              ? 'Password must be at least 8 characters long'
+                              : null,
+                          onSaved: (value) => _enteredPassword = value!,
+                        ),
+                        if (_errorMessage.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(_errorMessage,
+                                style:
+                                    const TextStyle(color: Colors.redAccent)),
+                          ),
+                        ElevatedButton(
+                          onPressed: _submit,
+                          child: const Text('Create Account'),
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.of(context).pushNamed('/loginpage'),
+                          child: const Text('Already have an account? Login'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

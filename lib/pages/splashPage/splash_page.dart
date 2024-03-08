@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
-import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
+import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -25,18 +23,9 @@ class SplashScreen extends StatelessWidget {
         ],
       ),
       //Checks to see if user is logged in or not
-      nextScreen: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder:(context, snapshot){
-          if(snapshot.hasData){
-            return const NavBar();
-          } else {
-            return const LoginPage();
-          }
-        },
-      ),
+      nextScreen: const SignUpPage(),
       splashIconSize: 800,
-      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
     );
   }
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/profile.dart';
-import 'firebase_options.dart';
 import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
 import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
@@ -12,10 +11,6 @@ import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'pages/SplashPage/splash_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const WildlifeConnectApp());
 }
 
@@ -38,7 +33,8 @@ class WildlifeConnectApp extends StatelessWidget {
         '/profilepage': (context) => const ProfilePage(),
         '/search': (context) => const SearchPage(),
         '/loginpage': (context) => const LoginPage(),
-        '/signuppage': (context) => const SignUpPage()
+        '/signuppage': (context) => const SignUpPage(),
+        '/navbar': (context) => const NavBar(),
       },
     );
   }
