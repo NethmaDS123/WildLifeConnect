@@ -29,17 +29,16 @@ class _ProfilePage1State extends State<ProfilePage> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          // Your existing profile widget and spacers
           ProfileWidget(
             isEdit: false,
             imagePath: prof_user.imagePath,
           ),
           const SizedBox(height: 24),
           buildName(prof_user),
-          const SizedBox(height: 24),
-          Center(child: buildFollowButton()),
           NumbersWidget(),
-
+          Center(
+            child: buildFollowButton(),
+          ),
           const SizedBox(height: 24),
           GridView.count(
             padding: const EdgeInsets.all(5),

@@ -15,7 +15,7 @@ AppBar buildAppBar(BuildContext context, isEdit) {
     elevation: 0,
     actions: [
       IconButton(
-          onPressed: () => Get.to(
+          onPressed: () => Get.to(() => 
                 const EditProfilePage(),
               ),
           icon: const Icon(
