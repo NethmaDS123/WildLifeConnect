@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:wildlifeconnect/pages/Home/components/nav_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:wildlifeconnect/pages/Home/components/camera_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,11 +11,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-          ),
+              icon: const Icon(Icons.exit_to_app),
+              onPressed: () async {
+                // Here we implement the logout functionality
+                await SecureStorage.deleteToken(); // Delete the JWT token
+                Navigator.of(context).pushNamedAndRemoveUntil('/loginpage',
+                    (route) => false); // Navigate back to the login page
+              }),
         ],
         backgroundColor: Colors.green,
         leading: IconButton(
