@@ -40,6 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        print(
+            'Login Successful. Token: ${data['token']}'); // This line prints the token
         await SecureStorage.storeToken(data['token']); // Store token
         Navigator.of(context)
             .pushReplacementNamed('/navbar'); // Navigate to homepage

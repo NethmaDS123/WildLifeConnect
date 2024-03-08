@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CreatePost extends StatefulWidget {
-  const CreatePost({super.key});
+  const CreatePost({Key? key}) : super(key: key);
 
   @override
   _CreatePostState createState() => _CreatePostState();
@@ -13,6 +17,7 @@ class _CreatePostState extends State<CreatePost> {
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
   final TextEditingController _captionController = TextEditingController();
+  final storage = FlutterSecureStorage();
 
   Future<void> _pickImage() async {
     final XFile? selected =
@@ -29,7 +34,36 @@ class _CreatePostState extends State<CreatePost> {
       );
       return;
     }
-    // Here you would add your function to upload the image file and caption to your backend.
+
+    var uri = Uri.parse('http://localhost:3000/api/posts/create');
+    var request = http.MultipartRequest('POST', uri);
+
+    String? token = await storage.read(key: 'jwt_token');
+    if (token != null) {
+      request.headers.addAll({'Authorization': 'Bearer $token'});
+    }
+
+    request.fields['caption'] = _captionController.text;
+
+    // Determine the mime type of the selected file
+    var mimeTypeData =
+        lookupMimeType(_image!.path, headerBytes: [0xFF, 0xD8])?.split('/');
+    var file = await http.MultipartFile.fromPath('image', _image!.path,
+        contentType: MediaType(mimeTypeData![0], mimeTypeData[1]));
+    request.files.add(file);
+
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
+
+    if (response.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Post uploaded successfully')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to upload post: ${response.body}')),
+      );
+    }
   }
 
   @override
