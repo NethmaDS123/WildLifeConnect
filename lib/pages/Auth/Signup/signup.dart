@@ -29,7 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
     try {
       final response = await http.post(
         Uri.parse(
-            'http://localhost:3000/users/register'), // Update with actual endpoint
+            'http://10.0.2.2:3000/users/register'), // Update with actual endpoint
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

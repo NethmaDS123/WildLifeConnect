@@ -35,7 +35,7 @@ class _CreatePostState extends State<CreatePost> {
       return;
     }
 
-    var uri = Uri.parse('http://localhost:3000/api/posts/create');
+    var uri = Uri.parse('http://10.0.2.2:3000/api/posts/create');
     var request = http.MultipartRequest('POST', uri);
 
     String? token = await storage.read(key: 'jwt_token');
