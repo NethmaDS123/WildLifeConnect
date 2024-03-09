@@ -1,9 +1,10 @@
 [
 {
-     "conservation_status":"Critically Endangered",  
+    "conservation_status":"Critically Endangered",  
     "name": "Pangolin",
     "taxonomy": {
-      "kingdom": "Animalia"
+      "kingdom": "Animalia",
+      "scientific_name": "Pholidota"
     },
     "locations": [
       "Africa",
@@ -11,43 +12,24 @@
     ],
     "characteristics": {
       "prey": "Ants, Termites, Larvae",
-      "name_of_young": "Pup",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "unknown",
-      "biggest_threat": "poaching",
-      "most_distinctive_feature": "Scaled body",
-      "other_name": "scaly anteater",
-      "gestation_period": "70-140 days",
-      "litter_size": "1-3",
       "habitat": "Various",
       "predators": "Humans, Lions, Hyena, Snakes",
+      "average_litter_size": "1 - 3",
       "diet": "Carnivore",
       "type": "Mammal",
-      "common_name": "Pangolin",
-      "number_of_species": "8",
-      "location": "Asia, Africa",
-      "group": "Solitary",
       "color": "BrownGrey",
       "skin_type": "Scales",
       "top_speed": "3 mph",
-      "lifespan": "240 months",
-      "weight": "1.6kg - 33kg (3.5lbs - 73lbs)",
-      "length": "30.5cm - 99cm (1ft - 3ft)",
-      "age_of_sexual_maturity": "2 years",
-      "age_of_weaning": "3 months"
-    }
-  },
-
-
+      "lifespan": "240 months"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Pangolin/1200x675_cmsv2_b239c3e8-8973-599b-a17c-f5dc06b817d8-7426144.jpg"
+},
 {
-     "conservation_status":"Endangered",
+    "conservation_status":"Endangered",
     "name": "Shrew",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Insectivora",
-      "family": "Soricidae"
+      "scientific_name": "Soricidae"
     },
     "locations": [
       "Africa",
@@ -61,41 +43,24 @@
     ],
     "characteristics": {
       "prey": "Insects and other small invertebrates, small aquatic animals",
-      "name_of_young": "Baby, Juvenile",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "100 billion",
-      "biggest_threat": "Habitat destruction, climate change, pollution",
-      "most_distinctive_feature": "Its bad smell",
-      "gestation_period": "18 to 27 days",
-      "litter_size": "Two to 10 babies",
+      "average_litter_size": "Two to 10 babies",
       "habitat": "Gardens, burrows, near small bodies of water in temperate, subtropical and tropical climates",
       "predators": "Birds of prey, snakes, pet cats, foxes, weasels",
       "diet": "Omnivore",
       "type": "Mammal",
-      "common_name": "Shrew",
-      "number_of_species": "384",
-      "location": "North, South and Central America, Asia, Africa, northern Europe",
       "color": "BrownGreyBlack",
       "skin_type": "Fur",
       "top_speed": "8 mph",
-      "lifespan": "12 to 30 months",
-      "weight": "0.06 to 4 ounces",
-      "length": "1.4 to 6 inches",
-      "age_of_sexual_maturity": "3 to 52 weeks",
-      "age_of_weaning": "5 to 6 weeks"
-    }
-  },
+      "lifespan": "12 to 30 months"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Shrew/250px-Southern_short-tailed_shrew.jpg"
+},
 
 {
      "conservation_status":"Least Concern", 
     "name": "Bat",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Chiroptera",
-      "family": "Microchiroptera",
-      "genus": "Emballonuridae",
       "scientific_name": "Chiroptera"
     },
     "locations": [
@@ -109,36 +74,25 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Mice, Frogs, Fruit",
-      "distinctive_feature": "Large ears detect prey using echolocation and have strong, flexible wings",
+      "prey": "Mice, Frogs, Fruit",
       "habitat": "Woodland and caves",
       "predators": "Owls, Eagles, Snakes",
       "diet": "Omnivore",
       "average_litter_size": "1",
-      "lifestyle": "Pack",
-      "favorite_food": "Mice",
       "type": "Mammal",
-      "slogan": "Detects prey using echolocation!",
       "color": "BrownGreyBlack",
       "skin_type": "Fur",
       "top_speed": "25 mph",
-      "lifespan": "10 - 30 years",
-      "weight": "2g - 1,000g (0.07oz - 35oz)",
-      "length": "3cm - 180cm (1.2in - 71in)"
-    }
-  },
-
-
+      "lifespan": "10 - 30 years"    
+   },
+   "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Bat/_130825109_564a1f2c2d8168b654dbd91380c8fee5874e9b0b.jpg"
+},
 
 {
      "conservation_status":"Endangered", 
     "name": "Monkey",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Primates",
-      "family": "Cebidae",
       "scientific_name": "Macaca Fascicularis"
     },
     "locations": [
@@ -149,34 +103,26 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Fruit, Seeds, Insects",
+      "prey": "Fruit, Seeds, Insects",
       "habitat": "Tropical forests, grasslands and mountainous plains",
       "predators": "Birds, Snakes, Wildcats",
       "diet": "Omnivore",
       "average_litter_size": "1",
       "lifestyle": "Troop",
-      "favorite_food": "Fruit",
       "type": "Mammal",
-      "slogan": "There are around 260 known species!",
       "color": "BrownGreyYellowBlackWhiteTan",
       "skin_type": "Hair",
       "top_speed": "35 mph",
-      "lifespan": "10-30 years",
-      "weight": "0.1-30kg (0.22-60lbs)"
-    }
-  },
+      "lifespan": "10-30 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Monkey/1200px-Sri_Lanka_Purple_faced_Leaf_Monkey.jpg"
+},
 
-
- {
-     "conservation_status":"Least Concern", 
+{
+    "conservation_status":"Least Concern", 
     "name": "Jackal",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Canidae",
-      "genus": "Canis",
       "scientific_name": "Canis Aureus"
     },
     "locations": [
@@ -185,34 +131,25 @@
       "Europe"
     ],
     "characteristics": {
-      "main_prey": "Antelope, Reptiles, Insects",
+      "prey": "Antelope, Reptiles, Insects",
       "habitat": "Grass plains and dry woodland",
       "predators": "Hyena, Leopard, Eagles",
       "diet": "Carnivore",
       "average_litter_size": "5",
-      "lifestyle": "Pack",
-      "favorite_food": "Antelope",
       "type": "Mammal",
-      "slogan": "Can maintain speeds of 16 km/h!",
       "color": "BrownGreyWhiteTan",
       "skin_type": "Fur",
       "top_speed": "20 mph",
-      "lifespan": "8-15 years",
-      "weight": "6.8-11kg (15-24lbs)"
-    }
-  },
-
+      "lifespan": "8-15 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Jackal/10.-Sri-Lankan-Golden-Jackal-hunting-Canis-aureus-naria.jpg"
+},
 
 {
-     "conservation_status":"Critically Endangered", 
+    "conservation_status":"Critically Endangered", 
     "name": "Leopard",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Felidae",
-      "genus": "Panthera",
       "scientific_name": "Panthera pardus"
     },
     "locations": [
@@ -221,88 +158,48 @@
     ],
     "characteristics": {
       "prey": "Deer, Warthog, Rodents",
-      "name_of_young": "Cub",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "Stable",
-      "biggest_threat": "Trophy hunting and habitat loss",
-      "most_distinctive_feature": "Dense patterned fur and long, sharp teeth",
-      "other_name": "Panther",
-      "gestation_period": "90 - 105 days",
+      "predators": "Hyena, Lions, Crocodiles",
       "habitat": "Rainforest, grassland and mountainous regions",
       "diet": "Carnivore",
       "average_litter_size": "3",
-      "lifestyle": "Nocturnal",
-      "common_name": "Leopard",
-      "number_of_species": "7",
-      "location": "Sub-Saharan Africa and southern Asia",
-      "slogan": "Spends much of the time high in the trees!",
-      "group": "Mammal",
       "color": "YellowBlackDark BrownGolden",
       "skin_type": "Fur",
       "top_speed": "6 mph",
-      "lifespan": "10 - 15 years",
-      "weight": "30kg - 90kg (66lbs - 198lbs)",
-      "length": "100cm - 190cm (40in - 75in)",
-      "age_of_sexual_maturity": "2 - 2.5 years",
-      "age_of_weaning": "3 months"
-    }
-  },
+      "lifespan": "10 - 15 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Leopard/1600364219-Sri-Lankan-leopard-at-Banham-Zoo.jpg"
+},
 
 
 {
-     "conservation_status":"Vulnerable", 
+    "conservation_status":"Vulnerable", 
     "name": "Fishing Cat",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Felidae",
-      "genus": "Prionailurus",
       "scientific_name": "Prionailurus viverrinus"
     },
     "locations": [
       "Asia"
     ],
     "characteristics": {
+      "predators": "Humans",
       "prey": "Fish, Shellfish, Snakes",
-      "name_of_young": "Kitten",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "Less than 10,000",
-      "biggest_threat": "Habitat loss",
-      "most_distinctive_feature": "Long, stocky body and slightly webbed paws",
-      "gestation_period": "63 days",
-      "habitat": "Variety of wetland habitats",
+      "habitat": "wetland",
       "diet": "Carnivore",
       "average_litter_size": "2",
-      "lifestyle": "Nocturnal",
-      "common_name": "Fishing Cat",
-      "number_of_species": "2",
-      "location": "south-east Asia",
-      "slogan": "Scoops fish out of the water using it's paw!",
-      "group": "Mammal",
       "color": "BlackOlive-Grey",
       "skin_type": "Fur",
       "top_speed": "34 mph",
-      "lifespan": "10 - 12 years",
-      "weight": "5.5kg - 8kg (12lbs - 17.6lbs)",
-      "length": "57cm - 85cm (22.4in - 33.4in)",
-      "age_of_sexual_maturity": "9 - 10 months",
-      "age_of_weaning": "4 - 6 months"
-    }
-  }
-,
+      "lifespan": "10 - 12 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Fishing+Cat/Prionailurus_viverrinus_01.jpg"
+},
 
 {
-     "conservation_status":"Least Concern", 
+    "conservation_status":"Least Concern", 
 	"name": "Mongoose",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Herpestidae",
-      "genus": "Herpestes",
       "scientific_name": "Helogale Parvula"
     },
     "locations": [
@@ -310,33 +207,25 @@
       "Asia"
     ],
     "characteristics": {
-      "main_prey": "Rats, Eggs, Insects",
+      "prey": "Rats, Eggs, Insects",
+      "predators": "Snakes, Jackals, Eagles",
       "habitat": "Open forests and grass plains",
       "diet": "Omnivore",
       "average_litter_size": "4",
       "lifestyle": "Gang",
-      "favorite_food": "Rats",
-      "type": "Mammal",
-      "slogan": "Range in size from just 1 to 3 foot!",
       "color": "BrownGreyTan",
       "skin_type": "Fur",
       "top_speed": "20 mph",
-      "lifespan": "10-15 years",
-      "weight": "0.3-5kg (0.7-11lbs)"
-    }
-  }
-,
+      "lifespan": "10-15 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Mongoose/1000_F_176815903_ELzTD0MRP67VO6LJqk3Ets51fohJT2xX.jpg"
+},
 
 {
-     "conservation_status":"Least Concern", 
+    "conservation_status":"Least Concern", 
 	"name": "Otter",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Mustelidae",
-      "genus": "Lutra",
       "scientific_name": "Lutra Canadensis"
     },
     "locations": [
@@ -350,34 +239,26 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Fish, Crabs, Frogs",
+      "prey": "Fish, Crabs, Frogs",
       "habitat": "River banks, lakes and streams",
       "predators": "Birds, Fox, Wolves",
       "diet": "Carnivore",
       "average_litter_size": "3",
-      "lifestyle": "Solitary",
-      "favorite_food": "Fish",
       "type": "Mammal",
-      "slogan": "There are 13 different species worldwide",
       "color": "BrownWhiteTan",
       "skin_type": "Fur",
       "top_speed": "7 mph",
-      "lifespan": "15-25 years",
-      "weight": "5-15kg (10-30lbs)"
-    }
-  },
+      "lifespan": "15-25 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Otter/50023076967_cde4598db7_b.jpg"
+},
 
 
 {
-     "conservation_status":"Vulnerable",
+    "conservation_status":"Vulnerable",
 	"name": "Sloth Bear",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Ursidae",
-      "genus": "Ursus",
       "scientific_name": "Ursidae"
     },
     "locations": [
@@ -389,102 +270,74 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Fish, Nectar, Insects",
-      "distinctive_feature": "Large teeth and paws and strong body",
+      "prey": "Fish, Nectar, Insects",
       "habitat": "Forest and mountainous regions",
       "predators": "Human, Wolf, Wildcats",
       "diet": "Omnivore",
       "average_litter_size": "2",
-      "lifestyle": "Solitary",
-      "favorite_food": "Fish",
       "type": "Mammal",
-      "slogan": "There are 8 different species!",
       "color": "BrownBlackWhite",
       "skin_type": "Fur",
       "top_speed": "35 mph",
-      "lifespan": "15 - 35 years",
-      "weight": "27kg - 450kg (60lbs - 990lbs)",
-      "height": "1.2m - 3.3m (4ft - 11ft)"
-    }
-  },
+      "lifespan": "15 - 35 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Sloth+Bear/220px-Sri_Lankan_sloth_bear_28Melursus_ursinus_inornatus29_male_head.jpg"
+},
 
 
 {
-      "conservation_status":"Least Concern", "name": "Asian Palm Civet",
+    "conservation_status":"Least Concern", "name": "Asian Palm Civet",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Carnivora",
-      "family": "Viverridae",
-      "genus": "Paradoxurus",
       "scientific_name": "Paradoxurus hermaphroditus"
     },
     "locations": [
       "Asia"
     ],
     "characteristics": {
-      "main_prey": "Rodents, Snakes, Frogs",
-      "distinctive_feature": "Elongated body and snout with sharp, pointed teeth",
+      "prey": "Rodents, Snakes, Frogs",
       "habitat": "Tropical rainforest",
       "predators": "Lions, Snakes, Leopards",
       "diet": "Carnivore",
       "average_litter_size": "2",
-      "lifestyle": "Solitary",
-      "favorite_food": "Rodents",
+      "top_speed": " 31 mph",
       "type": "Mammal",
-      "slogan": "It mainly eats mangos and coffee!",
       "color": "BrownGreyYellowBlackWhiteTan",
       "skin_type": "Fur",
-      "lifespan": "15 - 20 years",
-      "weight": "1.4kg - 4.5kg (3lbs - 10lbs)",
-      "height": "43cm - 71cm (17in - 28in)"
-    }
-  },
+      "lifespan": "15 - 20 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Civet/01508037.jpg"
+},
 
 
 {
-     "conservation_status":"Endangered", "name": "Asian Elephant",
+    "conservation_status":"Endangered", "name": "Asian Elephant",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Proboscidea",
-      "family": "Elephantidae",
-      "genus": "Elephas",
       "scientific_name": "Elephas maximus"
     },
     "locations": [
       "Asia"
     ],
     "characteristics": {
-      "main_prey": "Grass, Fruit, Roots",
-      "distinctive_feature": "Long trunk and large feet",
+      "prey": "Grass, Fruit, Roots",
       "habitat": "Rainforest and tropical woodland",
       "predators": "Human, Tiger",
       "diet": "Herbivore",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Grass",
       "type": "Mammal",
-      "slogan": "Domesticated for hundreds of years!",
       "color": "BrownGreyBlack",
       "skin_type": "Leather",
       "top_speed": "27 mph",
-      "lifespan": "55 - 70 years",
-      "weight": "3,000kg - 5,000kg (6,500lbs - 11,000lbs)",
-      "height": "2m - 3m (7ft - 10ft)"
-    }
-  },
-  {
-     "conservation_status":"Endangered", "name": "Borneo Elephant",
+      "lifespan": "55 - 70 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Elephant/-The-famous-B35-road-through-Yala-National-Park-tuktukrental.com_-1-1024x576.jpg"
+},
+
+{
+    "conservation_status":"Endangered", "name": "Borneo Elephant",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Proboscidea",
-      "family": "Elephantidae",
-      "genus": "Elephas",
       "scientific_name": "Elephas maximus borneensis"
     },
     "locations": [
@@ -492,34 +345,25 @@
       "Ocean"
     ],
     "characteristics": {
-      "main_prey": "Grass, Fruit, Roots",
-      "distinctive_feature": "Long trunk and large feet",
+      "prey": "Grass, Fruit, Roots",
       "habitat": "Rainforest and tropical woodland",
       "predators": "Human, Tiger",
       "diet": "Herbivore",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Grass",
       "type": "Mammal",
-      "slogan": "The smallest species of elephant!",
       "color": "BrownGreyBlack",
       "skin_type": "Leather",
       "top_speed": "27 mph",
-      "lifespan": "55 - 70 years",
-      "weight": "3,000kg - 5,000kg (6,500lbs - 11,000lbs)",
-      "height": "2m - 3m (7ft - 10ft)"
-    }
-  },
-  {
-     "conservation_status":"Endangered", "name": "Water Buffalo",
+      "lifespan": "55 - 70 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Borneo+Elephant/AdobeStock_95116983_455289_reduced.jpg"
+},
+
+{
+    "conservation_status":"Endangered", "name": "Water Buffalo",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Artiodactyla",
-      "family": "Bovidae",
-      "genus": "Bubalus",
-      "scientific_name": "ter"
+      "scientific_name": "Bubalus bubalis"
     },
     "locations": [
       "Africa",
@@ -530,32 +374,25 @@
       "Oceania"
     ],
     "characteristics": {
-      "main_prey": "Grass, Leaves, Aquatic plants",
+      "prey": "Grass, Leaves, Aquatic plants",
+      "predators": "Crocodiles, Bears, Wolves",
       "habitat": "Marsh and swampland",
       "diet": "Herbivore",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Grass",
       "type": "Mammal",
-      "slogan": "Has been domesticated for thousands of years!",
       "color": "BrownGreyTan",
       "skin_type": "Leather",
       "top_speed": "30 mph",
-      "lifespan": "15-25 years",
-      "weight": "400-900kg (880-2,000lbs)"
-    }
-  }
-,
-[
+      "lifespan": "15-25 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Buffalo/_130514728_waterbuffalowarrivingatthorleywash.jpg"
+},
+
+
   {
       "conservation_status":"Least Concern", "name": "Wild Boar",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Artiodactyla",
-      "family": "Suidae",
-      "genus": "Sus",
       "scientific_name": "Sus scrofa"
     },
     "locations": [
@@ -565,45 +402,23 @@
     ],
     "characteristics": {
       "prey": "Berries, Roots, Worms",
-      "name_of_young": "Piglet",
-      "group_behavior": "Sounder",
-      "estimated_population_size": "Sustainable",
-      "biggest_threat": "Habitat loss",
-      "most_distinctive_feature": "Long, hard and straight snout",
-      "other_name": "Wild Pig, Wild Hog, Boar",
-      "gestation_period": "3 - 4 months",
       "habitat": "Deciduous broad-leaf forests",
       "predators": "Tiger, Wolves, Humans",
       "diet": "Omnivore",
       "average_litter_size": "5",
-      "lifestyle": "Nocturnal",
-      "common_name": "Wild Boar",
-      "number_of_species": "4",
-      "location": "Throughout Europe and Asia",
-      "slogan": "Males have a top tusk to sharpen the bottom one!",
-      "group": "Mammal",
+      "type": "Mammal",
       "color": "BrownGreyRedBlack",
       "skin_type": "Fur",
       "top_speed": "30 mph",
-      "lifespan": "15 - 20 years",
-      "weight": "80kg - 175kg (176lbs - 386lbs)",
-      "height": "55cm - 100cm (21.6in - 39.3in)",
-      "age_of_sexual_maturity": "7 - 10 months",
-      "age_of_weaning": "2 - 3 months"
-    }
+      "lifespan": "15 - 20 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Wild+Boar/2Fmethode2Ftimes2Fprod2Fweb2Fbin2F8a900b65-a2d6-4029-8295-40e250f306fb.jpg"
   },
-
-
 
   {
      "conservation_status":"Least Concern", "name": "Donkey",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Perissodactyla",
-      "family": "Equidae",
-      "genus": "Equus",
       "scientific_name": "Equus Asinus"
     },
     "locations": [
@@ -617,23 +432,18 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Grass, Weeds, Vegetables",
-      "distinctive_feature": "Stocky body and hee-haw sounds",
+      "prey": "Grass, Weeds, Vegetables",
       "habitat": "Arid forests and deserts",
       "predators": "Fox, Wolf, Lion",
       "diet": "Herbivore",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Grass",
       "type": "Mammal",
-      "slogan": "First domesticated 5,000 years ago!",
       "color": "BrownGreyBlack",
       "skin_type": "Fur",
       "top_speed": "15 mph",
-      "lifespan": "15 - 30 years",
-      "weight": "200kg - 258kg (441lbs - 570lbs)",
-      "height": "90cm - 130cm (35in - 51in)"
-    }
+      "lifespan": "15 - 30 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Donkey/01DoNKEY-sb1-superJumbo.jpg"
   }
 ,
 
@@ -641,11 +451,6 @@
       "conservation_status":"Endangered", "name": "Horse",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Perissodactyla",
-      "family": "Equidae",
-      "genus": "Equus",
       "scientific_name": "Equus caballus"
     },
     "locations": [
@@ -659,30 +464,24 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Grass, Fruit, Leaves",
+      "prey": "Grass, Fruit, Leaves",
       "habitat": "Small forests and grassland",
       "predators": "Human, Wolf, Bears",
       "diet": "Herbivore",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Grass",
       "type": "Mammal",
-      "slogan": "Has evolved over 50 million years!",
       "color": "BrownBlackWhite",
       "skin_type": "Hair",
       "top_speed": "40 mph",
-      "lifespan": "25-30 years",
-      "weight": "380-550kg (840-1,200lbs)"
-    }
+      "lifespan": "25-30 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Horse/Horse_Behaviour_-_blog.jpg"
   },
   {
      "conservation_status":"Least Concern", "name": "Horsefly",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Arthropoda",
-      "class": "Insecta",
-      "order": "Diptera",
-      "family": "Tabanidae"
+      "scientific_name": "Tabanidae"
     },
     "locations": [
       "Africa",
@@ -696,37 +495,22 @@
     ],
     "characteristics": {
       "prey": "Mammals",
-      "name_of_young": "Maggot, larva",
-      "group_behavior": "Solitary/Group",
-      "estimated_population_size": "Millions, and growing",
-      "biggest_threat": "Humans",
-      "most_distinctive_feature": "Its bite",
-      "other_name": "Tabanus, gadfly, gleg, stout, dunfly, deerfly, buffalofly moosefly, elephantfly, breezefly, Marchfly",
-      "gestation_period": "Eggs hatch after six days",
-      "litter_size": "100 to 1000 eggs",
+      "average_litter_size": "100 to 1000 eggs",
       "habitat": "A variety of habitats, but not those that are too high, too dry or too cold.",
       "predators": "Parasitic wasps, birds, horse guard wasp",
       "diet": "Omnivore",
       "type": "Insect",
-      "common_name": "Horsefly",
-      "location": "Everywhere save the North and South poles and some islands, including Hawaii",
-      "group": "Swarms during mating season",
       "color": "GreyBlack",
       "top_speed": "90 mph",
-      "lifespan": "30 to 60 days as an adult",
-      "weight": "12 milligrams",
-      "length": "Between 0.2 and 1.25 inches",
-      "age_of_sexual_maturity": "Immediately after pupating"
-    }
+      "lifespan": "30 to 60 days as an adult"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Horsefly/istock_000045227998large-horse-fly.jpg"
   },
   {
      "conservation_status":"Vulnerable", "name": "Horseshoe Crab",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Arthropoda",
-      "class": "Malacostraca",
-      "order": "Xiphosurida",
-      "family": "Limulidae"
+      "scientific_name": "Limulidae"
     },
     "locations": [
       "Asia",
@@ -737,38 +521,22 @@
     ],
     "characteristics": {
       "prey": "Worms, algae, small invertebrates, detritus",
-      "group_behavior": "Largely solitary",
-      "estimated_population_size": "2.3 to 4.5 million just on the Atlantic coast",
-      "biggest_threat": "Pollution, over-harvesting, habitat destruction",
-      "most_distinctive_feature": "Their horseshoe-shaped shell",
-      "other_name": "helmet crab, horsefoot, saucepan, king crab",
-      "gestation_period": "Two weeks",
-      "water_type": "Salt",
-      "habitat": "Shallow water off the coast, beaches",
       "predators": "Shorebirds who eat the eggs, sea turtles, fish",
+"habitat": "Shallow coastal waters",
       "diet": "Omnivore",
       "average_litter_size": "90,000",
+      "top_speed": "4.7 mph",
       "type": "Arthropod",
-      "common_name": "Horseshoe Crab",
-      "number_of_species": "4",
-      "location": "Worldwide",
-      "slogan": "Changed little in over 500 million years!",
       "color": "BrownGreyTanGreen",
       "skin_type": "Shell",
-      "lifespan": "Over 30 years",
-      "weight": "As much as 9 pounds in the tri-spine horseshoe crab; males of all species smaller",
-      "length": "As long as 31.25 inches in the female tri-spine horseshoe crab, other species are smaller"
-    }
+      "lifespan": "Over 30 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Horseshoe+Crab/1200px-Tachypleus_gigas.jpg"
   },
   {
       "conservation_status":"Vulnerable", "name": "Seahorse",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Actinopterygii",
-      "order": "Syngnathiformes",
-      "family": "Syngnathidae",
-      "genus": "Hippocampus",
       "scientific_name": "Hippocampus"
     },
     "locations": [
@@ -783,35 +551,26 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Tiny Fish, Brine Shrimp, Plankton",
-      "distinctive_feature": "Long snout and brooding pouch on the male",
-      "water_type": "Brackish",
-      "optimum_ph_level": "7.9 - 8.4",
+      "prey": "Tiny Fish, Brine Shrimp, Plankton",
+      "average_litter_size": "Between 10 and 30",
       "habitat": "Shallow tropical waters and coral reefs",
       "predators": "Fish, Crabs, Rays",
       "diet": "Omnivore",
-      "favorite_food": "Tiny Fish",
-      "common_name": "Seahorse",
-      "average_clutch_size": "250",
-      "slogan": "Males give birth to up to 1,000 offspring!",
+      "top_speed": "0.5 mph",
       "skin_type": "Skin",
-      "lifespan": "2 - 6 years",
-      "length": "2.5cm - 35cm (0.9in - 12in)"
-    }
-  }
-,
-  {
-     "conservation_status":"Least Concern", "name": "Porcupine",
+      "color": "PurpleGrayWhiteBlueOrangePink",
+      "lifespan": "2 - 6 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Seahorse/history-of-sea-horse-review.jpg"
+},
+
+{
+    "conservation_status":"Least Concern", "name": "Porcupine",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Erethizontidae",
-      "genus": "Erethizon",
       "scientific_name": "Erethizon Dorsaum"
     },
-    "locations": [
+    "locations": [ 
       "Asia",
       "Central-America",
       "Eurasia",
@@ -820,31 +579,23 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Roots, Leaves, Berries",
+      "prey": "Roots, Leaves, Berries",
       "habitat": "Dense forests and grassland",
       "predators": "Owl, Eagles, Wolves",
       "diet": "Omnivore",
       "average_litter_size": "1",
-      "lifestyle": "Solitary",
-      "favorite_food": "Roots",
       "type": "Mammal",
-      "slogan": "There are 30 different species worldwide!",
       "color": "BrownGreyYellowBlack",
       "skin_type": "Spikes",
       "top_speed": "2 mph",
-      "lifespan": "8-12 years",
-      "weight": "5.4-16kg (12-35lbs)"
-    }
-  }
-,{
+      "lifespan": "8-12 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Porcupine/52461255235_8952196d1d.jpg"
+  },
+{
      "conservation_status":"Least Concern", "name": "Muskrat",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Cricetidae",
-      "genus": "Ondatra",
       "scientific_name": "Ondatra zibethicus"
     },
     "locations": [
@@ -856,39 +607,21 @@
     ],
     "characteristics": {
       "prey": "Vegetation, mussels, fish, frogs, crayfish, and turtles",
-      "name_of_young": "Kits",
-      "group_behavior": "Family units",
-      "estimated_population_size": "Unknown",
-      "biggest_threat": "Loss of wetlands",
-      "most_distinctive_feature": "The webbed hind feet",
-      "other_name": "Musquash (the Cree term for the muskrat)",
-      "gestation_period": "28 days",
-      "litter_size": "6-8",
+      "average_litter_size": "6-8",
       "habitat": "Lakes, ponds, and wetlands",
-      "predators": "Snakes, eagles, hawks, alligators, raccoons, coyotes, bobcats, and much more",
+      "predators": "Snakes, eagles, hawks, alligators, raccoons, coyotes, bobcats",
       "diet": "Omnivore",
-      "common_name": "Muskrat",
-      "location": "North America, Europe, and Northern Asia",
       "color": "BrownBlack",
       "skin_type": "Hair",
       "top_speed": "3 mph",
-      "lifespan": "1-10 years",
-      "weight": "0.7kg – 1.8kg (1.5lbs - 4lbs)",
-      "height": "13cm (5in)",
-      "length": "41cm – 63cm (16in – 25in)",
-      "age_of_sexual_maturity": "Up to a year",
-      "age_of_weaning": "A month"
-    }
-  },
+      "lifespan": "1-10 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Muskrat/muskrat-foraging-along-shore.jpg"
+},
 {
      "conservation_status":"Least Concern", "name": "Rat",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Muridae",
-      "genus": "Rattus",
       "scientific_name": "Rattus rattus"
     },
     "locations": [
@@ -903,32 +636,24 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Eggs, Nuts, Potatoes, Corn",
+      "prey": "Eggs, Nuts, Potatoes, Corn",
       "habitat": "Underground close to human settlements",
       "predators": "Owls, Snakes, Raccoon, Cats",
       "diet": "Omnivore",
       "average_litter_size": "8",
-      "lifestyle": "Solitary",
-      "favorite_food": "Eggs",
       "type": "Mammal",
-      "slogan": "Omnivores that eat anything!",
       "color": "BrownGreyBlackWhite",
       "skin_type": "Fur",
       "top_speed": "8 mph",
-      "lifespan": "2-5 years",
-      "weight": "200-900g (0.4-2lbs)"
-    }
-  },
-  {
+      "lifespan": "2-5 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Rat/brown-norway-rat-outside.jpg"
+},
+{
      "conservation_status":"Least Concern", "name": "Rat Snakes",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Reptilia",
-      "order": "Squamata",
-      "family": "Colubridae",
-      "genus": "various",
-      "scientific_name": "various"
+      "scientific_name": "Colubrinae"
     },
     "locations": [
       "Asia",
@@ -941,31 +666,20 @@
     ],
     "characteristics": {
       "prey": "Rats, mice, birds, bird eggs, lizards",
-      "main_prey": "Rats and mice",
-      "name_of_young": "Hatchlings",
-      "group_behavior": "Solitary",
-      "biggest_threat": "Vehicles on roads, human encroachment",
-      "other_name": "Corn snake, rat snake, bush snake,",
-      "gestation_period": "2-3 months",
-      "temperament": "Generally mellow, but some species are more aggressive.",
-      "litter_size": "Anywhere from 3-20 eggs",
+      "average_litter_size": "Anywhere from 3-20 eggs",
       "habitat": "Dense rainforest jungles to arid deserts.",
+      "color": "BlackRedTanCream",
+      "top_speed": "5.97 mph",
+      "lifespan": "10-15 years",
       "predators": "Birds of prey, other snakes, weasels, coyotes, badgers.",
-      "diet": "Carnivore",
-      "lifestyle": "Diurnalor Nocturnal Depending on Region and Season",
-      "number_of_species": "50",
-      "average_clutch_size": "12",
-      "nesting_location": "Hollow logs, leaf litter"
-    }
-  },
+      "diet": "Carnivore"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Rat+Snakes/Zamenis_longissimus.jpg"
+},
 {
      "conservation_status":"Near Threatened", "name": "Dormouse",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Gliridae",
       "scientific_name": "Gliridae"
     },
     "locations": [
@@ -975,33 +689,24 @@
       "Europe"
     ],
     "characteristics": {
-      "main_prey": "Fruits, Nuts, Insects",
-      "distinctive_feature": "Long tail and thin, black whiskers",
+      "prey": "Fruits, Nuts, Insects",
       "habitat": "Dense woodlands and shrub land",
       "predators": "Owls, Snakes, Weasels",
       "diet": "Omnivore",
       "average_litter_size": "4",
-      "lifestyle": "Solitary",
-      "favorite_food": "Fruits",
       "type": "Mammal",
-      "slogan": "Found in Europe, Africa and Asia!",
       "color": "BrownGreyBlackWhiteGoldTan",
       "skin_type": "Fur",
       "top_speed": "8 mph",
-      "lifespan": "2 - 5 years",
-      "weight": "15g - 200kg (0.5oz - 7.1oz)",
-      "length": "6cm - 19cm (2.4in - 7.5in)"
-    }
-  },
+      "lifespan": "2 - 5 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Dormouse/hazel-dormouse-539285722-17fcd96edb584caca1e3b93a2ea8d4d5.jpg"
+},
 {
      "conservation_status":"Least Concern", "name": "Mouse",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Muridae",
-      "genus": "Mus"
+      "scientific_name": "Mus musculus"
     },
     "locations": [
       "Africa",
@@ -1015,33 +720,24 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Fruit, Seeds, Grasses",
+      "prey": "Fruit, Seeds, Grasses",
       "habitat": "Open fields and woodland areas",
       "predators": "Bird, Cat, Fox, Reptiles",
       "diet": "Herbivore",
       "average_litter_size": "6",
-      "lifestyle": "Solitary",
-      "favorite_food": "Fruit",
       "type": "Mammal",
-      "slogan": "Found on every continent on Earth!",
       "color": "BrownGreyBlack",
       "skin_type": "Fur",
       "top_speed": "8 mph",
-      "lifespan": "2-5 years",
-      "weight": "100-200g (0.2-0.4lbs)"
-    }
-  }
-,
+      "lifespan": "2-5 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Mouse/1200px-%D0%9C%D1%8B%D1%88%D1%8C_2.jpg"
+},
 
 {
      "conservation_status":"Least Concern", "name": "Flying Squirrel",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Sciuridae",
-      "genus": "Pteromyini",
       "scientific_name": "Pteromyini"
     },
     "locations": [
@@ -1053,73 +749,46 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Nuts, Berries, Eggs",
-      "distinctive_feature": "Small body size and furry glide membrane",
+      "prey": "Nuts, Berries, Eggs",
       "habitat": "Forest and woodland",
       "predators": "Cats. Coyote, Raccoon",
       "diet": "Omnivore",
       "average_litter_size": "4",
-      "lifestyle": "Solitary",
-      "favorite_food": "Nuts",
       "type": "Mammal",
-      "slogan": "Can glide up to 90 meters!",
       "color": "BrownGreyBlackWhiteTan",
       "skin_type": "Fur",
       "top_speed": "15 mph",
-      "lifespan": "5 - 8 years",
-      "weight": "56g - 175g (2oz - 6oz)",
-      "height": "20cm - 30cm (8in - 12in)"
-  }
-}
-	,
-  {
+      "lifespan": "5 - 8 years"
+  },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Flying+Squirrel/B3RqGkLCg2paQUOl_whatdosquirrelseat.orgcc.jpg"
+},
+{
       "conservation_status":"Least Concern", "name": "Japanese Squirrel",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Sciuridae",
-      "genus": "Sciurus",
       "scientific_name": "Sciurus lis"
     },
     "locations": [
       "Asia"
     ],
     "characteristics": {
-      "name_of_young": "Kits",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "Unknown",
-      "biggest_threat": "Habitat loss",
-      "most_distinctive_feature": "The big, bushy tail",
-      "gestation_period": "40 days",
-      "litter_size": "2-6 kits",
+      "average_litter_size": "2-6 kits",
       "habitat": "Mixed forests",
       "predators": "Foxes, martens, crows, raptors, and domesticated cats and dogs",
       "diet": "Omnivore",
-      "favorite_food": "Seeds, buds, fruits, fungi, flowers, and insects",
       "type": "Mammal",
-      "common_name": "Japanese Squirrel",
-      "number_of_species": "1",
-      "location": "Japan",
       "color": "BrownGreyRedWhite",
       "skin_type": "Hair",
       "lifespan": "Up to 15 years",
-      "weight": "250-310g (9-11oz)",
-      "height": "Up to 15cm (6in)",
-      "length": "16-22cm (6-8.5in) in body length, not including the tail",
-      "age_of_sexual_maturity": "300 days",
-      "age_of_weaning": "60 days"
-    }
-  },
+      "top_speed": "20 mph"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Japanese+Squirrel/Japanese_Squirrel_edit2.jpg"
+},
 {
       "conservation_status":"Least Concern", "name": "Squirrel",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Sciuridae"
+      "scientific_name": "Sciuridae"
     },
     "locations": [
       "Africa",
@@ -1131,32 +800,23 @@
       "South-America"
     ],
     "characteristics": {
-      "main_prey": "Fruit, Seeds, Insects",
+      "prey": "Fruit, Seeds, Insects",
       "habitat": "Woodland and dense forests",
       "predators": "Snakes, Coyote, Weasels",
       "diet": "Omnivore",
       "average_litter_size": "3",
-      "lifestyle": "Solitary",
-      "favorite_food": "Fruit",
       "type": "Mammal",
-      "slogan": "Small rodents found in woodlands worldwide!",
       "color": "BrownGreyRedBlackTan",
       "skin_type": "Fur",
       "top_speed": "16 mph",
-      "lifespan": "2-8 years",
-      "weight": "250-1,000g (0.5-2.2lbs)"
-    }
-  }
-,
+      "lifespan": "2-8 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Squirrel/_120589598_squirrels.jpg"
+},
   {
       "conservation_status":"Least Concern", "name": "Indian Palm Squirrel",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Sciuridae",
-      "genus": "Funambulus",
       "scientific_name": "Funambulus Palmarum"
     },
     "locations": [
@@ -1164,32 +824,23 @@
       "Ocean"
     ],
     "characteristics": {
-      "main_prey": "Eggs, Fruit, Insects",
+      "prey": "Eggs, Fruit, Insects",
       "habitat": "Thick forest and tropical jungles",
       "predators": "Human, Snakes, Wildcats",
       "diet": "Omnivore",
       "average_litter_size": "3",
-      "lifestyle": "Solitary",
-      "favorite_food": "Eggs",
       "type": "Mammal",
-      "slogan": "Natively found in parts of India and Sri Lanka!",
       "color": "BrownYellowTan",
       "skin_type": "Fur",
       "top_speed": "10 mph",
-      "lifespan": "2-4 years",
-      "weight": "100-120g (3.5-4.2oz)"
-    }
-  }
-,
+      "lifespan": "2-4 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Indian+Palm+Squirrel/Funambulus_palmarum_(Bengaluru).jpg"
+  },
 {
-      "conservation_status":"Least Concern", "name": "Indian Giant Squirrel",
+    "conservation_status":"Least Concern", "name": "Indian Giant Squirrel",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Rodentia",
-      "family": "Sciuridae",
-      "genus": "Ratufa",
       "scientific_name": "Ratufa indica"
     },
     "locations": [
@@ -1197,29 +848,17 @@
     ],
     "characteristics": {
       "prey": "insects, bird eggs",
-      "name_of_young": "pup, kit, kitten",
-      "group_behavior": "Solitary/Pairs",
-      "estimated_population_size": "unknown",
-      "biggest_threat": "Deforestation",
-      "most_distinctive_feature": "vibrant colors, large size",
-      "other_name": "Malabar Giant Squirrel",
-      "gestation_period": "28-35 days",
-      "litter_size": "1-3",
+      "predators": "Snake, Eagle",
+      "average_litter_size": "1-3",
       "habitat": "Tropical forest",
       "diet": "Omnivore",
       "type": "mammal",
-      "common_name": "Indian giant squirrel",
-      "number_of_species": "1",
-      "location": "South Asia",
       "color": "BrownRedBlackWhitePurple",
       "skin_type": "Fur",
       "top_speed": "32 mph",
-      "lifespan": "20 years",
-      "weight": "1.5kg-2 kg (3.3lbs-4.4 lbs)",
-      "length": "Head & body 25.4cm-45.7cm (10in-18in), Tail 40.6cm-60.9cm (16in-24in)",
-      "age_of_sexual_maturity": "2-4 years",
-      "age_of_weaning": "6 months"
-    }
+      "lifespan": "20 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Indian+Giant+Squirrel/Ratufa_indica_(Bhadra%2C_2006).jpg"
   }
 
 ,
@@ -1227,11 +866,6 @@
       "conservation_status":"Endangered", "name": "Blue Whale",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Cetacea",
-      "family": "Balaenopteridae",
-      "genus": "Balaenoptera",
       "scientific_name": "Balsenoptera musculus"
     },
     "locations": [
@@ -1239,77 +873,47 @@
     ],
     "characteristics": {
       "prey": "Krill, Crustaceans, Small Fish",
-      "name_of_young": "Calf",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "Less than 20,000",
-      "biggest_threat": "Climate change",
-      "most_distinctive_feature": "Pleats on neck and two blow-holes",
-      "other_name": "Northern, Southern, Pygmy",
-      "gestation_period": "11 -12 months",
       "habitat": "Polar and subtropical waters",
       "predators": "Humans, Killer Whale pods",
       "diet": "Carnivore",
       "average_litter_size": "1",
-      "lifestyle": "Diurnal",
-      "common_name": "Blue Whale",
-      "number_of_species": "3",
-      "location": "Oceans worldwide",
-      "slogan": "The largest animal on Earth",
-      "group": "Mammal",
+      "type": "Mammal",
       "color": "GreyBlueBlackWhite",
       "skin_type": "Smooth",
       "top_speed": "13 mph",
-      "lifespan": "30 - 45 years",
-      "weight": "100tonnes - 160tonnes (220,000lbs - 352,000lbs)",
-      "length": "25m - 30m (82.5ft - 100ft)",
-      "age_of_sexual_maturity": "10- 15 years",
-      "age_of_weaning": "8 months"
-    }
+      "lifespan": "30 - 45 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Blue+Whale/thumb__2400_0_0_0_auto.jpg"
   }
 ,
   {
       "conservation_status":"Endangered", "name": "Fin Whale",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Cetacea",
-      "family": "Balaenopteridae",
-      "genus": "Balaenoptera",
       "scientific_name": "Balaenoptera Physalus"
     },
     "locations": [
       "Ocean"
     ],
     "characteristics": {
-      "main_prey": "Krill, Fish, Squid",
-      "distinctive_feature": "Pointed snout and two blowholes on top of head",
+      "prey": "Krill, Fish, Squid",
       "habitat": "Deep offshore waters",
       "predators": "Human, Large Sharks",
       "diet": "Carnivore",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Krill",
       "type": "Mammal",
-      "slogan": "Found throughout ocean waters worldwide!",
       "color": "GreyBlueBlackWhite",
       "skin_type": "Smooth",
       "top_speed": "25 mph",
-      "lifespan": "50 - 60 years",
-      "weight": "1,800kg - 70,000kg (4,000lbs - 150,000lbs)",
-      "length": "6.5m - 24m (21ft - 79ft)"
-    }
+      "lifespan": "50 - 60 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Fin+Whale/Chanaral4208-4W.jpg"
   }
 ,
   {
       "conservation_status":"Endangered", "name": "Sei Whale",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Cetacea",
-      "family": "Balaenopteridae",
-      "genus": "Balaenoptera",
       "scientific_name": "Balaenoptera borealis"
     },
     "locations": [
@@ -1317,36 +921,23 @@
     ],
     "characteristics": {
       "prey": " Krill and other euphausiids, copepods, small fish and squid",
-      "group_behavior": "Solitary",
-      "estimated_population_size": "80,000",
-      "biggest_threat": "Humans, climate change, pollution",
-      "most_distinctive_feature": "Its tall, sickle-shaped dorsal fin",
-      "other_name": "Japan finner, lesser fin whale, pollock whale, sardine whale, coalfish, Rudolph’s rorqual",
-      "gestation_period": "10.5 to 12 months",
-      "water_type": "Salt",
+"habitat": "Deep offshore waters",
+      "average_litter_size": "1",
       "predators": "Humans",
       "diet": "Carnivore",
       "type": "Mammal",
-      "common_name": "Sei Whale",
-      "number_of_species": "2",
       "color": "GreyWhite",
       "skin_type": "Skin",
       "top_speed": "32 mph",
-      "lifespan": "70 years plus",
-      "weight": " Up to 31 tons",
-      "length": "64 feet, females bigger"
-    }
+      "lifespan": "70 years plus"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Sei+Whale/658tkavct1_HI_257682.jpg"
   }
 ,
   {
       "conservation_status":"Not Threatened", "name": "False Killer Whale",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Artiodactyla",
-      "family": "Delphinidae",
-      "genus": "Pseudorca",
       "scientific_name": "Pseudorca crassidens"
     },
     "locations": [
@@ -1354,70 +945,46 @@
     ],
     "characteristics": {
       "prey": "Fish, squid, and marine mammals",
-      "group_behavior": "Pod",
-      "estimated_population_size": "Unknown",
-      "biggest_threat": "Competition with humans for food",
-      "most_distinctive_feature": "The versatile vocalizations",
-      "other_name": "Blackfish or false pilot whale",
-      "gestation_period": "Up to 16 months",
-      "water_type": "Salt",
       "habitat": "Coastal and deep ocean regions",
       "predators": "Sharks and killer whales",
       "diet": "Carnivore",
       "average_litter_size": "1",
       "type": "Mammal",
-      "common_name": "False killer whale",
       "color": "GreyBlackWhite",
       "skin_type": "Skin",
       "top_speed": "18 mph",
-      "lifespan": "Around 60 years",
-      "weight": "Up to 4,000 pounds",
-      "length": "Up to 20 feet"
-    }
+      "lifespan": "Around 60 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/False+Killer+Whale/false-killer-whale-peter-jucker-swiss-whale-society-sg.jpg"
   },
   {
       "conservation_status":"Critically Endangered", "name": "Killer Whale",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Cetacea",
-      "family": "Delphinidae",
-      "genus": "Orcinus",
       "scientific_name": "Orcinus orca"
     },
     "locations": [
       "Ocean"
     ],
     "characteristics": {
-      "main_prey": "Seal, Fish, Squid",
-      "group_behavior": "Pod",
-      "water_type": "Salt",
+      "prey": "Seal, Fish, Squid",
       "habitat": "Ocean and coastal waters worldwide",
       "predators": "Human, Larger Sharks",
       "diet": "Carnivore",
       "average_litter_size": "1",
-      "lifestyle": "Pod",
-      "favorite_food": "Seal",
       "type": "Mammal",
-      "slogan": "Typically consumes over 200 kg of food a day!",
       "color": "BlackWhite",
       "skin_type": "Smooth",
       "top_speed": "30 mph",
-      "lifespan": "50-60 years",
-      "weight": "6,804-8,618kg (15,000-19,000lbs)"
-    }
+      "lifespan": "50-60 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Killer+Whale/GettyImages-826128004-6cb21c0037424480b047a648e294e669.jpg"
   }
 ,
   {
       "conservation_status":"Endangered", "name": "Sperm Whale",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Cetacea",
-      "family": "Physeteridae",
-      "genus": "Physeter",
       "scientific_name": "Physeter macrocephalus"
     },
     "locations": [
@@ -1425,75 +992,46 @@
     ],
     "characteristics": {
       "prey": "Squid, sharks, skates, fish",
-      "group_behavior": "Pod/Solitary",
-      "estimated_population_size": "300,000 to 450,000",
-      "biggest_threat": "Human activity, climate change",
-      "most_distinctive_feature": "Size and huge head",
-      "distinctive_feature": "Cone-shaped teeth and enormous body size",
-      "other_name": "Cachalot",
-      "gestation_period": "14 to 16 months",
-      "water_type": "Salt",
-      "optimum_ph_level": "6 - 9",
       "habitat": "Ocean",
       "predators": "Sharks, Humans, Killer Whales",
       "diet": "Carnivore",
       "average_litter_size": "1",
-      "favorite_food": "Squid",
       "type": "Cetacean Common nam",
-      "common_name": "Sperm Whale",
-      "number_of_species": "4",
-      "slogan": "Each tooth weighs 1kg!",
       "color": "GreyWhite",
       "skin_type": "Smooth",
-      "top_speed": "23 mph",
-      "lifespan": "Up to 60 years",
-      "weight": "35 to 45 tons",
-      "length": "49 to 59 feet"
-    }
+      "top_speed": "3 mph",
+      "lifespan": "Up to 60 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Sperm+Whale/Mother_and_baby_sperm_whale.jpg"
   }
 ,
 {
       "conservation_status":"Extinct", "name": "Steller’s Sea Cow",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Mammalia",
-      "order": "Sirenia",
-      "family": "Dugongidae",
-      "genus": "Hydrodamalis",
       "scientific_name": "Hydrodamalis Gigas"
     },
     "locations": [
       "Ocean"
     ],
     "characteristics": {
-      "main_prey": "Sea Grasses, Algae, Flowers",
-      "distinctive_feature": "Enormous body size and toothless mouths",
+      "prey": "Sea Grasses, Algae, Flowers",
       "habitat": "Arctic Tundra",
       "predators": "Large sharks and humans",
       "diet": "Herbivore",
+      "top_speed": "16 mph",
       "average_litter_size": "1",
-      "lifestyle": "Herd",
-      "favorite_food": "Sea Grasses",
       "type": "Mammal",
-      "slogan": "Hunted to extinction in 17 years!",
       "color": "BrownGreyBlack",
       "skin_type": "Smooth",
-      "lifespan": "50 - 80 years",
-      "weight": "8000kg (8.8tons)",
-      "length": "8m - 9m (26ft - 30ft)"
-    }
-  }
-,
-  {
+      "lifespan": "50 - 80 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Stellar+Sea+Cow/1_nFwfzXErz934Fz6Sd2Wddg.jpg"
+},
+{
       "conservation_status":"Vulnerable", "name": "Leatherback Sea Turtle",
     "taxonomy": {
       "kingdom": "Animalia",
-      "phylum": "Chordata",
-      "class": "Reptilia",
-      "order": "Testudines",
-      "family": "Dermochelyidae",
-      "genus": "Dermochelys",
       "scientific_name": " Dermochelys coriacea"
     },
     "locations": [
@@ -1504,33 +1042,16 @@
     ],
     "characteristics": {
       "prey": "jellyfish, sea squirts",
-      "main_prey": "Jellyfish",
-      "name_of_young": "eggs, hatchlings",
-      "group_behavior": "Solitary except during mating season",
-      "estimated_population_size": "less than 50,000",
-      "biggest_threat": "Humans, pollution, habitat loss, fishing vessel",
-      "most_distinctive_feature": "Leather-like skin",
-      "distinctive_feature": "Leather-like skin and massive size",
-      "other_name": "Luth, leathery turtle, lute turtle, leatherbacks, leatherback turtle",
-      "gestation_period": "2 months",
-      "water_type": "Salt",
-      "litter_size": "100",
       "habitat": "moderate to tropical coastal ocean waters",
       "predators": "Crabs, racoons",
       "diet": "Omnivore",
       "average_litter_size": "100",
       "type": "Reptile",
-      "common_name": "Leatherback Sea Turtle",
-      "location": "Oceans around the United States (including Hawaii ) , Puerto Rico , Indonesia , Africa",
-      "group": "Ridley",
-      "nesting_location": "Land",
       "color": "GreyBlack",
       "skin_type": "Leather",
       "top_speed": "6 mph",
-      "lifespan": "up to 50 years",
-      "weight": "500 pounds to over 1 ton",
-      "length": "7-8 feet"
-    }
+      "lifespan": "up to 50 years"
+    },
+    "imageUrl": "https://animalsdataset.s3.ap-south-1.amazonaws.com/Leatherback+Sea+Turtle/Leatherback_sea_turtle_Tinglar%2C_USVI_(5839996547).jpg"
   }
-]
 ]
