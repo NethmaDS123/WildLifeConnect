@@ -1,10 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:path/path.dart';
-import 'package:wildlifeconnect/pages/Profile/pages/report_crimes.dart';
 
 class ProfileWidget extends StatelessWidget {
   final String imagePath;
@@ -20,25 +14,17 @@ class ProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //final color = Theme.of(context).colorScheme.primary;
 
-    return Stack(
-      children: [
-        Center(
-          child: Stack(
-            children: [
-              buildImage(),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: buildEditIcon(Colors.black),
-              ),
-            ],
+    return Center(
+      child: Stack(
+        children: [
+          buildImage(),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: buildEditIcon(Colors.black),
           ),
-        ),
-        Positioned(
-          right: 0,
-          child: !isEdit ? buildReportCrimeButton() : const SizedBox(),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -82,17 +68,6 @@ class ProfileWidget extends StatelessWidget {
           padding: EdgeInsets.all(all),
           color: color,
           child: child,
-        ),
-      );
-
-  Widget buildReportCrimeButton() => SizedBox(
-        height: 50,
-        child: FittedBox(
-          child: FloatingActionButton(
-            onPressed: () {},
-            backgroundColor: Color.fromARGB(255, 23, 176, 54),
-            child: const Icon(Icons.phone_forwarded, color: Colors.white),
-          ),
         ),
       );
 }
