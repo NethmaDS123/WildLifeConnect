@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Library/API/animal_service.dart';
 import 'package:wildlifeconnect/pages/Library/AnimalInfoPage/animal_info_page.dart';
 import 'package:wildlifeconnect/pages/Library/components/animal_card.dart';
 import 'package:wildlifeconnect/pages/Library/API/animalModel.dart';
-import 'package:http/http.dart' as http;
 import 'components/search_bar.dart' as wb;
 
 class LibraryPage extends StatefulWidget {

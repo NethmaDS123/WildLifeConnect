@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/model/user_test.dart';
-import 'package:wildlifeconnect/pages/Profile/pages/report_crimes.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/sidebar_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/utils/user_preferences.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/appbar_widget.dart';
@@ -8,7 +7,6 @@ import 'package:wildlifeconnect/pages/Profile/widgets/button_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/numbers_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/post_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/profile_widget.dart';
-import 'package:page_transition/page_transition.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
