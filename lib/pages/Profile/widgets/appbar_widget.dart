@@ -5,6 +5,7 @@ import 'package:wildlifeconnect/pages/Profile/pages/edit_profile.dart';
 AppBar buildAppBar(BuildContext context, isEdit) {
   const icon = Icons.settings;
   return AppBar(
+    automaticallyImplyLeading: false,
     leading: isEdit
         ? BackButton(
             onPressed: () => Get.back(),
@@ -15,8 +16,8 @@ AppBar buildAppBar(BuildContext context, isEdit) {
     elevation: 0,
     actions: [
       IconButton(
-          onPressed: () => Get.to(() => 
-                const EditProfilePage(),
+          onPressed: () => Get.to(
+                () => const EditProfilePage(),
               ),
           icon: const Icon(
             icon,
