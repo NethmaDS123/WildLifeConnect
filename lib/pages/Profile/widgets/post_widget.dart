@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/post_view.dart';
 
-class Post extends StatelessWidget {
+class PostWidget extends StatelessWidget {
   final double height;
   final double width;
   final String imgUrl;
-  const Post({
+  const PostWidget({
     Key? key,
     required this.height,
     required this.width,

@@ -4,7 +4,7 @@ class AnimalCard extends StatelessWidget {
   final String animalName;
   final VoidCallback onTap;
 
-  const AnimalCard({super.key, required this.animalName, required this.onTap});
+  const AnimalCard({super.key, required this.animalName, required this.onTap, String? animalPic});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class AnimalCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 animalName,
-                style: const TextStyle(color: Colors.white, fontSize: 18),
+                style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center, // Center text alignment
               ),
             ],

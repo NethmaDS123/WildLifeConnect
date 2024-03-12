@@ -76,9 +76,9 @@ class PostView extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 20),
         child: GestureDetector(
           onTap: () => {},
-          child: Icon(
+          child: const Icon(
             CupertinoIcons.heart_fill,
-            color: const Color.fromARGB(255, 255, 0, 0),
+            color: Color.fromARGB(255, 255, 0, 0),
             size: 30,
           ),
         ),

@@ -8,11 +8,9 @@ class NumbersWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            buildDivider(),
             buildButton(context, '42', 'Posts'),
             buildDivider(),
-            buildButton(context, '200', 'Follwers'),
-            buildDivider(),
-            buildButton(context, '250', 'Following'),
           ],
         ),
       );
