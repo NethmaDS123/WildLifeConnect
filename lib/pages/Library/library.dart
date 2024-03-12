@@ -103,6 +103,7 @@ class _LibraryPageState extends State<LibraryPage> {
                                   width: 160,
                                   child: AnimalCard(
                                     animalName: animal.name,
+                                    imageUrl: animal.imageUrl,
                                     onTap: () => Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) =>
