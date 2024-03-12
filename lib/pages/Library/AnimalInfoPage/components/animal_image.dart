@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AnimalImageBox extends StatelessWidget {
   final String? imageUrl; // Make sure this is correctly typed as a parameter
 
-  const AnimalImageBox({super.key, this.imageUrl});
+  const AnimalImageBox({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
