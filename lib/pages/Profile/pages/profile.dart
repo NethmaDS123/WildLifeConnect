@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:wildlifeconnect/model/user_test.dart';
+import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:wildlifeconnect/pages/Profile/model/post.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/sidebar_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/service/post_service.dart';
@@ -20,23 +19,33 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePage1State extends State<ProfilePage> {
   late Future<List<Post>> postsFuture;
+  String? firstName;
+  String? lastName;
+  String? email;
 
   @override
   void initState() {
     super.initState();
     postsFuture = fetchAllPosts();
-    print('active');
+    loadUserData();
   }
 
   Future<List<Post>> fetchAllPosts() {
     return fetchPosts();
   }
 
+  loadUserData() async {
+    firstName = await SecureStorage.getFirstName();
+    lastName = await SecureStorage.getLastName();
+    email = await SecureStorage.getEmail();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    const prof_user = UserPreferences.myUser;
+    const profUser = UserPreferences.myUser;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -51,10 +60,10 @@ class _ProfilePage1State extends State<ProfilePage> {
         children: [
           ProfileWidget(
             isEdit: false,
-            imagePath: prof_user.imagePath,
+            imagePath: profUser.imagePath,
           ),
           const SizedBox(height: 18),
-          buildName(prof_user),
+          buildName(),
           //const SizedBox(height: 8),
           // Center(
           //   child: buildFollowButton(),
@@ -106,17 +115,27 @@ class _ProfilePage1State extends State<ProfilePage> {
     );
   }
 
-  Widget buildName(UserTest user) => Column(
+  Widget buildName() => Column(
         children: [
           Text(
-            user.name,
+            '$firstName $lastName',
             style: const TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 24, color: Colors.white),
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+              color: Colors.white,
+              fontFamily: 'Poppins',
+              letterSpacing: 1.5,
+            ),
           ),
-          // Text(
-          //   user.email,
-          //   style: TextStyle(color: const Color.fromARGB(255, 154, 154, 154)),
-          // ),
+          Text(
+            '$email',
+            style: const TextStyle(
+              color: Color.fromARGB(255, 174, 174, 174),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              fontSize: 12,
+            ),
+          ),
         ],
       );
 
@@ -126,8 +145,8 @@ class _ProfilePage1State extends State<ProfilePage> {
       );
 
   Widget buildReportButton() => Container(
-        height: 35.0,
-        width: 180.0,
+        height: 38.0,
+        width: 185.0,
         child: Builder(builder: (context) {
           return GestureDetector(
             onTap: () => {
@@ -135,17 +154,30 @@ class _ProfilePage1State extends State<ProfilePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 23, 176, 54),
-                  borderRadius: BorderRadius.circular(6.0)),
+                color: Color.fromARGB(255, 23, 176, 54),
+                borderRadius: BorderRadius.circular(6.0),
+
+                // border: Border.all(
+                //   width: 2,
+                //   color: Color.fromARGB(255, 23, 176, 54),
+                // ),
+              ),
               child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.phone_forwarded),
+                  Icon(
+                    Icons.phone_forwarded,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
                   SizedBox(width: 15),
                   Text(
                     'Report Crimes',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0)),
                   ),
                 ],
               ),

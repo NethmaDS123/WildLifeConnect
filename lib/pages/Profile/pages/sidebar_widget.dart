@@ -17,6 +17,7 @@ class SidebarWidget extends StatelessWidget {
               const Text(
                 'Contact one of the\nfollowing services in\ncase of emergency',
                 style: TextStyle(
+                  fontFamily: 'Poppins',
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 0, 0, 0),
@@ -49,6 +50,7 @@ class SidebarWidget extends StatelessWidget {
                   '●\tJustice for Animals\njusticeforanimals.lk@gmail.com',
                   style: TextStyle(
                       fontSize: 15.0,
+                      fontFamily: 'Poppins',
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.w600),
                 ),
