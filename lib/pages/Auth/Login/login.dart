@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                                 labelText: 'Email',
                                 hintText: 'example123@gmail.com',
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 filled: true,
                                 fillColor: Colors.black.withOpacity(0.7),
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                                 labelText: 'Password',
                                 hintText: 'Must have at least 8 characters',
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 filled: true,
                                 fillColor: Colors.black.withOpacity(0.7),
