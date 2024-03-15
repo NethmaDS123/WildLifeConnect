@@ -145,9 +145,11 @@ class _CreatePostState extends State<CreatePost> {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: _captionController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Caption',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
                 ),
                 maxLines: null,
               ),
@@ -155,9 +157,11 @@ class _CreatePostState extends State<CreatePost> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Location (optional)",
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
                 ),
                 onChanged: (value) {
                   _location = value;

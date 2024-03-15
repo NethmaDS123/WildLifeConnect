@@ -28,7 +28,9 @@ class _SearchBarState extends State<SearchBar> {
               widget.onSearch('');
             },
           ),
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
         ),
         onChanged: widget.onSearch,
       ),
