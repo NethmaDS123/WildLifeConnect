@@ -1,13 +1,65 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:wildlifeconnect/pages/Home/components/camera_page.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late Future<List<dynamic>> posts;
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    posts = fetchPosts();
+    _startPolling();
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel(); // Cancel the timer to prevent memory leaks
+    super.dispose();
+  }
+
+  void _startPolling() {
+    const Duration pollInterval = Duration(seconds: 30); 
+
+    _timer = Timer.periodic(pollInterval, (timer) {
+      // Fetch posts periodically
+      setState(() {
+        posts = fetchPosts();
+      });
+    });
+  }
+
+  Future<List<dynamic>> fetchPosts() async {
+    String? token = await SecureStorage.getToken();
+    if(token == null) {
+      throw Exception('Token not found');
+    }
+
+    final response = await http.get(
+      Uri.parse('http://10.0.2.2:3000/api/posts/get'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load posts');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,23 +67,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              icon: const Icon(
-                Icons.exit_to_app,
-                color: Colors.white,
-              ),
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () async {
-                // Here we implement the logout functionality
-                await SecureStorage.deleteToken(); // Delete the JWT token
-                Navigator.of(context).pushNamedAndRemoveUntil('/loginpage',
-                    (route) => false); // Navigate back to the login page
+                await SecureStorage.deleteToken();
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/loginpage', (route) => false);
               }),
         ],
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: Colors.green,
         leading: IconButton(
-          icon: const Icon(
-            Icons.camera_alt,
-            color: Colors.white,
-          ),
+          icon: const Icon(Icons.camera_alt),
           onPressed: () {
             Navigator.push(
               context,
@@ -40,156 +85,97 @@ class HomePage extends StatelessWidget {
           },
         ),
         title: const Text(
-          'Wildlife Connect',
+          'Home Page',
           style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontFamily: 'Raleway',
-            letterSpacing: 1.5,
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-                'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-            colorFilter: ColorFilter.mode(
-              Color.fromARGB(106, 0, 0, 0),
-              BlendMode.darken,
-            ),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.tealAccent, Colors.green],
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: 7,
+        child: FutureBuilder<List<dynamic>>(
+          future: posts,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  // Example image URLs (replace with your actual image URLs)
-                  List<String> imageUrls = [
-                    'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbGRsaWZlfGVufDB8fDB8fHww',
-                    'https://images.unsplash.com/photo-1589656966895-2f33e7653819?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                    'https://images.unsplash.com/photo-1496196614460-48988a57fccf?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                    'https://i.natgeofe.com/n/b64060fa-343c-481b-a24d-7375fef34914/NationalGeographic_1425689_3x4.jpg',
-                    'https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fHdpbGRsaWZlfGVufDB8fDB8fHww',
-                    'https://i.natgeofe.com/n/b64060fa-343c-481b-a24d-7375fef34914/NationalGeographic_1425689_3x4.jpg',
-                    'https://i.natgeofe.com/n/b64060fa-343c-481b-a24d-7375fef34914/NationalGeographic_1425689_3x4.jpg',
-                  ];
-                  return Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.9),
+                  var post = snapshot.data![index];
+                  return Card(
+                    elevation: 7,
+                    margin: const EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.maxFinite,
-                          padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              topRight: Radius.circular(4),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            post['name'] ?? 'User Unknown',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
-                            color: Color.fromARGB(255, 32, 117, 45),
                           ),
-                          child: Row(
+                          Text(
+                            post['location'] ?? 'No Location',
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Image.network(post['imageUrl']),
+                          const SizedBox(height: 20),
+                          Text(
+                            post['caption'] ?? 'No Caption',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          
+                          const SizedBox(height: 20),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Post Title $index',
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Poppins',
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                ),
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.thumb_up),
+                                label: const Text('Like'),
                               ),
-                              Icon(
-                                Icons.more_vert,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              )
-                            ],
-                          ),
-                        ),
-                        //const SizedBox(height: 15),
-                        // Displaying the image for each post
-                        Image.network(
-                          imageUrls[index],
-                        ),
-                        const SizedBox(height: 10),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 15),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Icon(
-                                    CupertinoIcons.heart,
-                                    color: Colors.white,
-                                    size: 24,
-                                  ),
-                                  const SizedBox(width: 15),
-                                  Icon(
-                                    Icons.save_alt,
-                                    color: Colors.white,
-                                    size: 24,
-                                  ),
-                                ],
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.comment),
+                                label: const Text('Comment'),
                               ),
-                              const SizedBox(height: 10),
-                              Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-                                'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                ),
+                              ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: const Icon(Icons.share),
+                                label: const Text('Share'),
                               ),
                             ],
                           ),
-                        ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         // Handle like button press
-                        //       },
-                        //       icon: const Icon(Icons.thumb_up),
-                        //       label: const Text('Like'),
-                        //     ),
-                        //     ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         // Handle comment button press
-                        //       },
-                        //       icon: const Icon(Icons.comment),
-                        //       label: const Text('Comment'),
-                        //     ),
-                        //     ElevatedButton.icon(
-                        //       onPressed: () {
-                        //         // Handle share button press
-                        //       },
-                        //       icon: const Icon(Icons.share),
-                        //       label: const Text('Share'),
-                        //     ),
-                        //   ],
-                        // ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
-              ),
-            ),
-          ],
+              );
+            }
+          },
         ),
       ),
     );
