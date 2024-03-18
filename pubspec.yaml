@@ -92,6 +92,14 @@ flutter:
       fonts:
         - asset: fonts/Poppins-Regular.ttf
 
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-VariableFont_wght.ttf
+
+    - family: NunitoSans
+      fonts:
+        - asset: fonts\NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf
+
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
