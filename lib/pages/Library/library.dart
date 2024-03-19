@@ -3,6 +3,7 @@ import 'package:wildlifeconnect/pages/Library/API/animal_service.dart';
 import 'package:wildlifeconnect/pages/Library/AnimalInfoPage/animal_info_page.dart';
 import 'package:wildlifeconnect/pages/Library/components/animal_card.dart';
 import 'package:wildlifeconnect/pages/Library/API/animalModel.dart';
+import 'package:wildlifeconnect/pages/Tokens/tokens.dart';
 import 'components/search_bar.dart' as wb;
 
 class LibraryPage extends StatefulWidget {
@@ -55,6 +56,19 @@ class _LibraryPageState extends State<LibraryPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Library Page'),
+        actions: [
+          IconButton(
+              icon: const Icon(
+                Icons.add_box,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TokenGenerator()),
+                );
+              }),
+        ],
       ),
       body: Column(
         children: [
