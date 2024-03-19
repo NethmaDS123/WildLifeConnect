@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Map/RecentSightings.dart';
+import 'package:wildlifeconnect/pages/Map/custom_image_marker.dart';
 import 'package:wildlifeconnect/pages/Map/getUserCurrentLocation.dart';
 
 class MapPage extends StatelessWidget {
@@ -20,7 +20,7 @@ class MapPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return const RecentSightings();
+                  return const CustomImageMarker();
                 }));
               },
               style: ElevatedButton.styleFrom(
