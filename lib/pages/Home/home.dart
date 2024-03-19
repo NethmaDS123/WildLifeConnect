@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _startPolling() {
-    const Duration pollInterval = Duration(seconds: 30); 
+    const Duration pollInterval = Duration(seconds: 30);
 
     _timer = Timer.periodic(pollInterval, (timer) {
       // Fetch posts periodically
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<List<dynamic>> fetchPosts() async {
     String? token = await SecureStorage.getToken();
-    if(token == null) {
+    if (token == null) {
       throw Exception('Token not found');
     }
 
@@ -66,117 +67,172 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-              icon: const Icon(Icons.exit_to_app),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0), // Adjust right padding here
+            child: IconButton(
+              icon: const Icon(
+                Icons.exit_to_app,
+                color: Colors.white, // Set icon color to white
+              ),
               onPressed: () async {
                 await SecureStorage.deleteToken();
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil('/loginpage', (route) => false);
-              }),
+              },
+            ),
+          ),
         ],
-        backgroundColor: Colors.green,
-        leading: IconButton(
-          icon: const Icon(Icons.camera_alt),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const CameraPage()),
-            );
-          },
+        backgroundColor: Colors.black, // Color.fromARGB(255, 0, 0, 0)
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20.0), // Adjust left padding here
+          child: IconButton(
+            icon: const Icon(
+              Icons.camera_alt,
+              color: Colors.white, // Set icon color to white
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CameraPage()),
+              );
+            },
+          ),
         ),
         title: const Text(
-          'Home Page',
+          'Wildlife Connect',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w900,
+            color: Color.fromARGB(255, 255, 255, 255), // Color.fromARGB(255, 255, 255, 255)
+            fontFamily: 'Raleway',
+            letterSpacing: 1.5,
           ),
         ),
         centerTitle: true,
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.tealAccent, Colors.green],
+      body: Stack(
+        // Use Stack to place the content above the camera and logout icons
+        children: [
+          Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: const NetworkImage(
+                    'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.5), // Color.fromARGB(106, 0, 0, 0)
+                  BlendMode.darken,
+                ),
+              ),
+            ),
           ),
-        ),
-        child: FutureBuilder<List<dynamic>>(
-          future: posts,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  var post = snapshot.data![index];
-                  return Card(
-                    elevation: 7,
-                    margin: const EdgeInsets.all(15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
+          FutureBuilder<List<dynamic>>(
+            future: posts,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else {
+                return ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    var post = snapshot.data![index];
+                    return Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 6, vertical: 8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        color: Colors.black.withOpacity(
+                            0.9), // Color.fromARGB(255, 0, 0, 0).withOpacity(0.9),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            post['name'] ?? 'User Unknown',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                          Container(
+                            width: double.maxFinite,
+                            padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(4),
+                                topRight: Radius.circular(4),
+                              ),
+                              color: Color.fromARGB(
+                                  255, 0, 0, 0), // Color.fromARGB(255, 32, 117, 45)
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  post['name'] ?? 'NO caption',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                    color: Colors
+                                        .white, // Color.fromARGB(255, 255, 255, 255)
+                                  ),
+                                ),
+                                const Icon(
+                                  Icons.more_vert,
+                                  color: Colors
+                                      .white, // Color.fromARGB(255, 255, 255, 255)
+                                )
+                              ],
                             ),
                           ),
-                          Text(
-                            post['location'] ?? 'No Location',
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
+                          Image.network(
+                            post['imageUrl'], // imageUrls[index]
                           ),
-                          const SizedBox(height: 20),
-                          Image.network(post['imageUrl']),
-                          const SizedBox(height: 20),
-                          Text(
-                            post['caption'] ?? 'No Caption',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 8.0), // Adjust the top padding here
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(
+                                        CupertinoIcons.heart,
+                                        color: Colors.white,
+                                        size: 24,
+                                      ),
+                                      SizedBox(width: 15),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 8.0), // Adjust the top padding here
+                                        child: Icon(
+                                          Icons.save_alt,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  post['caption'] ?? 'NO caption',
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          
-                          const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ElevatedButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.thumb_up),
-                                label: const Text('Like'),
-                              ),
-                              ElevatedButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.comment),
-                                label: const Text('Comment'),
-                              ),
-                              ElevatedButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.share),
-                                label: const Text('Share'),
-                              ),
-                            ],
                           ),
                         ],
                       ),
-                    ),
-                  );
-                },
-              );
-            }
-          },
-        ),
+                    );
+                  },
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
