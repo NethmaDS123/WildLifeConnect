@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:3000/api/posts/get'),
+      Uri.parse('https://wildlifeconnectbackend.onrender.com/api/posts/get'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -68,7 +68,8 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20.0), // Adjust right padding here
+            padding:
+                const EdgeInsets.only(right: 20.0), // Adjust right padding here
             child: IconButton(
               icon: const Icon(
                 Icons.exit_to_app,
@@ -84,7 +85,8 @@ class _HomePageState extends State<HomePage> {
         ],
         backgroundColor: Colors.black, // Color.fromARGB(255, 0, 0, 0)
         leading: Padding(
-          padding: const EdgeInsets.only(left: 20.0), // Adjust left padding here
+          padding:
+              const EdgeInsets.only(left: 20.0), // Adjust left padding here
           child: IconButton(
             icon: const Icon(
               Icons.camera_alt,
@@ -102,7 +104,8 @@ class _HomePageState extends State<HomePage> {
           'Wildlife Connect',
           style: TextStyle(
             fontWeight: FontWeight.w900,
-            color: Color.fromARGB(255, 255, 255, 255), // Color.fromARGB(255, 255, 255, 255)
+            color: Color.fromARGB(
+                255, 255, 255, 255), // Color.fromARGB(255, 255, 255, 255)
             fontFamily: 'Raleway',
             letterSpacing: 1.5,
           ),
@@ -158,8 +161,8 @@ class _HomePageState extends State<HomePage> {
                                 topLeft: Radius.circular(4),
                                 topRight: Radius.circular(4),
                               ),
-                              color: Color.fromARGB(
-                                  255, 0, 0, 0), // Color.fromARGB(255, 32, 117, 45)
+                              color: Color.fromARGB(255, 0, 0,
+                                  0), // Color.fromARGB(255, 32, 117, 45)
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -191,7 +194,8 @@ class _HomePageState extends State<HomePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Padding(
-                                  padding: EdgeInsets.only(top: 8.0), // Adjust the top padding here
+                                  padding: EdgeInsets.only(
+                                      top: 8.0), // Adjust the top padding here
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -203,7 +207,9 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       SizedBox(width: 15),
                                       Padding(
-                                        padding: EdgeInsets.only(top: 8.0), // Adjust the top padding here
+                                        padding: EdgeInsets.only(
+                                            top:
+                                                8.0), // Adjust the top padding here
                                         child: Icon(
                                           Icons.save_alt,
                                           color: Colors.white,

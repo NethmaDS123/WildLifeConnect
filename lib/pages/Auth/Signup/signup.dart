@@ -30,7 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
     try {
       final response = await http.post(
         Uri.parse(
-            'http://10.0.2.2:3000/users/register'), // Update with actual endpoint
+            'https://wildlifeconnectbackend.onrender.com/users/register'), // Update with actual endpoint
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -69,7 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/bgimglogin.jpg'), 
+            image: AssetImage('assets/bgimglogin.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -89,13 +89,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           TextFormField(
-                            style: const TextStyle(color: Colors.white), 
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               labelText: 'First Name',
-                              labelStyle: const TextStyle(color: Colors.white), 
+                              labelStyle: const TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(color: Colors.white),
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
                               ),
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.7),
@@ -105,15 +106,17 @@ class _SignUpPageState extends State<SignUpPage> {
                                 : null,
                             onSaved: (value) => _enteredFName = value!,
                           ),
-                          const SizedBox(height: 10), // Add spacing between fields
+                          const SizedBox(
+                              height: 10), // Add spacing between fields
                           TextFormField(
-                            style: const TextStyle(color: Colors.white), 
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               labelText: 'Last Name',
-                              labelStyle: const TextStyle(color: Colors.white), 
+                              labelStyle: const TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(color: Colors.white),
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
                               ),
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.7),
@@ -123,32 +126,37 @@ class _SignUpPageState extends State<SignUpPage> {
                                 : null,
                             onSaved: (value) => _enteredLName = value!,
                           ),
-                          const SizedBox(height: 10), // Add spacing between fields
+                          const SizedBox(
+                              height: 10), // Add spacing between fields
                           TextFormField(
-                            style: const TextStyle(color: Colors.white), 
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               labelText: 'Username',
-                              labelStyle: const TextStyle(color: Colors.white), 
+                              labelStyle: const TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(color: Colors.white),
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
                               ),
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.7),
                             ),
-                            validator: (value) =>
-                                value!.isEmpty ? 'Please enter a username' : null,
+                            validator: (value) => value!.isEmpty
+                                ? 'Please enter a username'
+                                : null,
                             onSaved: (value) => _enteredUName = value!,
                           ),
-                          const SizedBox(height: 10), // Add spacing between fields
+                          const SizedBox(
+                              height: 10), // Add spacing between fields
                           TextFormField(
-                            style: const TextStyle(color: Colors.white), 
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               labelText: 'Email',
-                              labelStyle: const TextStyle(color: Colors.white), 
+                              labelStyle: const TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(color: Colors.white),
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
                               ),
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.7),
@@ -158,15 +166,17 @@ class _SignUpPageState extends State<SignUpPage> {
                                 : null,
                             onSaved: (value) => _enteredEmail = value!,
                           ),
-                          const SizedBox(height: 10), // Add spacing between fields
+                          const SizedBox(
+                              height: 10), // Add spacing between fields
                           TextFormField(
-                            style: const TextStyle(color: Colors.white), 
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               labelText: 'Password',
-                              labelStyle: const TextStyle(color: Colors.white), 
+                              labelStyle: const TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                borderSide: const BorderSide(color: Colors.white),
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
                               ),
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.7),
@@ -178,7 +188,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   });
                                 },
                                 child: Icon(
-                                  _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                                  _obscurePassword
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
                                   color: Colors.white,
                                 ),
                               ),
@@ -196,19 +208,23 @@ class _SignUpPageState extends State<SignUpPage> {
                                   style:
                                       const TextStyle(color: Colors.redAccent)),
                             ),
-                          const SizedBox(height: 20), // Add spacing between the last TextFormField and the Create Account button
+                          const SizedBox(
+                              height:
+                                  20), // Add spacing between the last TextFormField and the Create Account button
                           SizedBox(
                             width: double.infinity,
                             height: 55, // Set width to the maximum
                             child: ElevatedButton(
                               onPressed: _submit,
                               style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.black, backgroundColor: Colors.white,
+                                foregroundColor: Colors.black,
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
-                              child: const Text('Create Account',
+                              child: const Text(
+                                'Create Account',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -224,7 +240,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               style: TextButton.styleFrom(
                                 foregroundColor: Colors.white, // Text color
                               ),
-                              child: const Text('Already have an account? Login'),
+                              child:
+                                  const Text('Already have an account? Login'),
                             ),
                           ),
                         ],

@@ -42,7 +42,8 @@ class _ProfilePage1State extends State<ProfilePage> {
     print(username);
 
     final response = await http.get(
-      Uri.parse('http://10.0.2.2:3000/api/posts/get/$username'),
+      Uri.parse(
+          'https://wildlifeconnectbackend.onrender.com/api/posts/get/$username'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',

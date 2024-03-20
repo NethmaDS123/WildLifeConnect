@@ -15,8 +15,8 @@ class _SearchUserPageState extends State<SearchUserPage> {
 
   Future<void> _searchUsers(String username) async {
     try {
-      final response = await http.get(
-          Uri.parse('http://10.0.2.2:3000/users/search/$username'));
+      final response = await http.get(Uri.parse(
+          'https://wildlifeconnectbackend.onrender.com/users/search/$username'));
 
       if (response.statusCode == 200) {
         setState(() {
@@ -87,7 +87,9 @@ class _SearchUserPageState extends State<SearchUserPage> {
                         },
                         child: ListTile(
                           title: Text(_searchResults[index]['username']),
-                          subtitle: Text(_searchResults[index]['firstName']+' '+_searchResults[index]['lastName']),
+                          subtitle: Text(_searchResults[index]['firstName'] +
+                              ' ' +
+                              _searchResults[index]['lastName']),
                           trailing: ElevatedButton(
                             onPressed: () {
                               print('Add friend button pressed');

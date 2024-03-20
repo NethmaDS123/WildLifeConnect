@@ -20,7 +20,7 @@ class LocationState extends State<Location> {
 
   static const CameraPosition yalaLocation = CameraPosition(
     bearing: 0.0,
-    target: LatLng(7.712227821350098,80.650390625),
+    target: LatLng(7.712227821350098, 80.650390625),
     tilt: 0.0,
     zoom: 7.0,
   );
@@ -43,7 +43,9 @@ class LocationState extends State<Location> {
         initialCameraPosition: yalaLocation,
         myLocationButtonEnabled: true,
         zoomControlsEnabled: false,
-        markers: _userMarker != null ? {_userMarker!} : {}, // Check if _userMarker is not null
+        markers: _userMarker != null
+            ? {_userMarker!}
+            : {}, // Check if _userMarker is not null
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
