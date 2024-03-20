@@ -24,6 +24,10 @@ class SecureStorage {
     await _storage.write(key: 'email', value: email);
   }
 
+  static Future storeUsername(String username) async {
+    await _storage.write(key: 'username', value: username);
+  }
+
   static Future<String?> getFirstName() async {
     return await _storage.read(key: 'firstName');
   }
@@ -34,5 +38,9 @@ class SecureStorage {
 
   static Future<String?> getEmail() async {
     return await _storage.read(key: 'email');
+  }
+
+  static Future<String?> getUsername() async {
+    return await _storage.read(key: 'username');
   }
 }

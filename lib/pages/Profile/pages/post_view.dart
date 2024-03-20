@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class PostView extends StatelessWidget {
   final String imgUrl;
+  final String caption;
 
   const PostView({
     Key? key,
     required this.imgUrl,
+    required this.caption,
   }) : super(key: key);
 
   @override
@@ -22,19 +25,30 @@ class PostView extends StatelessWidget {
             ),
           ),
           body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              buildTopBar(),
-              Container(
-                height: 400,
-                width: 400,
-                color: Colors.white,
-                child: Image(
-                  image: NetworkImage(
-                    imgUrl,
+              Center(child: buildTopBar()),
+              Center(
+                child: Container(
+                  height: 400,
+                  width: 400,
+                  color: Colors.white,
+                  child: Image(
+                    image: NetworkImage(
+                      imgUrl,
+                    ),
                   ),
                 ),
               ),
-              buildBottomBar(),
+              Center(child: buildBottomBar()),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  caption,
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 14, fontFamily: 'Poppins'),
+                ),
+              ),
             ],
           ),
         ),
@@ -73,7 +87,7 @@ class PostView extends StatelessWidget {
       );
 
   Widget buildBottomBar() => Container(
-        padding: EdgeInsets.symmetric(vertical: 20),
+        padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
         child: GestureDetector(
           onTap: () => {},
           child: const Icon(

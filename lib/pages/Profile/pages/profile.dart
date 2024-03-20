@@ -1,14 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
-import 'package:wildlifeconnect/pages/Profile/model/post.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/sidebar_widget.dart';
-import 'package:wildlifeconnect/pages/Profile/service/post_service.dart';
 import 'package:wildlifeconnect/pages/Profile/utils/user_preferences.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/appbar_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/button_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/numbers_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/post_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/profile_widget.dart';
+import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,20 +19,42 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePage1State extends State<ProfilePage> {
-  late Future<List<Post>> postsFuture;
+  late Future<List<dynamic>> userPosts;
   String? firstName;
   String? lastName;
   String? email;
+  String? userName;
 
   @override
   void initState() {
     super.initState();
-    postsFuture = fetchAllPosts();
     loadUserData();
+    userPosts = fetchPosts();
   }
 
-  Future<List<Post>> fetchAllPosts() {
-    return fetchPosts();
+  Future<List<dynamic>> fetchPosts() async {
+    String? token = await SecureStorage.getToken();
+    if (token == null) {
+      throw Exception('Token not found');
+    }
+
+    String? username = await SecureStorage.getUsername();
+    print(username);
+
+    final response = await http.get(
+      Uri.parse('http://10.0.2.2:3000/api/posts/get/$username'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      print(json.decode(response.body));
+      return json.decode(response.body);
+    } else {
+      return Future.value([]);
+    }
   }
 
   loadUserData() async {
@@ -75,8 +98,8 @@ class _ProfilePage1State extends State<ProfilePage> {
             child: buildReportButton(),
           ),
           const SizedBox(height: 14),
-          FutureBuilder<List<Post>>(
-            future: postsFuture,
+          FutureBuilder<List<dynamic>>(
+            future: userPosts,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final posts =
@@ -93,8 +116,9 @@ class _ProfilePage1State extends State<ProfilePage> {
                     (index) => PostWidget(
                       height: height,
                       width: width,
-                      imgUrl:
-                          posts[index].imgUrl, // Access imgUrl from each Post
+                      imgUrl: posts[index]['imageUrl'],
+                      caption: posts[index]
+                          ['caption'], // Access caption from each Post
                     ),
                   ),
                 );
@@ -102,12 +126,23 @@ class _ProfilePage1State extends State<ProfilePage> {
                 return Center(
                     child: Text(
                   'Error: ${snapshot.error}',
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                  ),
+                ));
+              } else {
+                return const Center(
+                    child: Text(
+                  'User has not posted yet',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Poppins',
+                  ),
                 ));
               }
-
-              // Show a loading indicator while waiting for data
-              return const Center(child: CircularProgressIndicator());
             },
           ),
         ],

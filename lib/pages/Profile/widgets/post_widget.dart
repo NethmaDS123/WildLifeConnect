@@ -6,16 +6,21 @@ class PostWidget extends StatelessWidget {
   final double height;
   final double width;
   final String imgUrl;
+  final String caption;
   const PostWidget({
     Key? key,
     required this.height,
     required this.width,
     required this.imgUrl,
+    required this.caption,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onLongPress: () => Get.to(() => PostView(imgUrl: imgUrl)),
+        onLongPress: () => Get.to(() => PostView(
+              imgUrl: imgUrl,
+              caption: caption,
+            )),
         child: Container(
           color: Color.fromARGB(255, 255, 255, 255),
           height: height / 7,
