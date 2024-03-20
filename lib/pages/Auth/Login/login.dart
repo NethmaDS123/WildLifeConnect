@@ -49,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
         // Store name and email
         await SecureStorage.storeName(data['firstName'], data['lastName']);
         await SecureStorage.storeEmail(data['email']);
+        await SecureStorage.storeUsername(data['username']);
 
         Navigator.of(context)
             .pushReplacementNamed('/navbar'); // Navigate to homepage
