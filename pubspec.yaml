@@ -79,6 +79,7 @@ flutter:
   assets:
     - assets/animations/splashAnimation1.json
     - assets/bgimglogin.jpg
+    - assets/library_bgimg.jpg
 
   #   - images/a_dot_ham.jpeg
 
