@@ -26,7 +26,7 @@ AppBar buildAppBar(BuildContext context, isEdit) {
 Widget buildSearchIcon() => IconButton(
       icon: const Icon(Icons.search, color: Colors.white),
       onPressed: () {
-        Get.to(() => SearchUserPage());
+        Get.to(() => const SearchUserPage());
       },
     );
 

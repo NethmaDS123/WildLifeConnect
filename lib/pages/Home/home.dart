@@ -7,9 +7,10 @@ import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:wildlifeconnect/pages/Home/components/camera_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -77,6 +78,7 @@ class _HomePageState extends State<HomePage> {
               ),
               onPressed: () async {
                 await SecureStorage.deleteToken();
+                // ignore: use_build_context_synchronously
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil('/loginpage', (route) => false);
               },

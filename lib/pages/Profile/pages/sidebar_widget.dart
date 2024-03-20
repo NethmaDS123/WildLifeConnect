@@ -6,7 +6,7 @@ class SidebarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 44, 157, 67),
+      color: const Color.fromARGB(255, 44, 157, 67),
       padding: const EdgeInsets.only(top: 60, left: 5), // Add left padding
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +23,7 @@ class SidebarWidget extends StatelessWidget {
                   color: Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               IconButton(

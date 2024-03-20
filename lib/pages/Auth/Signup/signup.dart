@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  const SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -42,14 +42,11 @@ class _SignUpPageState extends State<SignUpPage> {
           'username': _enteredUName,
         }),
       );
-      print('Status Code: ${response.statusCode}');
-      print('Response Body: ${response.body}');
 
       if (response.statusCode == 201) {
+        // ignore: use_build_context_synchronously
         Navigator.of(context)
             .pushReplacementNamed('/loginpage'); // Navigate to login page
-        print('Status Code: ${response.statusCode}');
-        print('Response Body: ${response.body}');
       } else {
         setState(() {
           _errorMessage = 'Failed to register. Please try again.';

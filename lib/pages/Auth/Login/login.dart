@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   String _enteredEmail = '';
   String _enteredPassword = '';
@@ -40,10 +40,8 @@ class _LoginPageState extends State<LoginPage> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        print(
-            'Login Successful. Token: ${data['token']}'); // This line prints the token
+        // This line prints the token
         await SecureStorage.storeToken(data['token']); // Store token
-        print('Login Successful. Token: ${data['token']}');
         await SecureStorage.storeToken(data['token']);
 
         // Store name and email
@@ -51,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
         await SecureStorage.storeEmail(data['email']);
         await SecureStorage.storeUsername(data['username']);
 
+        // ignore: use_build_context_synchronously
         Navigator.of(context)
             .pushReplacementNamed('/navbar'); // Navigate to homepage
       } else {

@@ -1,10 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart'; // Import geolocator package
 import 'dart:async';
 
 class Location extends StatefulWidget {
-  const Location({Key? key, required this.title}) : super(key: key);
+  const Location({super.key, required this.title});
 
   final String title;
 
@@ -55,7 +57,7 @@ class LocationState extends State<Location> {
           _getCurrentLocation();
         },
         tooltip: 'Get Current Location',
-        child: Icon(Icons.location_searching),
+        child: const Icon(Icons.location_searching),
       ),
     );
   }

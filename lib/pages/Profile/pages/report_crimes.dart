@@ -1,6 +1,10 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class SideBar extends StatefulWidget {
+  const SideBar({super.key});
+
   @override
   _SideBarState createState() => _SideBarState();
 }
@@ -93,7 +97,7 @@ class _SideBarState extends State<SideBar> {
                     child: FloatingActionButton(
                       onPressed: _toggleSidebar,
                       backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero,
                       ),
                       child: const Column(

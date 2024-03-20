@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -39,7 +41,6 @@ class _ProfilePage1State extends State<ProfilePage> {
     }
 
     String? username = await SecureStorage.getUsername();
-    print(username);
 
     final response = await http.get(
       Uri.parse(
@@ -51,7 +52,6 @@ class _ProfilePage1State extends State<ProfilePage> {
     );
 
     if (response.statusCode == 200) {
-      print(json.decode(response.body));
       return json.decode(response.body);
     } else {
       return Future.value([]);
@@ -76,7 +76,7 @@ class _ProfilePage1State extends State<ProfilePage> {
       appBar: buildAppBar(context, false),
       endDrawer: Drawer(
         child: Container(
-          child: SidebarWidget(),
+          child: const SidebarWidget(),
         ),
       ),
       body: ListView(
@@ -93,7 +93,7 @@ class _ProfilePage1State extends State<ProfilePage> {
           //   child: buildFollowButton(),
           // ),
           const SizedBox(height: 2),
-          NumbersWidget(),
+          const NumbersWidget(),
           const SizedBox(height: 12.0),
           Center(
             child: buildReportButton(),
@@ -180,7 +180,7 @@ class _ProfilePage1State extends State<ProfilePage> {
         text: 'Follow',
       );
 
-  Widget buildReportButton() => Container(
+  Widget buildReportButton() => SizedBox(
         height: 38.0,
         width: 185.0,
         child: Builder(builder: (context) {
@@ -190,7 +190,7 @@ class _ProfilePage1State extends State<ProfilePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 23, 176, 54),
+                color: const Color.fromARGB(255, 23, 176, 54),
                 borderRadius: BorderRadius.circular(6.0),
 
                 // border: Border.all(

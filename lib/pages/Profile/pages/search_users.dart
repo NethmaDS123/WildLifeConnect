@@ -6,11 +6,12 @@ class SearchUserPage extends StatefulWidget {
   const SearchUserPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchUserPageState createState() => _SearchUserPageState();
 }
 
 class _SearchUserPageState extends State<SearchUserPage> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<dynamic> _searchResults = [];
 
   Future<void> _searchUsers(String username) async {
@@ -30,6 +31,7 @@ class _SearchUserPageState extends State<SearchUserPage> {
             'Failed to load search results: ${response.statusCode}');
       }
     } catch (error) {
+      // ignore: avoid_print
       print('Error searching users: $error');
     }
   }
@@ -38,7 +40,7 @@ class _SearchUserPageState extends State<SearchUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Search'),
+        title: const Text('User Search'),
       ),
       body: Column(
         children: [
@@ -68,12 +70,13 @@ class _SearchUserPageState extends State<SearchUserPage> {
           ),
           Expanded(
             child: _searchResults.isEmpty
-                ? Center(child: Text('No results found'))
+                ? const Center(child: Text('No results found'))
                 : ListView.builder(
                     itemCount: _searchResults.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
                         onTap: () {
+                          // ignore: avoid_print
                           print('User profile tapped');
                           // Navigate to user profile page here
                           // Navigator.push(
@@ -92,10 +95,11 @@ class _SearchUserPageState extends State<SearchUserPage> {
                               _searchResults[index]['lastName']),
                           trailing: ElevatedButton(
                             onPressed: () {
+                              // ignore: avoid_print
                               print('Add friend button pressed');
                               // Add friend logic here
                             },
-                            child: Text('Add Friend'),
+                            child: const Text('Add Friend'),
                           ),
                         ),
                       );

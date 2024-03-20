@@ -8,12 +8,12 @@ class PostWidget extends StatelessWidget {
   final String imgUrl;
   final String caption;
   const PostWidget({
-    Key? key,
+    super.key,
     required this.height,
     required this.width,
     required this.imgUrl,
     required this.caption,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -22,7 +22,7 @@ class PostWidget extends StatelessWidget {
               caption: caption,
             )),
         child: Container(
-          color: Color.fromARGB(255, 255, 255, 255),
+          color: const Color.fromARGB(255, 255, 255, 255),
           height: height / 7,
           width: height / 7,
           child: Image(

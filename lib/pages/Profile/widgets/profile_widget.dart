@@ -5,10 +5,10 @@ class ProfileWidget extends StatelessWidget {
   final bool isEdit;
 
   const ProfileWidget({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.isEdit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class ProfileWidget extends StatelessWidget {
         color: Colors.black,
         all: 3,
         child: buildCircle(
-          color: Color.fromARGB(255, 23, 176, 54),
+          color: const Color.fromARGB(255, 23, 176, 54),
           all: 6,
           child: Icon(
             isEdit ? Icons.add_a_photo : null,

@@ -6,11 +6,13 @@ class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CameraPageState createState() => _CameraPageState();
 }
 
 class _CameraPageState extends State<CameraPage> {
   File? _imageFile;
+  // ignore: unused_field
   List<int>? _imageBytes; // Variable to store image bytes
 
   Future<void> _openCamera(BuildContext context) async {

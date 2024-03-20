@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class PostView extends StatelessWidget {
@@ -8,10 +7,10 @@ class PostView extends StatelessWidget {
   final String caption;
 
   const PostView({
-    Key? key,
+    super.key,
     required this.imgUrl,
     required this.caption,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -42,10 +41,10 @@ class PostView extends StatelessWidget {
               ),
               Center(child: buildBottomBar()),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
                   caption,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white, fontSize: 14, fontFamily: 'Poppins'),
                 ),
               ),
@@ -55,7 +54,7 @@ class PostView extends StatelessWidget {
       );
 
   Widget buildTopBar() => Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: Column(
           children: [
             Row(
@@ -87,7 +86,7 @@ class PostView extends StatelessWidget {
       );
 
   Widget buildBottomBar() => Container(
-        padding: EdgeInsets.fromLTRB(0, 20, 0, 5),
+        padding: const EdgeInsets.fromLTRB(0, 20, 0, 5),
         child: GestureDetector(
           onTap: () => {},
           child: const Icon(

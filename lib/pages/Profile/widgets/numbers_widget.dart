@@ -46,8 +46,8 @@ class NumbersWidget extends StatelessWidget {
       );
 
   Widget buildDivider() => Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         height: 40,
-        child: VerticalDivider(),
+        child: const VerticalDivider(),
       );
 }

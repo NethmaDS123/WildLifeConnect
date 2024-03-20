@@ -10,6 +10,7 @@ class LibraryPage extends StatefulWidget {
   const LibraryPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LibraryPageState createState() => _LibraryPageState();
 }
 
@@ -65,7 +66,8 @@ class _LibraryPageState extends State<LibraryPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TokenGenerator()),
+                  MaterialPageRoute(
+                      builder: (context) => const TokenGenerator()),
                 );
               }),
         ],
@@ -106,14 +108,14 @@ class _LibraryPageState extends State<LibraryPage> {
                                   fontSize: 24, fontWeight: FontWeight.bold),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: 200,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: entry.value.length,
                               itemBuilder: (context, index) {
                                 Animal animal = entry.value[index];
-                                return Container(
+                                return SizedBox(
                                   width: 160,
                                   child: AnimalCard(
                                     animalName: animal.name,

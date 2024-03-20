@@ -52,7 +52,9 @@ String _generateRandomRarity(Random random) {
     }
   }
 
-  return selectedRarity.toString().substring(7,);
+  return selectedRarity.toString().substring(
+        7,
+      );
 }
 
 Color _getRarityColor(String rarity) {
@@ -73,6 +75,8 @@ Color _getRarityColor(String rarity) {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -80,52 +84,57 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TokenGenerator(),
+      home: const TokenGenerator(),
     );
   }
 }
 
 class TokenGenerator extends StatefulWidget {
-  const TokenGenerator({Key? key}) : super(key: key);
+  const TokenGenerator({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _TokenGeneratorState createState() => _TokenGeneratorState();
 }
 
 class _TokenGeneratorState extends State<TokenGenerator> {
-  TextEditingController _animalNameController = TextEditingController();
+  final TextEditingController _animalNameController = TextEditingController();
   Token? _generatedToken;
   bool _isButtonDisabled = false;
 
   Future<void> _saveToken(Token token) async {
-    final uri = Uri.parse('http://10.0.2.2:3000/tokens/saveToken');
+    final uri = Uri.parse(
+        'https://wildlifeconnectbackend.onrender.com/tokens/saveToken');
 
-    final storage = FlutterSecureStorage();
-    String? authToken = await storage.read(key: 'jwt_token'); // Renamed variable
+    const storage = FlutterSecureStorage();
+    String? authToken =
+        await storage.read(key: 'jwt_token'); // Renamed variable
 
     final headers = <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer $authToken', // Updated variable name here
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $authToken', // Updated variable name here
     };
     final body = jsonEncode({
-        'imageUrl': token.imageFile.path,
-        'animalName': token.animalName,
-        'rarity': token.rarity,
+      'imageUrl': token.imageFile.path,
+      'animalName': token.animalName,
+      'rarity': token.rarity,
     });
 
     try {
-        final response = await http.post(uri, headers: headers, body: body);
-        if (response.statusCode == 200) {
-            // Token saved successfully
-            print('Token saved successfully');
-        } else {
-            // Error saving token
-            print('Error saving token: ${response.body}');
-        }
+      final response = await http.post(uri, headers: headers, body: body);
+      if (response.statusCode == 200) {
+        // Token saved successfully
+        // ignore: avoid_print
+        print('Token saved successfully');
+      } else {
+        // Error saving token
+        // ignore: avoid_print
+        print('Error saving token: ${response.body}');
+      }
     } catch (e) {
-        print('Error saving token: $e');
+      // ignore: avoid_print
+      print('Error saving token: $e');
     }
   }
-
 
   Future<void> _handleButtonPress() async {
     final picker = ImagePicker();
@@ -147,29 +156,31 @@ class _TokenGeneratorState extends State<TokenGenerator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Token Generator'),
+        title: const Text('Token Generator'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
               controller: _animalNameController,
-              decoration: InputDecoration(labelText: 'Animal Name'),
+              decoration: const InputDecoration(labelText: 'Animal Name'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: _isButtonDisabled ? null : _handleButtonPress,
-              child: Text('Generate Token'),
+              child: const Text('Generate Token'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             if (_generatedToken != null)
               Container(
                 height: 480,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: _getRarityColor(_generatedToken!.rarity), width: 10.0),
+                  border: Border.all(
+                      color: _getRarityColor(_generatedToken!.rarity),
+                      width: 10.0),
                   image: DecorationImage(
                     image: FileImage(_generatedToken!.imageFile),
                     fit: BoxFit.cover,
@@ -185,8 +196,11 @@ class _TokenGeneratorState extends State<TokenGenerator> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          _generatedToken!.animalName + " " + _generatedToken!.rarity,
-                          style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                          "${_generatedToken!.animalName} ${_generatedToken!.rarity}",
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
                         ),
                       ],

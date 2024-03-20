@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatefulWidget {
@@ -8,12 +7,12 @@ class TextFieldWidget extends StatefulWidget {
   final ValueChanged<String> onChanged;
 
   const TextFieldWidget({
-    Key? key,
+    super.key,
     this.maxLines = 1,
     required this.label,
     required this.text,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -42,14 +41,14 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         children: [
           Text(
             widget.label,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
           ),
           const SizedBox(
             height: 8,
           ),
           TextFormField(
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
             controller: controller,
             decoration: InputDecoration(
               focusedBorder: const OutlineInputBorder(

@@ -1,4 +1,4 @@
-package com.example.wildlifeconnect
+package com.wildlifeconnect.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -5,9 +5,9 @@ class AnimalInfoBox extends StatelessWidget {
   final Animal animal;
 
   const AnimalInfoBox({
-    Key? key,
+    super.key,
     required this.animal,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
