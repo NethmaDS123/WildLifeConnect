@@ -1,31 +1,18 @@
 # This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+# Fastlane configuration for WildLifeConnect project
 
 default_platform(:android)
 
 platform :android do
   desc "Runs all the tests"
   lane :test do
-    # Print current working directory to debug path issues
+    # Diagnostic commands to ensure the correct working directory and structure
     sh "pwd"
-    # List contents of the android directory to ensure gradlew is present
-    sh "ls -la ./android"
-  
+    sh "ls -la ../.." # Adjusted to list the project root directory from fastlane folder
+
     gradle(
       task: "test",
-      gradle_path: './android/gradlew' # Adjusted to use relative path
+      gradle_path: '../../android/gradlew' # Adjusted path to go two levels up
     )
   end
 
@@ -33,7 +20,7 @@ platform :android do
   lane :beta do
     gradle(
       task: "clean assembleRelease",
-      gradle_path: './android/gradlew' # Adjusted to use relative path
+      gradle_path: '../../android/gradlew' # Adjusted path to go two levels up
     )
     crashlytics
     # Add any additional beta testing services here
@@ -43,7 +30,7 @@ platform :android do
   lane :deploy do
     gradle(
       task: "clean assembleRelease",
-      gradle_path: './android/gradlew' # Adjusted to use relative path
+      gradle_path: '../../android/gradlew' # Adjusted path to go two levels up
     )
     upload_to_play_store(
        json_key_file: ENV['SERVICE_ACCOUNT_JSON_PATH'],
