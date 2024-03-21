@@ -20,7 +20,9 @@ platform :android do
   lane :test do
     gradle(
       task: "test",
+
       gradle_path: '/home/runner/work/WildLifeConnect/WildLifeConnect/android/gradlew'
+
     )
   end
 
@@ -28,7 +30,9 @@ platform :android do
   lane :beta do
     gradle(
       task: "clean assembleRelease",
+
       gradle_path: '/home/runner/work/WildLifeConnect/WildLifeConnect/android/gradlew'
+
     )
     crashlytics
     # Add any additional beta testing services here
@@ -38,7 +42,9 @@ platform :android do
   lane :deploy do
     gradle(
       task: "clean assembleRelease",
+
       gradle_path: '/home/runner/work/WildLifeConnect/WildLifeConnect/android/gradlew'
+
     )
     upload_to_play_store(
        json_key_file: ENV['SERVICE_ACCOUNT_JSON_PATH'],
