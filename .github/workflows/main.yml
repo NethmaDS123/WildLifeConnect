@@ -27,8 +27,10 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
 
-      - name: Install Ruby dependencies
-        run: bundle install
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
       - name: Get dependencies
         run: flutter pub get
@@ -42,4 +44,4 @@ jobs:
           SERVICE_ACCOUNT_JSON_PATH: '/tmp/service-account.json'
         run: |
           echo "$SERVICE_ACCOUNT_JSON" | base64 -d > $SERVICE_ACCOUNT_JSON_PATH
-          bundle exec fastlane beta
+          bundle exec fastlane beta json_key_file:/tmp/service-account.json
