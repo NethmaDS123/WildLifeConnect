@@ -45,12 +45,13 @@ android {
         versionName flutterVersionName
     }
 
-   signingConfigs {
+    signingConfigs {
         release {
-            keyAlias System.getenv("keyAlias")
-            keyPassword System.getenv("keyPassword")
-            storeFile file(System.getenv("storeFile")) ?: null
-            storePassword System.getenv("storePassword")
+            // Instead of reading from key.properties, set each value directly
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file(System.getenv("STORE_FILE"))
+            storePassword System.getenv("STORE_PASSWORD")
         }
     }
 
