@@ -35,12 +35,15 @@ jobs:
 
       # Decode the key.jks file from secrets
       - name: Decode key.jks
-        run: echo "${{ secrets.KEY_JKS_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/key.jks
+        run: echo "${{ secrets.KEY_JKS_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/app/key.jks
 
-      # Create key.properties file from secrets
-      - name: Create key.properties file
+      # Set up environment variables for signing
+      - name: Set up signing environment variables
         run: |
-          echo -e "${{ secrets.KEY_PROPERTIES }}" > ${{ github.workspace }}/android/key.properties
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+          echo "STORE_FILE=${{ github.workspace }}/android/app/key.jks" >> $GITHUB_ENV
+          echo "STORE_PASSWORD=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Get dependencies
         run: flutter pub get
