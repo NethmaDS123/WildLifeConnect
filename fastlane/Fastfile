@@ -8,7 +8,7 @@ platform :android do
   lane :test do
     gradle(
       task: "test",
-      gradle_path: '/home/runner/work/WildLifeConnect/android/gradlew' # Full path to the android directory
+      gradle_path: '../android/gradlew' # Full path to the android directory
     )
   end
 
@@ -16,7 +16,7 @@ platform :android do
   lane :beta do
     gradle(
       task: "clean assembleRelease",
-      gradle_path: '/home/runner/work/WildLifeConnect/android/gradlew' # Full path to the android directory
+      gradle_path: '../android/gradlew' # Full path to the android directory
     )
     crashlytics
     # Add any additional beta testing services here
@@ -26,7 +26,7 @@ platform :android do
   lane :deploy do
     gradle(
       task: "clean assembleRelease",
-      gradle_path: '/home/runner/work/WildLifeConnect/android/gradlew' # Full path to the android directory
+      gradle_path: '../android/gradlew' # Full path to the android directory
     )
     upload_to_play_store(
        json_key_file: ENV['SERVICE_ACCOUNT_JSON_PATH'],
