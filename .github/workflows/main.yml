@@ -16,10 +16,10 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          java-version: '12.x'
-          distribution: 'adopt'
-          architecture: 'x64'
-          server-id: 'github'
+          java-version: "12.x"
+          distribution: "adopt"
+          architecture: "x64"
+          server-id: "github"
           server-username: ${{ github.actor }}
           server-password: ${{ secrets.GITHUB_TOKEN }}
           overwrite-settings: true
@@ -42,7 +42,7 @@ jobs:
       - name: Deploy to Beta
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          SERVICE_ACCOUNT_JSON_PATH: '/tmp/service-account.json'
+          SERVICE_ACCOUNT_JSON_PATH: "/tmp/service-account.json"
         run: |
           echo "$SERVICE_ACCOUNT_JSON" | base64 -d > $SERVICE_ACCOUNT_JSON_PATH
           bundle exec fastlane android beta json_key_file:/tmp/service-account.json
