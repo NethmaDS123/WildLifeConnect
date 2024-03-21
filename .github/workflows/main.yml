@@ -33,6 +33,15 @@ jobs:
           ruby-version: 3.0
           bundler-cache: true
 
+      # Decode the key.jks file from secrets
+      - name: Decode key.jks
+        run: echo "${{ secrets.KEY_JKS_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/key.jks
+
+      # Create key.properties file from secrets
+      - name: Create key.properties file
+        run: |
+          echo "${{ secrets.KEY_PROPERTIES }}" | tr ',' '\n' > ${{ github.workspace }}/android/key.properties
+
       - name: Get dependencies
         run: flutter pub get
 
