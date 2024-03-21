@@ -36,9 +36,6 @@ class _ProfilePage1State extends State<ProfilePage> {
 
   Future<List<dynamic>> fetchPosts() async {
     String? token = await SecureStorage.getToken();
-    if (token == null) {
-      throw Exception('Token not found');
-    }
 
     String? username = await SecureStorage.getUsername();
 

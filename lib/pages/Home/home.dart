@@ -44,9 +44,6 @@ class _HomePageState extends State<HomePage> {
 
   Future<List<dynamic>> fetchPosts() async {
     String? token = await SecureStorage.getToken();
-    if (token == null) {
-      throw Exception('Token not found');
-    }
 
     final response = await http.get(
       Uri.parse('https://wildlifeconnectbackend.onrender.com/api/posts/get'),

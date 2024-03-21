@@ -10,7 +10,6 @@ class LibraryPage extends StatefulWidget {
   const LibraryPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _LibraryPageState createState() => _LibraryPageState();
 }
 
@@ -59,87 +58,139 @@ class _LibraryPageState extends State<LibraryPage> {
         title: const Text('Library Page'),
         actions: [
           IconButton(
-              icon: const Icon(
-                Icons.add_box,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const TokenGenerator()),
-                );
-              }),
+            icon: const Icon(
+              Icons.add_box,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TokenGenerator()),
+              );
+            },
+          ),
         ],
       ),
-      body: Column(
+      body: Stack(
         children: [
-          wb.SearchBar(
-              onSearch: _handleSearch), // Assuming this is a search bar widget
-          Expanded(
-            child: FutureBuilder<Map<String, List<Animal>>>(
-              future: groupedAnimalsFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text("Error: ${snapshot.error}"));
-                } else if (snapshot.hasData) {
-                  // Sort the map entries according to the predefined order
-                  List<MapEntry<String, List<Animal>>> sortedEntries =
-                      snapshot.data!.entries.toList()
-                        ..sort((a, b) => statusOrder
-                            .indexOf(a.key)
-                            .compareTo(statusOrder.indexOf(b.key)));
+          Positioned.fill(
+            child: Image.asset(
+              'assets/library_bgimg.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 40.0, 8.0, 8.0),
+                child: Card(
+                  elevation: 10,
+                  color: Colors.transparent, // Set search bar card color to transparent
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: wb.SearchBar(
+                      onSearch: _handleSearch,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Card(
+                  elevation: 10,
+                  color: const Color.fromRGBO(0, 0, 0, 0.65),
+                  shadowColor: const Color.fromRGBO(38, 36, 38, 0.498),
+                  child: FutureBuilder<Map<String, List<Animal>>>(
+                    future: groupedAnimalsFuture,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (snapshot.hasError) {
+                        return Center(child: Text("Error: ${snapshot.error}"));
+                      } else if (snapshot.hasData) {
+                        // Sort the map entries according to the predefined order
+                        List<MapEntry<String, List<Animal>>> sortedEntries =
+                            snapshot.data!.entries.toList()
+                              ..sort((a, b) => statusOrder
+                                  .indexOf(a.key)
+                                  .compareTo(statusOrder.indexOf(b.key)));
 
-                  return ListView.builder(
-                    itemCount: sortedEntries.length,
-                    itemBuilder: (context, index) {
-                      var entry = sortedEntries[index];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: 8.0),
-                            child: Text(
-                              entry.key,
-                              style: const TextStyle(
-                                  fontSize: 24, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 200,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: entry.value.length,
-                              itemBuilder: (context, index) {
-                                Animal animal = entry.value[index];
-                                return SizedBox(
-                                  width: 160,
-                                  child: AnimalCard(
-                                    animalName: animal.name,
-                                    imageUrl: animal.imageUrl,
-                                    onTap: () => Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            AnimalInfoPage(animal: animal),
-                                      ),
+                        return ListView.builder(
+                          itemCount: sortedEntries.length,
+                          itemBuilder: (context, index) {
+                            var entry = sortedEntries[index];
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0, vertical: 10.0),
+                                  child: Text(
+                                    entry.key,
+                                    style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors
+                                          .white, // Set title text color to white
                                     ),
                                   ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      );
+                                ),
+                                SizedBox(
+                                  height: 175,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: entry.value.length,
+                                    itemBuilder: (context, index) {
+                                      Animal animal = entry.value[index];
+                                      return Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0), // Add left padding
+                                        child: Container(
+                                          width: 140,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.black.withOpacity(
+                                                    1.0),
+                                                blurRadius: 1, // Blur radius
+                                              ),
+                                            ],
+                                            border: Border.all(
+                                              color: Colors.white.withOpacity(
+                                                  1.0), // Border color with opacity
+                                              width: 1.5, // Border width
+                                            ),
+                                          ),
+                                          child: AnimalCard(
+                                            animalName: animal.name,
+                                            imageUrl: animal.imageUrl,
+                                            onTap: () =>
+                                                Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AnimalInfoPage(
+                                                        animal: animal),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        return const Center(child: Text("No animals found"));
+                      }
                     },
-                  );
-                } else {
-                  return const Center(child: Text("No animals found"));
-                }
-              },
-            ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

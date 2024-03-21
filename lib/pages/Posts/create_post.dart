@@ -79,10 +79,8 @@ class _CreatePostState extends State<CreatePost> {
     var request = http.MultipartRequest('POST', uri);
 
     String? token = await storage.read(key: 'jwt_token');
-    if (token != null) {
-      request.headers.addAll({'Authorization': 'Bearer $token'});
-    }
-
+    request.headers.addAll({'Authorization': 'Bearer $token'});
+  
     // Add caption to request
     request.fields['caption'] = _captionController.text;
 
