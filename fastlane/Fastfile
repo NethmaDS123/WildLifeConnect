@@ -1,6 +1,3 @@
-# This file contains the fastlane.tools configuration
-# Fastlane configuration for WildLifeConnect project
-
 default_platform(:android)
 
 platform :android do
@@ -8,7 +5,7 @@ platform :android do
   lane :test do
     gradle(
       task: "test",
-      gradle_path: 'android/gradlew' # Full path to the android directory
+      project_dir: "android" # Set the project directory where the gradle wrapper is located
     )
   end
 
@@ -16,7 +13,7 @@ platform :android do
   lane :beta do
     gradle(
       task: "clean assembleRelease",
-      gradle_path: 'android/gradlew' # Full path to the android directory
+      project_dir: "android" # Set the project directory where the gradle wrapper is located
     )
     crashlytics
     # Add any additional beta testing services here
@@ -26,10 +23,11 @@ platform :android do
   lane :deploy do
     gradle(
       task: "clean assembleRelease",
-      gradle_path: 'android/gradlew' # Full path to the android directory
+      project_dir: "android" # Set the project directory where the gradle wrapper is located
     )
     upload_to_play_store(
-       json_key_file: ENV['SERVICE_ACCOUNT_JSON_PATH'],
+      track: 'production', # Specify the track if needed
+      json_key: ENV['SERVICE_ACCOUNT_JSON_PATH'] # Make sure this environment variable is set
     )
   end
 end
