@@ -37,7 +37,7 @@ jobs:
         run: flutter pub get
 
       - name: Run tests
-        run: bundle exec fastlane android test
+        run: bundle exec fastlane android test gradle_path:../../android/gradlew
 
       - name: Deploy to Beta
         env:
