@@ -37,7 +37,7 @@ jobs:
         run: flutter pub get
 
       - name: Run tests
-        run: bundle exec fastlane test
+        run: bundle exec fastlane android test
 
       - name: Deploy to Beta
         env:
@@ -45,4 +45,4 @@ jobs:
           SERVICE_ACCOUNT_JSON_PATH: '/tmp/service-account.json'
         run: |
           echo "$SERVICE_ACCOUNT_JSON" | base64 -d > $SERVICE_ACCOUNT_JSON_PATH
-          bundle exec fastlane beta json_key_file:/tmp/service-account.json
+          bundle exec fastlane android beta json_key_file:/tmp/service-account.json
