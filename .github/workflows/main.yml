@@ -40,7 +40,7 @@ jobs:
       # Create key.properties file from secrets
       - name: Create key.properties file
         run: |
-          echo "${{ secrets.KEY_PROPERTIES }}" | tr ',' '\n' > ${{ github.workspace }}/android/key.properties
+          echo -e "${{ secrets.KEY_PROPERTIES }}" > ${{ github.workspace }}/android/key.properties
 
       - name: Get dependencies
         run: flutter pub get
