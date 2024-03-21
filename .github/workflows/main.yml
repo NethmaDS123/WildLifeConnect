@@ -24,22 +24,24 @@ jobs:
           server-password: ${{ secrets.GITHUB_TOKEN }}
           overwrite-settings: true
 
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
-      
+
+      - name: Install Ruby dependencies
+        run: |
+          gem install bundler
+          bundle install
 
       - name: Get dependencies
         run: flutter pub get
 
       - name: Run tests
-        run: fastlane test
+        run: bundle exec fastlane test
 
       - name: Deploy to Beta
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           SERVICE_ACCOUNT_JSON_PATH: '/tmp/service-account.json'
         run: |
-          echo "$SERVICE_ACCOUNT_JSON" | base64 -D -o /tmp/service-account.json
-          fastlane beta json_key_file:/tmp/service-account.json
-      
+          echo "$SERVICE_ACCOUNT_JSON" | base64 -d > $SERVICE_ACCOUNT_JSON_PATH
+          bundle exec fastlane beta
