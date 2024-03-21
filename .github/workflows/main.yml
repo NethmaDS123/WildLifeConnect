@@ -30,5 +30,9 @@ jobs:
         run: fastlane test
 
       - name: Deploy to Beta
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
         run: |
-          fastlane beta json_key_file:/Users/nethmadesilva/Desktop/service-account.json
+          echo "$SERVICE_ACCOUNT_JSON" | base64 -D -o /tmp/service-account.json
+          fastlane beta json_key_file:/tmp/service-account.json
+      
