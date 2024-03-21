@@ -1,74 +1,58 @@
-plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
-}
+name: CI/CD Pipeline
 
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
+on:
+  push:
+    branches:
+      - main
 
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localProperties.load(new FileInputStream(localPropertiesFile))
-}
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode') ?: '1'
-def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '1.0'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-android {
-    namespace "com.wildlifeconnect.app"
-    compileSdkVersion 34
-    ndkVersion flutter.ndkVersion
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: "12.x"
+          distribution: "adopt"
+          architecture: "x64"
+          server-id: "github"
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
+          overwrite-settings: true
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
+      - name: Decode key.jks
+        run: echo "${{ secrets.KEY_JKS_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/app/key.jks
 
-    defaultConfig {
-        applicationId "com.wildlifeconnect.app"
-        minSdkVersion 21
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    }
+      - name: Set up signing environment variables
+        run: |
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+          echo "STORE_FILE=${{ github.workspace }}/android/app/key.jks" >> $GITHUB_ENV
+          echo "STORE_PASSWORD=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_ENV
 
-    signingConfigs {
-        release {
-            // Instead of reading from key.properties, set each value directly
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
-            storeFile file(System.getenv("STORE_FILE"))
-            storePassword System.getenv("STORE_PASSWORD")
-        }
-    }
+      - name: Get dependencies
+        run: flutter pub get
 
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-            minifyEnabled false
-            shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+      - name: Run tests
+        run: bundle exec fastlane android test gradle_path:./gradlew
 
-flutter {
-    source '../..'
-}
-
-dependencies {
-    // Specify your app's dependencies here
-}
+      - name: Deploy to Beta
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          SERVICE_ACCOUNT_JSON_PATH: "/tmp/service-account.json"
+        run: |
+          echo "$SERVICE_ACCOUNT_JSON" | base64 -d > $SERVICE_ACCOUNT_JSON_PATH
+          bundle exec fastlane android beta json_key_file:/tmp/service-account.json
