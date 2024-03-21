@@ -1,12 +1,17 @@
 buildscript {
-    ext.kotlin_version = '1.9.22'
+    // Set the Kotlin version to 1.6.0 to match the expected version by your project
+    ext.kotlin_version = '1.6.0'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
+        // Use the specified Kotlin version for the Kotlin Gradle plugin
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // Add the classpath for the Android Gradle plugin (if needed)
+        // Ensure this version is compatible with compileSdkVersion 34
+        classpath 'com.android.tools.build:gradle:7.4.0' // Update to the appropriate version
     }
 }
 

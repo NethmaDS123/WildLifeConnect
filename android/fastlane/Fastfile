@@ -1,0 +1,33 @@
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(
+      task: "test",
+      project_dir: "android" # Set the project directory where the gradle wrapper is located
+    )
+  end
+
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :beta do
+    gradle(
+      task: "clean assembleRelease",
+      project_dir: "android" # Set the project directory where the gradle wrapper is located
+    )
+    crashlytics
+    # Add any additional beta testing services here
+  end
+
+  desc "Deploy a new version to the Google Play Store"
+  lane :deploy do
+    gradle(
+      task: "clean assembleRelease",
+      project_dir: "android" # Set the project directory where the gradle wrapper is located
+    )
+    upload_to_play_store(
+      track: 'production', # Specify the track if needed
+      json_key: ENV['SERVICE_ACCOUNT_JSON_PATH'] # Make sure this environment variable is set
+    )
+  end
+end
