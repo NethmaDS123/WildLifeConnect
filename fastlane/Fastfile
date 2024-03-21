@@ -18,11 +18,14 @@ default_platform(:android)
 platform :android do
   desc "Runs all the tests"
   lane :test do
+    # Print current working directory to debug path issues
+    sh "pwd"
+    # List contents of the android directory to ensure gradlew is present
+    sh "ls -la ./android"
+  
     gradle(
       task: "test",
-
-      gradle_path: '/home/runner/work/WildLifeConnect/WildLifeConnect/android/gradlew'
-
+      gradle_path: './android/gradlew' # Adjusted to use relative path
     )
   end
 
@@ -30,9 +33,7 @@ platform :android do
   lane :beta do
     gradle(
       task: "clean assembleRelease",
-
-      gradle_path: '/home/runner/work/WildLifeConnect/WildLifeConnect/android/gradlew'
-
+      gradle_path: './android/gradlew' # Adjusted to use relative path
     )
     crashlytics
     # Add any additional beta testing services here
@@ -42,9 +43,7 @@ platform :android do
   lane :deploy do
     gradle(
       task: "clean assembleRelease",
-
-      gradle_path: '/home/runner/work/WildLifeConnect/WildLifeConnect/android/gradlew'
-
+      gradle_path: './android/gradlew' # Adjusted to use relative path
     )
     upload_to_play_store(
        json_key_file: ENV['SERVICE_ACCOUNT_JSON_PATH'],
