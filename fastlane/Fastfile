@@ -20,8 +20,7 @@ platform :android do
   lane :test do
     gradle(
       task: "test",
-      project_dir: "./android", # Path to the android directory
-      gradle_path: './gradlew' # Path to the gradlew file inside the android directory
+      gradle_path: '../../android/gradlew' # Update the path to reflect the correct location of gradlew
     )
   end
 
@@ -29,8 +28,7 @@ platform :android do
   lane :beta do
     gradle(
       task: "clean assembleRelease",
-      project_dir: "./android", # Path to the android directory
-      gradle_path: './gradlew' # Path to the gradlew file inside the android directory
+      gradle_path: '../../android/gradlew' # Update the path to reflect the correct location of gradlew
     )
     crashlytics
     # Add any additional beta testing services here
@@ -40,11 +38,11 @@ platform :android do
   lane :deploy do
     gradle(
       task: "clean assembleRelease",
-      project_dir: "./android", # Path to the android directory
-      gradle_path: './gradlew' # Path to the gradlew file inside the android directory
+      gradle_path: '../../android/gradlew' # Update the path to reflect the correct location of gradlew
     )
     upload_to_play_store(
        json_key_file: ENV['SERVICE_ACCOUNT_JSON_PATH'],
     )
   end
 end
+
