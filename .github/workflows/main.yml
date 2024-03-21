@@ -1,4 +1,4 @@
-name: Flutter CI/CD
+name: CI/CD Pipeline
 
 on:
   push:
@@ -10,27 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: 'stable'
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '12.x'
 
-    - name: Get dependencies
-      run: flutter pub get
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
 
-    - name: Run tests
-      run: flutter test
+      - name: Get dependencies
+        run: flutter pub get
 
-    - name: Build APK
-      run: flutter build apk --release
+      - name: Run tests
+        run: fastlane test
 
-    - name: Deploy to Play Store
-      uses: wzieba/Fastlane-Action@v2
-      with:
-        lane: beta
-        fastlane_arguments: --verbose
-      env:
-        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+      - name: Deploy to Beta
+        run: |
+          fastlane beta json_key_file:/Users/nethmadesilva/Desktop/service-account.json
