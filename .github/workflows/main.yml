@@ -28,9 +28,7 @@ jobs:
         uses: subosito/flutter-action@v2
 
       - name: Install Ruby dependencies
-        run: |
-          gem install bundler
-          bundle install
+        run: bundle install
 
       - name: Get dependencies
         run: flutter pub get
