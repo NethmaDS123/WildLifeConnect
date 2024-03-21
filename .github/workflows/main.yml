@@ -1,0 +1,36 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+
+    - name: Get dependencies
+      run: flutter pub get
+
+    - name: Run tests
+      run: flutter test
+
+    - name: Build APK
+      run: flutter build apk --release
+
+    - name: Deploy to Play Store
+      uses: wzieba/Fastlane-Action@v2
+      with:
+        lane: beta
+        fastlane_arguments: --verbose
+      env:
+        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
