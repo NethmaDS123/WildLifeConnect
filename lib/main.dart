@@ -8,7 +8,7 @@ import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:wildlifeconnect/pages/Map/map.dart';
 import 'package:wildlifeconnect/pages/Search/search.dart';
 import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
-import 'pages/SplashPage/splash_page.dart';
+import 'pages/splashPage/splash_page.dart';
 
 void main() async {
   runApp(const WildlifeConnectApp());
