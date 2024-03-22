@@ -49,15 +49,21 @@ android {
 
     signingConfigs {
         release {
-            if (keystoreProperties['storeFile'] && keystoreProperties['storePassword'] && keystoreProperties['keyAlias'] && keystoreProperties['keyPassword']) {
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile file(keystoreProperties['storeFile'] != null ? rootProject.file(keystoreProperties['storeFile']) : null)
+            // Assumes that storeFile, storePassword, keyAlias, and keyPassword are specified in key.properties
+            if (keystoreProperties['storeFile']) {
+                storeFile file(keystoreProperties['storeFile']) // It already contains the full relative path
+            }
+            if (keystoreProperties['storePassword']) {
                 storePassword keystoreProperties['storePassword']
+            }
+            if (keystoreProperties['keyAlias']) {
+                keyAlias keystoreProperties['keyAlias']
+            }
+            if (keystoreProperties['keyPassword']) {
+                keyPassword keystoreProperties['keyPassword']
             }
         }
     }
-
     buildTypes {
         release {
             signingConfig signingConfigs.release
