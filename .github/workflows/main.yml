@@ -21,10 +21,10 @@ jobs:
           flutter-version: "3.19.4"
 
       - name: Decode Keystore
-        run: echo ${{ secrets.KEY_JKS_BASE64 }} | base64 -d > android/app/release.keystore
+        run: echo ${{ secrets.KEYSTORE_BASE64 }} | base64 --decode > android/app/release.keystore
 
       - name: Decode key.properties
-        run: echo ${{ secrets.KEY_PROPERTIES }} | base64 -d > android/key.properties
+        run: echo ${{ secrets.KEY_PROPERTIES }} | base64 --decode > android/key.properties
 
       - name: Build App Bundle
         run: flutter build appbundle --release
