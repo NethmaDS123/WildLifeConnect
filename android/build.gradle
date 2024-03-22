@@ -1,6 +1,6 @@
 buildscript {
     // Set the Kotlin version to 1.6.0 to match the expected version by your project
-    ext.kotlin_version = '1.6.0'
+    ext.kotlin_version = '1.9.23'
     repositories {
         google()
         mavenCentral()
