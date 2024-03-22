@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NumbersWidget extends StatelessWidget {
-  const NumbersWidget({super.key});
+  final String postCount;
+
+  const NumbersWidget({
+    Key? key,
+    required this.postCount,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => IntrinsicHeight(
@@ -9,7 +14,7 @@ class NumbersWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             buildDivider(),
-            buildButton(context, '42', 'Posts'),
+            buildButton(context, postCount, 'posts'),
             buildDivider(),
           ],
         ),
@@ -28,7 +33,7 @@ class NumbersWidget extends StatelessWidget {
               value,
               style: const TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 22,
+                  fontSize: 20,
                   color: Color.fromARGB(255, 255, 255, 255)),
             ),
             const SizedBox(
@@ -37,17 +42,18 @@ class NumbersWidget extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Color.fromARGB(255, 120, 120, 120)),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 10,
+                  color: Color.fromARGB(255, 120, 120, 120),
+                  fontFamily: 'Poppins'),
             ),
           ],
         ),
       );
 
   Widget buildDivider() => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 5),
         height: 40,
-        child: const VerticalDivider(),
+        child: VerticalDivider(),
       );
 }

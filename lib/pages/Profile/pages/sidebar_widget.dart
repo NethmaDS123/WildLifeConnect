@@ -18,7 +18,7 @@ class SidebarWidget extends StatelessWidget {
                 'Contact one of the\nfollowing services in\ncase of emergency',
                 style: TextStyle(
                   fontFamily: 'Poppins',
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 0, 0, 0),
                 ),
@@ -49,7 +49,7 @@ class SidebarWidget extends StatelessWidget {
                   '●\tOtara Foundation\n+94 773 429 025\n\n'
                   '●\tJustice for Animals\njusticeforanimals.lk@gmail.com',
                   style: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 12.0,
                       fontFamily: 'Poppins',
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontWeight: FontWeight.w600),

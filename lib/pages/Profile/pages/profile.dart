@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -26,16 +24,21 @@ class _ProfilePage1State extends State<ProfilePage> {
   String? lastName;
   String? email;
   String? userName;
+  int postCount = 0;
 
   @override
   void initState() {
     super.initState();
     loadUserData();
     userPosts = fetchPosts();
+    loadUserPosts();
   }
 
   Future<List<dynamic>> fetchPosts() async {
     String? token = await SecureStorage.getToken();
+    if (token == null) {
+      throw Exception('Token not found');
+    }
 
     String? username = await SecureStorage.getUsername();
 
@@ -59,7 +62,15 @@ class _ProfilePage1State extends State<ProfilePage> {
     firstName = await SecureStorage.getFirstName();
     lastName = await SecureStorage.getLastName();
     email = await SecureStorage.getEmail();
+    userName = await SecureStorage.getUsername();
     setState(() {});
+  }
+
+  void loadUserPosts() async {
+    final posts = await userPosts;
+    setState(() {
+      postCount = posts.length;
+    });
   }
 
   @override
@@ -73,7 +84,7 @@ class _ProfilePage1State extends State<ProfilePage> {
       appBar: buildAppBar(context, false),
       endDrawer: Drawer(
         child: Container(
-          child: const SidebarWidget(),
+          child: SidebarWidget(),
         ),
       ),
       body: ListView(
@@ -90,12 +101,14 @@ class _ProfilePage1State extends State<ProfilePage> {
           //   child: buildFollowButton(),
           // ),
           const SizedBox(height: 2),
-          const NumbersWidget(),
+          NumbersWidget(
+            postCount: postCount.toString(),
+          ),
           const SizedBox(height: 12.0),
           Center(
             child: buildReportButton(),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 22),
           FutureBuilder<List<dynamic>>(
             future: userPosts,
             builder: (context, snapshot) {
@@ -117,6 +130,7 @@ class _ProfilePage1State extends State<ProfilePage> {
                       imgUrl: posts[index]['imageUrl'],
                       caption: posts[index]
                           ['caption'], // Access caption from each Post
+                      username: userName!, // Access username from each Post
                     ),
                   ),
                 );
@@ -154,7 +168,7 @@ class _ProfilePage1State extends State<ProfilePage> {
             '$firstName $lastName',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 22,
+              fontSize: 20,
               color: Colors.white,
               fontFamily: 'Poppins',
               letterSpacing: 1.5,
@@ -166,7 +180,7 @@ class _ProfilePage1State extends State<ProfilePage> {
               color: Color.fromARGB(255, 174, 174, 174),
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w600,
-              fontSize: 12,
+              fontSize: 10,
             ),
           ),
         ],
@@ -177,9 +191,9 @@ class _ProfilePage1State extends State<ProfilePage> {
         text: 'Follow',
       );
 
-  Widget buildReportButton() => SizedBox(
-        height: 38.0,
-        width: 185.0,
+  Widget buildReportButton() => Container(
+        height: 30.0,
+        width: 160.0,
         child: Builder(builder: (context) {
           return GestureDetector(
             onTap: () => {
@@ -187,7 +201,7 @@ class _ProfilePage1State extends State<ProfilePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 23, 176, 54),
+                color: Color.fromARGB(255, 23, 176, 54),
                 borderRadius: BorderRadius.circular(6.0),
 
                 // border: Border.all(
@@ -202,13 +216,14 @@ class _ProfilePage1State extends State<ProfilePage> {
                   Icon(
                     Icons.phone_forwarded,
                     color: Color.fromARGB(255, 0, 0, 0),
+                    size: 16,
                   ),
                   SizedBox(width: 15),
                   Text(
                     'Report Crimes',
                     style: TextStyle(
                         fontFamily: 'Poppins',
-                        fontSize: 15,
+                        fontSize: 13,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 0, 0, 0)),
                   ),
