@@ -33,6 +33,6 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: com.example
+          packageName: com.wildlifeconnect.app
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           track: internal
