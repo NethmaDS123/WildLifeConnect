@@ -22,9 +22,10 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.19.4"
-
+          
       - name: Decode Keystore
-        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/keystore.jks
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/release.keystore
+
 
       - name: Decode key.properties
         run: echo "${{ secrets.KEY_PROPERTIES }}" | base64 --decode > ${{ github.workspace }}/android/key.properties
