@@ -24,14 +24,29 @@ jobs:
           flutter-version: "3.19.4"
           
       - name: Decode Keystore
-        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/release.keystore
-
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > ${{ github.workspace }}/android/release.keystore
 
       - name: Decode key.properties
-        run: echo "${{ secrets.KEY_PROPERTIES }}" | base64 --decode > ${{ github.workspace }}/android/key.properties
+        run: |
+          echo "${{ secrets.KEY_PROPERTIES }}" | base64 --decode > ${{ github.workspace }}/android/key.properties
+
+      - name: Echo Keystore Path
+        run: |
+          echo "Keystore Path: ${{ github.workspace }}/android/release.keystore"
+
+      - name: Check Keystore File
+        run: |
+          if [[ -f ${{ github.workspace }}/android/release.keystore ]]; then
+            echo "Keystore file found."
+          else
+            echo "Keystore file not found."
+            exit 1
+          fi
 
       - name: Build App Bundle
-        run: flutter build appbundle --release
+        run: |
+          flutter build appbundle --release
 
       - name: Deploy to Play Store
         uses: r0adkll/upload-google-play@v1
