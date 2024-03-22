@@ -29,8 +29,6 @@ jobs:
       - name: Decode key.properties
         run: echo "${{ secrets.KEY_PROPERTIES }}" | base64 --decode > ${{ github.workspace }}/android/key.properties
 
-      
-
       - name: Check Keystore File
         run: |
           if [[ -f ${{ github.workspace }}/android/release.keystore ]]; then
@@ -53,3 +51,4 @@ jobs:
           packageName: com.wildlifeconnect.app
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           track: internal
+          status: draft # Here is the key change to address the error you were encountering.
