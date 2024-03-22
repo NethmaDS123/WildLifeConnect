@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 class PostView extends StatelessWidget {
   final String imgUrl;
   final String caption;
+  final String username;
 
   const PostView({
     super.key,
     required this.imgUrl,
     required this.caption,
+    required this.username,
   });
 
   @override
@@ -75,8 +77,8 @@ class PostView extends StatelessWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                const Text(
-                  "John Doe",
+                Text(
+                  username,
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 )
               ],

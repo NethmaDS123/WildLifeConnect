@@ -37,8 +37,8 @@ class ProfileWidget extends StatelessWidget {
         child: Ink.image(
           image: image,
           fit: BoxFit.cover,
-          width: 128,
-          height: 128,
+          width: 110,
+          height: 110,
         ),
       ),
     );
@@ -49,10 +49,10 @@ class ProfileWidget extends StatelessWidget {
         all: 3,
         child: buildCircle(
           color: const Color.fromARGB(255, 23, 176, 54),
-          all: 6,
+          all: 2,
           child: Icon(
             isEdit ? Icons.add_a_photo : null,
-            size: 18,
+            size: 14,
             color: Colors.white,
           ),
         ),

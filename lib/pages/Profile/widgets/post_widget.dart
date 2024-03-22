@@ -7,12 +7,14 @@ class PostWidget extends StatelessWidget {
   final double width;
   final String imgUrl;
   final String caption;
+  final String username;
   const PostWidget({
     super.key,
     required this.height,
     required this.width,
     required this.imgUrl,
     required this.caption,
+    required this.username,
   });
 
   @override
@@ -20,6 +22,7 @@ class PostWidget extends StatelessWidget {
         onLongPress: () => Get.to(() => PostView(
               imgUrl: imgUrl,
               caption: caption,
+              username: username,
             )),
         child: Container(
           color: const Color.fromARGB(255, 255, 255, 255),
