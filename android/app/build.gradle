@@ -5,14 +5,15 @@ plugins {
 }
 
 def keystoreProperties = new Properties()
-// Assumes the key.properties is placed at the android directory level in your project structure
-def keystorePropertiesFilePath = "/home/runner/work/WildLifeConnect/WildLifeConnect/android/key.properties"
-println(keystorePropertiesFilePath)
+// Adjusted the path to directly use the GitHub workspace environment variable
+def keystorePropertiesFilePath = System.getenv("GITHUB_WORKSPACE") + "/android/key.properties"
+println("Looking for key.properties at: " + keystorePropertiesFilePath)
 def keystorePropertiesFile = new File(keystorePropertiesFilePath)
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    println("key.properties file loaded successfully.")
 } else {
-    println("key.properties file not found at $keystorePropertiesFilePath")
+    println("key.properties file not found.")
 }
 
 def localProperties = new Properties()
@@ -54,13 +55,13 @@ android {
             if (keystoreProperties['storeFile'] && keystoreProperties['storePassword'] && keystoreProperties['keyAlias'] && keystoreProperties['keyPassword']) {
                 keyAlias keystoreProperties['keyAlias']
                 keyPassword keystoreProperties['keyPassword']
-                // Correctly resolve the path from the project directory
-                storeFile file(keystoreProperties['storeFile'] ? keystoreProperties['storeFile'] : null)
+                // Adjust the storeFile to reference the GitHub workspace
+                storeFile file(System.getenv("GITHUB_WORKSPACE") + "/" + keystoreProperties['storeFile'])
                 storePassword keystoreProperties['storePassword']
             }
         }
     }
-    
+
     buildTypes {
         release {
             signingConfig signingConfigs.release
