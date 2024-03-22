@@ -6,7 +6,7 @@ plugins {
 
 def keystoreProperties = new Properties()
 // Assumes the key.properties is placed at the android directory level in your project structure
-def keystorePropertiesFilePath = "${rootProject.projectDir}/android/key.properties"
+def keystorePropertiesFilePath = "/home/runner/work/WildLifeConnect/android/key.properties"
 println(keystorePropertiesFilePath)
 def keystorePropertiesFile = new File(keystorePropertiesFilePath)
 if (keystorePropertiesFile.exists()) {
