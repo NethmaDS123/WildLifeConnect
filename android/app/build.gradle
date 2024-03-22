@@ -5,7 +5,7 @@ plugins {
 }
 
 def keystoreProperties = new Properties()
-def keystorePropertiesFilePath = "${rootProject.projectDir}/key.properties"
+def keystorePropertiesFilePath = rootProject.file("android/key.properties").absolutePath
 def keystorePropertiesFile = new File(keystorePropertiesFilePath)
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
@@ -49,18 +49,11 @@ android {
 
     signingConfigs {
         release {
-            // Assumes that storeFile, storePassword, keyAlias, and keyPassword are specified in key.properties
-            if (keystoreProperties['storeFile']) {
-                storeFile file(keystoreProperties['storeFile']) // It already contains the full relative path
-            }
-            if (keystoreProperties['storePassword']) {
-                storePassword keystoreProperties['storePassword']
-            }
-            if (keystoreProperties['keyAlias']) {
+            if (keystoreProperties['storeFile'] && keystoreProperties['storePassword'] && keystoreProperties['keyAlias'] && keystoreProperties['keyPassword']) {
                 keyAlias keystoreProperties['keyAlias']
-            }
-            if (keystoreProperties['keyPassword']) {
                 keyPassword keystoreProperties['keyPassword']
+                storeFile file(rootProject.file(keystoreProperties['storeFile'])) // Adjusted to correctly resolve the path
+                storePassword keystoreProperties['storePassword']
             }
         }
     }
