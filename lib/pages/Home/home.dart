@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                           horizontal: 6, vertical: 8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
-                        color: Colors.black.withOpacity(
+                        color: Color.fromARGB(255, 0, 53, 10).withOpacity(
                             0.9), // Color.fromARGB(255, 0, 0, 0).withOpacity(0.9),
                       ),
                       child: Column(
@@ -160,8 +160,8 @@ class _HomePageState extends State<HomePage> {
                                 topLeft: Radius.circular(4),
                                 topRight: Radius.circular(4),
                               ),
-                              color: Color.fromARGB(255, 0, 0,
-                                  0), // Color.fromARGB(255, 32, 117, 45)
+                              color: Color.fromARGB(255, 0, 48,
+                                  7), // Color.fromARGB(255, 32, 117, 45)
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -9,7 +9,13 @@ class MapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recent Sightings'),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        title: const Text(
+          'Recent Sightings',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       backgroundColor: Colors.black,
       body: Center(

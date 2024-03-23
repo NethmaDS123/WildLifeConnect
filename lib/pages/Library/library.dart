@@ -55,12 +55,18 @@ class _LibraryPageState extends State<LibraryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Library Page'),
+        title: const Text(
+          'Library Page',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
         actions: [
           IconButton(
             icon: const Icon(
               Icons.add_box,
-              color: Colors.black,
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               Navigator.push(
@@ -85,7 +91,8 @@ class _LibraryPageState extends State<LibraryPage> {
                 padding: const EdgeInsets.fromLTRB(8.0, 40.0, 8.0, 8.0),
                 child: Card(
                   elevation: 10,
-                  color: Colors.transparent, // Set search bar card color to transparent
+                  color: Colors
+                      .transparent, // Set search bar card color to transparent
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: wb.SearchBar(
@@ -151,8 +158,8 @@ class _LibraryPageState extends State<LibraryPage> {
                                                 BorderRadius.circular(20),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.black.withOpacity(
-                                                    1.0),
+                                                color: Colors.black
+                                                    .withOpacity(1.0),
                                                 blurRadius: 1, // Blur radius
                                               ),
                                             ],

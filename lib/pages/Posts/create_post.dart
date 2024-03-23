@@ -80,7 +80,7 @@ class _CreatePostState extends State<CreatePost> {
 
     String? token = await storage.read(key: 'jwt_token');
     request.headers.addAll({'Authorization': 'Bearer $token'});
-  
+
     // Add caption to request
     request.fields['caption'] = _captionController.text;
 
@@ -105,9 +105,7 @@ class _CreatePostState extends State<CreatePost> {
       var response = await http.Response.fromStream(streamedResponse);
 
       if (response.statusCode == 200) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Post uploaded successfully')),
-        );
+        print("Post uploaded successfully");
         // Optionally reset state to allow for another post
         setState(() {
           _image = null;
@@ -130,11 +128,18 @@ class _CreatePostState extends State<CreatePost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Post'),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        title: const Text(
+          'Create Post',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.send),
             onPressed: _uploadPost,
+            color: Colors.white,
           ),
         ],
       ),
