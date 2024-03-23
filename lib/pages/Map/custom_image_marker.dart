@@ -2,15 +2,16 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:intl/intl.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 class CustomImageMarker extends StatefulWidget {
   final String? location;
   final XFile? image;
 
-  const CustomImageMarker({Key? key, this.location, this.image, String? imageUrl}) : super(key: key);
+  const CustomImageMarker({Key? key, this.location, this.image})
+      : super(key: key);
 
   @override
   State<CustomImageMarker> createState() => _CustomImageMarkerState();
@@ -29,43 +30,58 @@ class _CustomImageMarkerState extends State<CustomImageMarker> {
 
   final Set<Marker> myMarker = {};
 
-  Future<Uint8List> _resizeImage(Uint8List imageData) async {
-    // Adjust the width and height as needed
-    final int maxSize = 35;
+  Future<Uint8List> _processImageForMarker(Uint8List imageData) async {
+    // Decode the image using the 'image' package
+    img.Image? image = img.decodeImage(imageData);
+    if (image == null)
+      return Uint8List(0); // Return an empty Uint8List if decoding fails
 
-    final compressedImage = await FlutterImageCompress.compressWithList(
-      imageData,
-      minHeight: maxSize,
-      minWidth: maxSize,
-    );
+    // Resize the image to a square based on the smaller dimension to maintain aspect ratio
+    int size = image.width < image.height ? image.width : image.height;
+    img.Image resizedImage = img.copyResizeCropSquare(image, size);
 
-    return Uint8List.fromList(compressedImage!);
+    // Optionally: Further compress the image here if needed
+
+    // Create a circular cropped version of the image
+    img.Image circularImage =
+        img.copyResize(resizedImage, width: 120, height: 120);
+
+    // Adding a simple white border
+    img.drawCircle(circularImage, 60, 60, 60, img.getColor(255, 255, 255, 255));
+
+    // Encode the image back to Uint8List
+    return Uint8List.fromList(img.encodePng(circularImage));
   }
 
   Future<void> _loadData() async {
     if (widget.image != null && widget.location != null) {
       final Uint8List byteData = await widget.image!.readAsBytes();
-      final Uint8List imageData = byteData.buffer.asUint8List();
-      final Uint8List resizedImageData = await _resizeImage(imageData);
+      final Uint8List resizedImageData = await _processImageForMarker(byteData);
 
-      final List<String> locationSplit = widget.location!.split(',');
-      final double latitude = double.tryParse(locationSplit[0]) ?? 0.0;
-      final double longitude = double.tryParse(locationSplit[1]) ?? 0.0;
+      if (resizedImageData.isNotEmpty) {
+        final List<String> locationSplit = widget.location!.split(',');
+        final double latitude = double.tryParse(locationSplit[0]) ?? 0.0;
+        final double longitude = double.tryParse(locationSplit[1]) ?? 0.0;
 
-      DateTime now = DateTime.now();
-      String formattedDate = DateFormat('yyyy/MM/dd').format(now);
-      String formattedTime = DateFormat.Hm().format(now);
+        DateTime now = DateTime.now();
+        String formattedDate = DateFormat('yyyy/MM/dd').format(now);
+        String formattedTime = DateFormat.Hm().format(now);
 
-      String title = 'Located on: $formattedDate at $formattedTime h';
+        String title = 'Located on: $formattedDate at $formattedTime h';
 
-      myMarker.add(Marker(
-        markerId: MarkerId('0'),
-        position: LatLng(latitude, longitude),
-        icon: BitmapDescriptor.fromBytes(resizedImageData),
-        infoWindow: InfoWindow(title: title),
-      ));
+        final Marker marker = Marker(
+          markerId: MarkerId('UniqueID'), // Ensure this is unique
+          position: LatLng(latitude, longitude),
+          icon: BitmapDescriptor.fromBytes(resizedImageData),
+          infoWindow: InfoWindow(title: title),
+        );
 
-      setState(() {});
+        setState(() {
+          myMarker.add(marker);
+        });
+      } else {
+        print("Image data could not be processed");
+      }
     }
   }
 
@@ -90,7 +106,6 @@ class _CustomImageMarkerState extends State<CustomImageMarker> {
       body: GoogleMap(
         mapType: MapType.normal,
         markers: Set<Marker>.of(myMarker),
-        // markers: _markers,
         initialCameraPosition: middleofSl,
         myLocationButtonEnabled: true,
         zoomControlsEnabled: true,

@@ -60,8 +60,9 @@ class _LoginPageState extends State<LoginPage> {
         setState(() =>
             _errorMessage = "Failed to log in. Please check your credentials.");
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
       print('Error during login: $e');
+      print('Stack trace: $stackTrace');
       setState(() => _errorMessage =
           "An error occurred during login. Please try again later.");
     }

@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:image/image.dart' as img;
 
 class TestMapPage extends StatefulWidget {
-  const TestMapPage({Key? key, String? location, String? imageUrl}) : super(key: key);
+  const TestMapPage({Key? key, String? location, String? imageUrl})
+      : super(key: key);
 
   @override
   _TestMapPageState createState() => _TestMapPageState();
@@ -16,7 +18,8 @@ class TestMapPage extends StatefulWidget {
 class _TestMapPageState extends State<TestMapPage> {
   late Future<List<dynamic>> posts;
   late Timer _timer;
-  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
+  final Completer<GoogleMapController> _controller =
+      Completer<GoogleMapController>();
   final Set<Marker> _markers = {};
 
   static const CameraPosition middleofSl = CameraPosition(
@@ -52,7 +55,7 @@ class _TestMapPageState extends State<TestMapPage> {
     String? token = await SecureStorage.getToken();
 
     final response = await http.get(
-      Uri.parse('https://10.0.2.2/api/posts/get'),
+      Uri.parse('https://wildlifeconnectbackend.onrender.com/api/posts/get'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -67,7 +70,8 @@ class _TestMapPageState extends State<TestMapPage> {
   }
 
   Future<void> _loadMarkerData() async {
-    List<dynamic> postData = await posts;
+    List<dynamic> postData =
+        await posts; // This line will await the posts, consider adjusting this logic
 
     for (var post in postData) {
       final String? location = post['location'];
@@ -79,7 +83,8 @@ class _TestMapPageState extends State<TestMapPage> {
           final double latitude = double.tryParse(locationSplit[0]) ?? 0.0;
           final double longitude = double.tryParse(locationSplit[1]) ?? 0.0;
 
-          final Uint8List markerIcon = await _getMarkerIcon(imageUrl);
+          final Uint8List markerIcon = await _getMarkerIcon(
+              imageUrl); // Consider moving this out of the loop if it's the same for all markers
 
           final Marker marker = Marker(
             markerId: MarkerId(location),
@@ -90,28 +95,36 @@ class _TestMapPageState extends State<TestMapPage> {
             icon: BitmapDescriptor.fromBytes(markerIcon),
           );
 
-          _markers.add(marker);
-
+          // Check if the widget is still mounted before calling setState
+          if (mounted) {
+            setState(() {
+              _markers.add(marker);
+            });
+          }
         } catch (e) {
           print('Error loading data: $e');
         }
       }
     }
-
-    setState(() {});
   }
 
   Future<Uint8List> _getMarkerIcon(String imageUrl) async {
     try {
       final http.Response response = await http.get(Uri.parse(imageUrl));
       if (response.statusCode == 200) {
-        return response.bodyBytes;
+        // Decode the image to an Image object from the 'image' package
+        img.Image image = img.decodeImage(response.bodyBytes)!;
+
+        // Resize the image (e.g., to 100x100 pixels)
+        img.Image resizedImg = img.copyResize(image, width: 100, height: 100);
+
+        // Convert the Image object back to Uint8List
+        return Uint8List.fromList(img.encodePng(resizedImg));
       } else {
         throw Exception('Failed to load image data: ${response.statusCode}');
       }
     } catch (e) {
       print('Error fetching image data: $e');
-      // Throw the error to be handled by the caller
       throw e;
     }
   }
@@ -138,13 +151,15 @@ class _TestMapPageState extends State<TestMapPage> {
           } else {
             _loadMarkerData();
             return GoogleMap(
-        mapType: MapType.normal,
-        markers: _markers,
-        initialCameraPosition: middleofSl,
-        myLocationButtonEnabled: true,
-        zoomControlsEnabled: true,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
+              mapType: MapType.normal,
+              markers: _markers,
+              initialCameraPosition: middleofSl,
+              myLocationButtonEnabled: true,
+              zoomControlsEnabled: true,
+              onMapCreated: (GoogleMapController controller) {
+                if (!_controller.isCompleted) {
+                  _controller.complete(controller);
+                }
               },
             );
           }
