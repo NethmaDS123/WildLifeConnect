@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/sidebar_widget.dart';
+import 'package:wildlifeconnect/pages/Profile/pages/view_collection.dart';
 import 'package:wildlifeconnect/pages/Profile/utils/user_preferences.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/appbar_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/widgets/button_widget.dart';
@@ -105,6 +107,10 @@ class _ProfilePage1State extends State<ProfilePage> {
             postCount: postCount.toString(),
           ),
           const SizedBox(height: 12.0),
+          Center(
+            child: buildCollectionButton(),
+          ),
+          const SizedBox(height: 18.0),
           Center(
             child: buildReportButton(),
           ),
@@ -233,4 +239,40 @@ class _ProfilePage1State extends State<ProfilePage> {
           );
         }),
       );
+  Widget buildCollectionButton() => SizedBox(
+    height: 30.0,
+    width: 200.0,
+    child: Builder(builder: (context) {
+      return GestureDetector(
+        onTap: () => {
+          Get.to(() => const ViewCollectionPage())
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(6.0),
+
+            // border: Border.all(
+            //   width: 2,
+            //   color: Color.fromARGB(255, 23, 176, 54),
+            // ),
+          ),
+          child: const Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'View Token Collection',
+                style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+            ],
+          ),
+        ),
+      );
+    }),
+  );
 }
