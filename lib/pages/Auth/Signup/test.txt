@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
+import 'package:mockito/mockito.dart';
+
+class MockClient extends Mock implements http.Client {}
+
+void main() {
+  // Mock HTTP client setup
+  setUp(() {
+    http.Client mockHttpClient = MockClient();
+    when(
+      mockHttpClient.post(
+        any,
+        body: anyNamed('body'),
+        headers: anyNamed('headers'),
+      ),
+    ).thenAnswer((_) async => http.Response('{}', 201)); // Simulate successful registration
+    // Replace the http.Client with your mock client
+    http.Client = mockHttpClient;
+  });
+
+  testWidgets('SignUpPage form validation and submission', (WidgetTester tester) async {
+    // Build the SignUpPage widget inside a MaterialApp for proper navigation context
+    await tester.pumpWidget(MaterialApp(home: SignUpPage()));
+
+    // Define the finders for your form fields and button
+    final Finder firstNameField = find.byKey(Key('firstNameField'));
+    final Finder lastNameField = find.byKey(Key('lastNameField'));
+    final Finder usernameField = find.byKey(Key('usernameField'));
+    final Finder emailField = find.byKey(Key('emailField'));
+    final Finder passwordField = find.byKey(Key('passwordField'));
+    final Finder createAccountButton = find.widgetWithText(ElevatedButton, 'Create Account');
+
+    // Enter valid data into the form fields
+    await tester.enterText(firstNameField, 'John');
+    await tester.enterText(lastNameField, 'Doe');
+    await tester.enterText(usernameField, 'johndoe');
+    await tester.enterText(emailField, 'john@example.com');
+    await tester.enterText(passwordField, 'password123');
+
+    // Tap the create account button and pump to simulate form submission
+    await tester.tap(createAccountButton);
+    await tester.pumpAndSettle(); // Wait for any animations or futures to settle
+
+    // Check the expectations
+    // Assuming you navigate to a new page upon successful registration, you might want to check that the current page is no longer SignUpPage.
+    // This is a placeholder for whatever success criteria you have (e.g., checking for a success message or navigating to a different page).
+    // For example, if you push a new route upon success:
+    // expect(find.byType(SuccessPage), findsOneWidget);
+  });
+}

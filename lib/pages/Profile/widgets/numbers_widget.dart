@@ -4,9 +4,9 @@ class NumbersWidget extends StatelessWidget {
   final String postCount;
 
   const NumbersWidget({
-    Key? key,
+    super.key,
     required this.postCount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) => IntrinsicHeight(
@@ -52,8 +52,8 @@ class NumbersWidget extends StatelessWidget {
       );
 
   Widget buildDivider() => Container(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         height: 40,
-        child: VerticalDivider(),
+        child: const VerticalDivider(),
       );
 }

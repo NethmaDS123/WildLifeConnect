@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,55 +12,58 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final storage = const FlutterSecureStorage();
 
   String _enteredEmail = '';
   String _enteredPassword = '';
-  String _errorMessage = ''; // Variable to hold error messages
+  String _errorMessage = '';
 
   void _submit() async {
     final isValid = _formKey.currentState?.validate() ?? false;
     if (!isValid) {
-      return; // If not valid, return and do not proceed
+      return;
     }
     _formKey.currentState?.save();
 
+    final uri =
+        Uri.parse('https://wildlifeconnectbackend.onrender.com/users/login');
     try {
       final response = await http.post(
-        Uri.parse('https://wildlifeconnectbackend.onrender.com/users/login'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode({
-          'email': _enteredEmail,
-          'password': _enteredPassword,
-        }),
+        uri,
+        headers: {'Content-Type': 'application/json; charset=UTF-8'},
+        body:
+            jsonEncode({'email': _enteredEmail, 'password': _enteredPassword}),
       );
+
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        // This line prints the token
-        await SecureStorage.storeToken(data['token']); // Store token
+
         await SecureStorage.storeToken(data['token']);
 
-        // Store name and email
-        await SecureStorage.storeName(data['firstName'], data['lastName']);
-        await SecureStorage.storeEmail(data['email']);
-        await SecureStorage.storeUsername(data['username']);
+        // Explicitly handle user ID storage
+        if (data.containsKey('userId') && data['userId'] != null) {
+          await SecureStorage.storeUserId(data['userId']);
+          print("User ID stored: ${data['userId']}");
+        } else {
+          print("User ID is null or not provided.");
+        }
 
-        // ignore: use_build_context_synchronously
-        Navigator.of(context)
-            .pushReplacementNamed('/navbar'); // Navigate to homepage
+        await SecureStorage.storeName(
+            data['firstName'] ?? '', data['lastName'] ?? '');
+        await SecureStorage.storeEmail(data['email'] ?? '');
+        await SecureStorage.storeUsername(data['username'] ?? '');
+
+        Navigator.of(context).pushReplacementNamed('/navbar');
       } else {
-        setState(() {
-          _errorMessage = "Failed to log in. Please check your credentials.";
-        });
+        setState(() =>
+            _errorMessage = "Failed to log in. Please check your credentials.");
       }
     } catch (e) {
-      setState(() {
-        _errorMessage =
-            "An error occurred during login. Please try again later.";
-      });
+      print('Error during login: $e');
+      setState(() => _errorMessage =
+          "An error occurred during login. Please try again later.");
     }
   }
 

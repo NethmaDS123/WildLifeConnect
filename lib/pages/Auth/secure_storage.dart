@@ -43,4 +43,16 @@ class SecureStorage {
   static Future<String?> getUsername() async {
     return await _storage.read(key: 'username');
   }
+
+  static Future<void> storeUserId(String userId) async {
+    await _storage.write(key: 'user_id', value: userId);
+  }
+
+  static Future<String?> getUserId() async {
+    return await _storage.read(key: 'user_id');
+  }
+
+  static Future<void> clear() async {
+    await _storage.deleteAll();
+  }
 }

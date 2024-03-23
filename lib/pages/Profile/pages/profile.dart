@@ -84,7 +84,7 @@ class _ProfilePage1State extends State<ProfilePage> {
       appBar: buildAppBar(context, false),
       endDrawer: Drawer(
         child: Container(
-          child: SidebarWidget(),
+          child: const SidebarWidget(),
         ),
       ),
       body: ListView(
@@ -191,7 +191,7 @@ class _ProfilePage1State extends State<ProfilePage> {
         text: 'Follow',
       );
 
-  Widget buildReportButton() => Container(
+  Widget buildReportButton() => SizedBox(
         height: 30.0,
         width: 160.0,
         child: Builder(builder: (context) {
@@ -201,7 +201,7 @@ class _ProfilePage1State extends State<ProfilePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 23, 176, 54),
+                color: const Color.fromARGB(255, 23, 176, 54),
                 borderRadius: BorderRadius.circular(6.0),
 
                 // border: Border.all(
