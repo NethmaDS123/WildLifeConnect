@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wildlifeconnect/pages/Map/custom_image_marker.dart';
+import 'package:wildlifeconnect/pages/Map/testMap.dart';
 import 'package:wildlifeconnect/pages/Map/getUserCurrentLocation.dart';
 
 class MapPage extends StatelessWidget {
@@ -20,7 +20,7 @@ class MapPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (BuildContext context) {
-                  return const CustomImageMarker();
+                  return const TestMapPage();
                 }));
               },
               style: ElevatedButton.styleFrom(
