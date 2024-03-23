@@ -3,8 +3,10 @@ import 'dart:math';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:mime/mime.dart';
 
 // Enum for Rarity
 enum Rarity { common, uncommon, rare, epic, legendary }
@@ -102,36 +104,42 @@ class _TokenGeneratorState extends State<TokenGenerator> {
   bool _isButtonDisabled = false;
 
   Future<void> _saveToken(Token token) async {
-    final uri = Uri.parse(
-        'https://wildlifeconnectbackend.onrender.com/tokens/saveToken');
+    final uri = Uri.parse('https://wildlifeconnectbackend.onrender.com/tokens/saveToken');
 
     const storage = FlutterSecureStorage();
-    String? authToken =
-        await storage.read(key: 'jwt_token'); // Renamed variable
+    String? authToken = await storage.read(key: 'jwt_token');
 
-    final headers = <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer $authToken', // Updated variable name here
-    };
-    final body = jsonEncode({
-      'imageUrl': token.imageFile.path,
-      'animalName': token.animalName,
-      'rarity': token.rarity,
-    });
+    // Create a multipart request
+    var request = http.MultipartRequest('POST', uri);
+
+    request.headers.addAll({'Authorization': 'Bearer $authToken'});
+
+    // Add the image file to the request
+    var file = await http.MultipartFile.fromPath(
+      'image',
+      token.imageFile.path,
+      contentType: MediaType('image', 'jpeg'), // Adjust content type if necessary
+    );
+    request.files.add(file);
+
+    // Add other form data
+    request.fields['animalName'] = token.animalName;
+    request.fields['rarity'] = token.rarity;
 
     try {
-      final response = await http.post(uri, headers: headers, body: body);
+      // Send the request
+      final streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+
       if (response.statusCode == 200) {
         // Token saved successfully
-        // ignore: avoid_print
         print('Token saved successfully');
       } else {
         // Error saving token
-        // ignore: avoid_print
         print('Error saving token: ${response.body}');
       }
     } catch (e) {
-      // ignore: avoid_print
+      // Error handling
       print('Error saving token: $e');
     }
   }
@@ -196,7 +204,7 @@ class _TokenGeneratorState extends State<TokenGenerator> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "${_generatedToken!.animalName} ${_generatedToken!.rarity}",
+                          "${_generatedToken!.animalName}",
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,
