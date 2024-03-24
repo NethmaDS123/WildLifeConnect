@@ -6,7 +6,6 @@ class SearchUserPage extends StatefulWidget {
   const SearchUserPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _SearchUserPageState createState() => _SearchUserPageState();
 }
 
@@ -31,7 +30,6 @@ class _SearchUserPageState extends State<SearchUserPage> {
             'Failed to load search results: ${response.statusCode}');
       }
     } catch (error) {
-      // ignore: avoid_print
       print('Error searching users: $error');
     }
   }
@@ -75,19 +73,7 @@ class _SearchUserPageState extends State<SearchUserPage> {
                     itemCount: _searchResults.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                        onTap: () {
-                          // ignore: avoid_print
-                          print('User profile tapped');
-                          // Navigate to user profile page here
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => UserProfilePage(
-                          //       userData: _searchResults[index], // Pass user data to the profile page
-                          //     ),
-                          //   ),
-                          // );
-                        },
+                        onTap: () {},
                         child: ListTile(
                           title: Text(_searchResults[index]['username']),
                           subtitle: Text(_searchResults[index]['firstName'] +
@@ -95,9 +81,7 @@ class _SearchUserPageState extends State<SearchUserPage> {
                               _searchResults[index]['lastName']),
                           trailing: ElevatedButton(
                             onPressed: () {
-                              // ignore: avoid_print
                               print('Add friend button pressed');
-                              // Add friend logic here
                             },
                             child: const Text('Add Friend'),
                           ),

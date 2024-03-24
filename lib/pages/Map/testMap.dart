@@ -95,7 +95,6 @@ class _TestMapPageState extends State<TestMapPage> {
             icon: BitmapDescriptor.fromBytes(markerIcon),
           );
 
-          // Check if the widget is still mounted before calling setState
           if (mounted) {
             setState(() {
               _markers.add(marker);

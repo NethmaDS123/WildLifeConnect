@@ -6,7 +6,6 @@ import 'package:wildlifeconnect/pages/Home/home.dart';
 import 'package:wildlifeconnect/pages/Library/library.dart';
 import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:wildlifeconnect/pages/Map/map.dart';
-import 'package:wildlifeconnect/pages/Search/search.dart';
 import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
 import 'pages/splashPage/splash_page.dart';
 
@@ -31,7 +30,6 @@ class WildlifeConnectApp extends StatelessWidget {
         '/librarypage': (context) => const LibraryPage(),
         '/mappage': (context) => const MapPage(),
         '/profilepage': (context) => const ProfilePage(),
-        '/search': (context) => const SearchPage(),
         '/loginpage': (context) => const LoginPage(),
         '/signuppage': (context) => const SignUpPage(),
         '/navbar': (context) => const NavBar(),

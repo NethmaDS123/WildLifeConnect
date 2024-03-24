@@ -116,10 +116,6 @@ class _ProfilePage1State extends State<ProfilePage> {
             ),
             const SizedBox(height: 18),
             buildName(),
-            //const SizedBox(height: 8),
-            // Center(
-            //   child: buildFollowButton(),
-            // ),
             const SizedBox(height: 2),
             NumbersWidget(
               postCount: postCount.toString(),
@@ -228,11 +224,6 @@ class _ProfilePage1State extends State<ProfilePage> {
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 23, 176, 54),
                 borderRadius: BorderRadius.circular(6.0),
-
-                // border: Border.all(
-                //   width: 2,
-                //   color: Color.fromARGB(255, 23, 176, 54),
-                // ),
               ),
               child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -268,11 +259,6 @@ class _ProfilePage1State extends State<ProfilePage> {
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(6.0),
-
-                // border: Border.all(
-                //   width: 2,
-                //   color: Color.fromARGB(255, 23, 176, 54),
-                // ),
               ),
               child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

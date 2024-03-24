@@ -1,8 +1,6 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart'; // Import geolocator package
+import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 
 class Location extends StatefulWidget {

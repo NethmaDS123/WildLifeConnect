@@ -12,21 +12,20 @@ class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _CameraPageState createState() => _CameraPageState();
 }
 
 class _CameraPageState extends State<CameraPage> {
   String? prediction;
   File? _imageFile;
-  List<int>? _imageBytes; // Variable to store image bytes
+  List<int>? _imageBytes;
 
   Future<void> _openCamera(BuildContext context) async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image != null) {
       setState(() {
         _imageFile = File(image.path);
-        _imageBytes = _imageFile!.readAsBytesSync(); // Reading image bytes
+        _imageBytes = _imageFile!.readAsBytesSync();
       });
     }
   }
@@ -36,7 +35,7 @@ class _CameraPageState extends State<CameraPage> {
     if (image != null) {
       setState(() {
         _imageFile = File(image.path);
-        _imageBytes = _imageFile!.readAsBytesSync(); // Reading image bytes
+        _imageBytes = _imageFile!.readAsBytesSync();
       });
     }
   }
@@ -58,12 +57,11 @@ class _CameraPageState extends State<CameraPage> {
       'image',
       _imageFile!.path,
       contentType:
-          MediaType('image', 'jpeg'), // Adjust content type if necessary
+          MediaType('image', 'jpeg'),
     );
     request.files.add(file);
 
     try {
-      // Send the request
       final streamedResponse = await request.send();
       final response = await http.Response.fromStream(streamedResponse);
 
@@ -83,7 +81,7 @@ class _CameraPageState extends State<CameraPage> {
   Future<void> getAnimalPrediction(String location) async {
     try {
       final uri = Uri.parse(
-          'https://wildlifeconnect-backend-amft734wkq-de.a.run.app/predict'); // Replace with your actual API URL
+          'https://wildlifeconnect-backend-amft734wkq-de.a.run.app/predict');
       final request = http.Request('POST', uri);
       request.headers['Content-Type'] = 'application/json; charset=UTF-8';
       request.body = jsonEncode({"imageUrl": location});

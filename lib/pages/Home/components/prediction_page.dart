@@ -2,6 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wildlifeconnect/pages/Library/API/animalModel.dart';
+import 'package:wildlifeconnect/pages/Library/API/animal_service.dart';
+import 'package:wildlifeconnect/pages/Home/components/identifiedAnimalInfo.dart';
+import 'package:wildlifeconnect/pages/Home/components/identifiedAnimalPost.dart';
 import 'package:wildlifeconnect/pages/Tokens/tokens.dart';
 
 class PredictionPage extends StatelessWidget {
@@ -16,6 +20,14 @@ class PredictionPage extends StatelessWidget {
     required this.imageFile,
   }) : super(key: key);
 
+  Future<List<dynamic>> fetchAnimal() async {
+    List<Animal> animals = await fetchAnimals();
+    List<dynamic> animal = animals
+        .where((element) => element.name.toLowerCase() == prediction.toLowerCase())
+        .toList();
+    return animal;
+  }
+
   @override
   Widget build(BuildContext context) {
     File _imageFile = imageFile;
@@ -26,6 +38,16 @@ class PredictionPage extends StatelessWidget {
         leading: const BackButton(
           color: Colors.white,
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.home),
+            onPressed: () {
+              Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/navbar', (route) => false);
+            },
+            color: const Color.fromARGB(255, 255, 255, 255),
+          ),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -59,14 +81,19 @@ class PredictionPage extends StatelessWidget {
             height: 20,
           ),
           ElevatedButton(
-            onPressed: () => {}, // Add Button1 logic
+            onPressed: () => {
+              fetchAnimal().then((value) {
+                Get.to(() => AnimalInfoPage(animal: value[0]));
+              })
+            },
             child: Text(
-              'Button1',
+              'View Information',
               style: TextStyle(
                   color: Colors.black, fontSize: 16, fontFamily: 'Poppins'),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 23, 176, 54),
+              minimumSize: const Size(200, 50),
             ),
           ),
           const SizedBox(
@@ -78,7 +105,7 @@ class PredictionPage extends StatelessWidget {
                 animalName: prediction,
                 imageFile: _imageFile
               ))
-            }, // Add Button2 logic
+            },
             child: Text(
               'Generate Token',
               style: TextStyle(
@@ -86,20 +113,26 @@ class PredictionPage extends StatelessWidget {
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 23, 176, 54),
+              minimumSize: const Size(200, 50),
             ),
           ),
           const SizedBox(
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () => {}, // Add Button3 logic
+            onPressed: () => {
+              Get.to(() => CreatePost(
+                imageFile: _imageFile
+              ))
+            },
             child: Text(
-              'Button3',
+              'Post Sighting',
               style: TextStyle(
                   color: Colors.black, fontSize: 16, fontFamily: 'Poppins'),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 23, 176, 54),
+              minimumSize: const Size(200, 50),
             ),
           ),
         ],

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:wildlifeconnect/pages/Profile/widgets/token_widget.dart';
+import 'package:wildlifeconnect/pages/Profile/widgets/tokenInfo_widget.dart';
 
 class ViewCollectionPage extends StatefulWidget {
   const ViewCollectionPage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _ViewCollectionPageState createState() => _ViewCollectionPageState();
 }
 
@@ -63,11 +63,27 @@ class _ViewCollectionPageState extends State<ViewCollectionPage> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: const Text('View Collection'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.info),
+            onPressed: () {
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            color: Colors.black,
+          ),
+        ],
+      ),
+      endDrawer: Drawer(
+        child: Container(
+          child: const SidebarWidget(),
+        ),
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),

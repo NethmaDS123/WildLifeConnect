@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 class Animal {
   final String id;
   final String conservationStatus;

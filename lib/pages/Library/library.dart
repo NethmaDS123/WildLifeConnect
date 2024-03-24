@@ -66,8 +66,8 @@ class _LibraryPageState extends State<LibraryPage> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(
-              'assets/library_bgimg.jpg',
+            child: Image.network(
+              'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
               fit: BoxFit.cover,
             ),
           ),
@@ -123,7 +123,7 @@ class _LibraryPageState extends State<LibraryPage> {
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
                                       color: Colors
-                                          .white, // Set title text color to white
+                                          .white,
                                     ),
                                   ),
                                 ),
@@ -136,7 +136,7 @@ class _LibraryPageState extends State<LibraryPage> {
                                       Animal animal = entry.value[index];
                                       return Padding(
                                         padding: const EdgeInsets.only(
-                                            left: 10.0), // Add left padding
+                                            left: 10.0),
                                         child: Container(
                                           width: 140,
                                           decoration: BoxDecoration(
@@ -151,8 +151,8 @@ class _LibraryPageState extends State<LibraryPage> {
                                             ],
                                             border: Border.all(
                                               color: Colors.white.withOpacity(
-                                                  1.0), // Border color with opacity
-                                              width: 1.5, // Border width
+                                                  1.0),
+                                              width: 1.5, 
                                             ),
                                           ),
                                           child: AnimalCard(
