@@ -41,12 +41,30 @@ class TokenWidget extends StatelessWidget {
           color: _getRarityColor(rarity),
           width: 10.0
         ),
+        image: DecorationImage(
+          image: NetworkImage(imageUrl!),
+          fit:BoxFit.cover
+        ),
       ),
       height: height / 7,
       width: height / 7,
-      child: Image(
-        image: NetworkImage(
-          imageUrl,
+      child: Card(
+        elevation: 10,
+        color: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment
+                .center, // Align items to the center along the main axis
+            children: <Widget>[
+              Text(
+                animalName,
+                style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center, // Center text alignment
+              ),
+            ],
+          ),
         ),
       ),
     ),
