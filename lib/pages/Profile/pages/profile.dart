@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/sidebar_widget.dart';
 import 'package:wildlifeconnect/pages/Profile/pages/view_collection.dart';
@@ -77,9 +79,21 @@ class _ProfilePage1State extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    RefreshController refreshController =
+        RefreshController(initialRefresh: false);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     const profUser = UserPreferences.myUser;
+
+    void onRefresh() async {
+      loadUserData();
+      userPosts = fetchPosts();
+      loadUserPosts();
+
+      setState(() {});
+
+      refreshController.refreshCompleted();
+    }
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -89,81 +103,86 @@ class _ProfilePage1State extends State<ProfilePage> {
           child: const SidebarWidget(),
         ),
       ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          ProfileWidget(
-            isEdit: false,
-            imagePath: profUser.imagePath,
-          ),
-          const SizedBox(height: 18),
-          buildName(),
-          //const SizedBox(height: 8),
-          // Center(
-          //   child: buildFollowButton(),
-          // ),
-          const SizedBox(height: 2),
-          NumbersWidget(
-            postCount: postCount.toString(),
-          ),
-          const SizedBox(height: 12.0),
-          Center(
-            child: buildCollectionButton(),
-          ),
-          const SizedBox(height: 18.0),
-          Center(
-            child: buildReportButton(),
-          ),
-          const SizedBox(height: 22),
-          FutureBuilder<List<dynamic>>(
-            future: userPosts,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                final posts =
-                    snapshot.data!; // Safe access after checking hasData
-                return GridView.count(
-                  padding: const EdgeInsets.all(5),
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  children: List.generate(
-                    posts.length,
-                    (index) => PostWidget(
-                      height: height,
-                      width: width,
-                      imgUrl: posts[index]['imageUrl'],
-                      caption: posts[index]
-                          ['caption'], // Access caption from each Post
-                      username: userName!, // Access username from each Post
+      body: SmartRefresher(
+        controller: refreshController,
+        enablePullDown: true,
+        onRefresh: onRefresh,
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            ProfileWidget(
+              isEdit: false,
+              imagePath: profUser.imagePath,
+            ),
+            const SizedBox(height: 18),
+            buildName(),
+            //const SizedBox(height: 8),
+            // Center(
+            //   child: buildFollowButton(),
+            // ),
+            const SizedBox(height: 2),
+            NumbersWidget(
+              postCount: postCount.toString(),
+            ),
+            const SizedBox(height: 12.0),
+            Center(
+              child: buildCollectionButton(),
+            ),
+            const SizedBox(height: 18.0),
+            Center(
+              child: buildReportButton(),
+            ),
+            const SizedBox(height: 22),
+            FutureBuilder<List<dynamic>>(
+              future: userPosts,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final posts =
+                      snapshot.data!; // Safe access after checking hasData
+                  return GridView.count(
+                    padding: const EdgeInsets.all(5),
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    children: List.generate(
+                      posts.length,
+                      (index) => PostWidget(
+                        height: height,
+                        width: width,
+                        imgUrl: posts[index]['imageUrl'],
+                        caption: posts[index]
+                            ['caption'], // Access caption from each Post
+                        username: userName!, // Access username from each Post
+                      ),
                     ),
-                  ),
-                );
-              } else if (snapshot.hasError) {
-                return Center(
-                    child: Text(
-                  'Error: ${snapshot.error}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                  ),
-                ));
-              } else {
-                return const Center(
-                    child: Text(
-                  'User has not posted yet',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                  ),
-                ));
-              }
-            },
-          ),
-        ],
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                      child: Text(
+                    'Error: ${snapshot.error}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Poppins',
+                    ),
+                  ));
+                } else {
+                  return const Center(
+                      child: Text(
+                    'User has not posted yet',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontFamily: 'Poppins',
+                    ),
+                  ));
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -240,39 +259,37 @@ class _ProfilePage1State extends State<ProfilePage> {
         }),
       );
   Widget buildCollectionButton() => SizedBox(
-    height: 30.0,
-    width: 200.0,
-    child: Builder(builder: (context) {
-      return GestureDetector(
-        onTap: () => {
-          Get.to(() => const ViewCollectionPage())
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
-            borderRadius: BorderRadius.circular(6.0),
+        height: 30.0,
+        width: 200.0,
+        child: Builder(builder: (context) {
+          return GestureDetector(
+            onTap: () => {Get.to(() => const ViewCollectionPage())},
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 255, 255, 255),
+                borderRadius: BorderRadius.circular(6.0),
 
-            // border: Border.all(
-            //   width: 2,
-            //   color: Color.fromARGB(255, 23, 176, 54),
-            // ),
-          ),
-          child: const Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'View Token Collection',
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 0, 0)),
+                // border: Border.all(
+                //   width: 2,
+                //   color: Color.fromARGB(255, 23, 176, 54),
+                // ),
               ),
-            ],
-          ),
-        ),
+              child: const Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'View Token Collection',
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 0, 0, 0)),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
       );
-    }),
-  );
 }
