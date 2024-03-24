@@ -15,7 +15,7 @@ class SidebarWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Contact one of the\nfollowing services in\ncase of emergency',
+                'Token Information',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 18,
@@ -43,11 +43,9 @@ class SidebarWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '●\tDepartment of Wildlife Conservation (Sri Lanka)\n+94 11 2 888 585\n\n'
-                  '●\tThe Wildlife & Nature Protection Society\n+94 11 2 887390\n\n'
-                  '●\tThe Wilderness & Wildlife Conservation Trust\n+94773544382\n\n'
-                  '●\tOtara Foundation\n+94 773 429 025\n\n'
-                  '●\tJustice for Animals\njusticeforanimals.lk@gmail.com',
+                  'Tokens exist in the following rarities \n(in descending order)\n\n●\tLegendary (Orange)\n●\tEpic (Purple)\n●\tRare (Blue)\n●\tUncommon (Green)\n●\tCommon (Grey)\n\n'
+                  'The chances of getting higher ranked \ntokens are lower the higher the rank\n\n'
+                  'The exact percentages are:\n\n●\tLegendary - 1%\n●\tEpic - 4%\n●\tRare - 15%\n●\tUncommon - 30%\n●\tCommon - 50%\n\n',
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: 'Poppins',

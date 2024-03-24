@@ -30,7 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
     try {
       final response = await http.post(
         Uri.parse(
-            'https://wildlifeconnectbackend.onrender.com/users/register'), // Update with actual endpoint
+            'https://wildlifeconnectbackend.onrender.com/users/register'), 
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -44,9 +44,8 @@ class _SignUpPageState extends State<SignUpPage> {
       );
 
       if (response.statusCode == 201) {
-        // ignore: use_build_context_synchronously
         Navigator.of(context)
-            .pushReplacementNamed('/loginpage'); // Navigate to login page
+            .pushReplacementNamed('/loginpage');
       } else {
         setState(() {
           _errorMessage = 'Failed to register. Please try again.';
@@ -104,7 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             onSaved: (value) => _enteredFName = value!,
                           ),
                           const SizedBox(
-                              height: 10), // Add spacing between fields
+                              height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -124,7 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             onSaved: (value) => _enteredLName = value!,
                           ),
                           const SizedBox(
-                              height: 10), // Add spacing between fields
+                              height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -144,7 +143,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             onSaved: (value) => _enteredUName = value!,
                           ),
                           const SizedBox(
-                              height: 10), // Add spacing between fields
+                              height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -164,7 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             onSaved: (value) => _enteredEmail = value!,
                           ),
                           const SizedBox(
-                              height: 10), // Add spacing between fields
+                              height: 10),
                           TextFormField(
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -207,10 +206,10 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           const SizedBox(
                               height:
-                                  20), // Add spacing between the last TextFormField and the Create Account button
+                                  20),
                           SizedBox(
                             width: double.infinity,
-                            height: 55, // Set width to the maximum
+                            height: 55, 
                             child: ElevatedButton(
                               onPressed: _submit,
                               style: ElevatedButton.styleFrom(
@@ -235,7 +234,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               onPressed: () =>
                                   Navigator.of(context).pushNamed('/loginpage'),
                               style: TextButton.styleFrom(
-                                foregroundColor: Colors.white, // Text color
+                                foregroundColor: Colors.white,
                               ),
                               child:
                                   const Text('Already have an account? Login'),

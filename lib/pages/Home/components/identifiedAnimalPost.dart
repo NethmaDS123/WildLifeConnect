@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -8,8 +10,12 @@ import 'package:http_parser/http_parser.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CreatePost extends StatefulWidget {
-  const CreatePost({super.key});
+  final File imageFile;
 
+  const CreatePost({
+    Key? key,
+    required this.imageFile,
+  }) : super(key: key);
   @override
   _CreatePostState createState() => _CreatePostState();
 }
@@ -49,29 +55,17 @@ class _CreatePostState extends State<CreatePost> {
     });
   }
 
-//picking image to post
+  File? imageFile;
 
-  final ImagePicker _picker = ImagePicker();
-  XFile? _image;
+  @override
+  void initState() {
+    super.initState();
+    imageFile = widget.imageFile;
+  }
   final TextEditingController _captionController = TextEditingController();
   final storage = const FlutterSecureStorage();
 
-  Future<void> _pickImage() async {
-    final XFile? selected =
-        await _picker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      _image = selected;
-    });
-  }
-
   Future<void> _uploadPost() async {
-    if (_image == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please select an image')),
-      );
-      return;
-    }
-
     var uri = Uri.parse(
         'https://wildlifeconnectbackend.onrender.com/api/posts/create');
     var request = http.MultipartRequest('POST', uri);
@@ -86,42 +80,30 @@ class _CreatePostState extends State<CreatePost> {
     if (_location != null) {
       request.fields['location'] = _location!;
     }
+  
+    var file = await http.MultipartFile.fromPath(
+      'image',
+      imageFile!.path,
+      contentType: MediaType('image', 'jpeg'),
+    );
+    request.files.add(file);
 
-    // Determine the mime type of the selected file
-    var mimeTypeData =
-        lookupMimeType(_image!.path, headerBytes: [0xFF, 0xD8])?.split('/');
-    // Ensure mimeTypeData is not null before proceeding
-    if (mimeTypeData != null) {
-      var file = await http.MultipartFile.fromPath(
-        'image',
-        _image!.path,
-        contentType: MediaType(mimeTypeData[0], mimeTypeData[1]),
-      );
-      request.files.add(file);
+    var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
 
-      var streamedResponse = await request.send();
-      var response = await http.Response.fromStream(streamedResponse);
+    Navigator.of(context).pop();
 
-      if (response.statusCode == 200) {
-        print("Post uploaded successfully");
-        // Optionally reset state to allow for another post
-        setState(() {
-          _image = null;
-          _captionController.clear();
-          _location = null;
-        });
-      } else {
-        print("Posting failed");
-      }
+    if (response.statusCode == 200) {
+      print("Post uploaded successfully");
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not determine file type')),
-      );
+      print("Posting failed");
     }
+  
   }
 
   @override
   Widget build(BuildContext context) {
+    File imageFile = widget.imageFile;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
@@ -130,6 +112,13 @@ class _CreatePostState extends State<CreatePost> {
           style: TextStyle(
             color: Colors.white,
           ),
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          color: Colors.white,
         ),
         actions: [
           IconButton(
@@ -174,12 +163,8 @@ class _CreatePostState extends State<CreatePost> {
               onPressed: _getCurrentLocation,
               child: const Text('Use Current Location'),
             ),
-            ElevatedButton(
-              onPressed: _pickImage,
-              child: const Text('Pick Image'),
-            ),
-            _image != null
-                ? Image.file(File(_image!.path))
+            imageFile != null
+                ? Image.file(imageFile)
                 : const Text('No image selected'),
             // Optionally, display the current location if available
             if (_location != null)
