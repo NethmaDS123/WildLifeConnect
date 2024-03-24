@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
+import 'package:http/http.dart' as http;
 
 class PostView extends StatelessWidget {
   final String imgUrl;
@@ -41,7 +45,7 @@ class PostView extends StatelessWidget {
                   ),
                 ),
               ),
-              Center(child: buildBottomBar()),
+              buildBottomBar(context),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
@@ -87,15 +91,78 @@ class PostView extends StatelessWidget {
         ),
       );
 
-  Widget buildBottomBar() => Container(
-        padding: const EdgeInsets.fromLTRB(0, 20, 0, 5),
-        child: GestureDetector(
-          onTap: () => {},
-          child: const Icon(
-            CupertinoIcons.heart_fill,
-            color: Color.fromARGB(255, 255, 0, 0),
-            size: 30,
+  Widget buildBottomBar(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(0, 20, 10, 5),
+            child: GestureDetector(
+              onTap: () => {deletePost(context)},
+              child: const Icon(
+                CupertinoIcons.delete,
+                color: Color.fromARGB(255, 255, 0, 0),
+                size: 25,
+              ),
+            ),
           ),
+        ],
+      );
+
+  void deletePost(BuildContext context) async {
+    final confirmation = await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Delete Account'),
+            content: const Text('Are you sure you want to delete this post?.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child:
+                    const Text('Delete', style: TextStyle(color: Colors.red)),
+              ),
+            ],
+          ),
+        ) ??
+        false;
+    if (!confirmation) return;
+
+    final String? token = await SecureStorage.getToken();
+    if (token == null) {
+      return;
+    }
+
+    // Construct the body
+    final bodyData = {"imgUrl": imgUrl, "username": username};
+
+    final response = await http.delete(
+      Uri.parse('https://wildlifeconnectbackend.onrender.com/api/posts/delete'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode(bodyData),
+    );
+
+    if (response.statusCode == 200) {
+      Get.back();
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Error'),
+          content: const Text('Failed to delete post. Please try again.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
         ),
       );
+    }
+  }
 }
