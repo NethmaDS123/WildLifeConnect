@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SearchBar extends StatefulWidget {
   final Function(String) onSearch;
 
-  const SearchBar({super.key, required this.onSearch});
+  const SearchBar({Key? key, required this.onSearch}) : super(key: key);
 
   @override
   State<SearchBar> createState() => _SearchBarState();
@@ -18,32 +18,30 @@ class _SearchBarState extends State<SearchBar> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         border: Border.all(
-          color: Colors.white, // white colour border of the search bar
-          width: 0.8, // Border width
+          color: Colors.white, 
+          width: 1.5, // Border width
         ),
+        color: Colors.transparent,
       ),
-      child: Card(
-        elevation: 10, 
-        child: TextField(
-          controller: _controller,
-          style: const TextStyle(color: Colors.lime), // Text color of the input field text
-          decoration: InputDecoration(
-            hintText: 'Search for animals...',
-            hintStyle: const TextStyle(color: Colors.white), // Placeholder color
-            prefixIcon: const Icon(Icons.search, color: Colors.white), // search icon color
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.clear, color: Colors.white), // reset icon color
-              onPressed: () {
-                _controller.clear();
-                widget.onSearch('');
-              },
-            ),
-            filled: true,
-            fillColor: const Color.fromARGB(255, 33, 33, 33), // Background color
-            border: InputBorder.none, // No border for the input field
+      child: TextField(
+        controller: _controller,
+        style: const TextStyle(color: Colors.white), // input field text color
+        decoration: InputDecoration(
+          hintText: 'Search for animals...',
+          hintStyle: const TextStyle(color: Colors.white), // placeholder color
+          prefixIcon: const Icon(Icons.search, color: Colors.white), // search icon color
+          suffixIcon: IconButton(
+            icon: const Icon(Icons.clear, color: Colors.white), // reset icon color
+            onPressed: () {
+              _controller.clear();
+              widget.onSearch('');
+            },
           ),
-          onChanged: widget.onSearch,
+          filled: true,
+          fillColor: Colors.transparent,
+          border: InputBorder.none, 
         ),
+        onChanged: widget.onSearch,
       ),
     );
   }

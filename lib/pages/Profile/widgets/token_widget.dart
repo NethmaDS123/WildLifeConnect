@@ -42,7 +42,7 @@ class TokenWidget extends StatelessWidget {
           width: 10.0
         ),
         image: DecorationImage(
-          image: NetworkImage(imageUrl),
+          image: NetworkImage(imageUrl!),
           fit:BoxFit.cover
         ),
       ),

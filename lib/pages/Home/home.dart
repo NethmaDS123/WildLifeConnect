@@ -70,24 +70,25 @@ class _HomePageState extends State<HomePage> {
             child: IconButton(
               icon: const Icon(
                 Icons.exit_to_app,
-                color: Colors.white,
+                color: Colors.white, 
               ),
               onPressed: () async {
                 await SecureStorage.deleteToken();
+                // ignore: use_build_context_synchronously
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil('/loginpage', (route) => false);
               },
             ),
           ),
         ],
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black, 
         leading: Padding(
           padding:
-              const EdgeInsets.only(left: 20.0),
+              const EdgeInsets.only(left: 20.0), 
           child: IconButton(
             icon: const Icon(
               Icons.camera_alt,
-              color: Colors.white,
+              color: Colors.white, 
             ),
             onPressed: () {
               Navigator.push(
@@ -116,7 +117,15 @@ class _HomePageState extends State<HomePage> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.black, 
+              image: DecorationImage(
+                image: const NetworkImage(
+                    'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.5),
+                  BlendMode.darken,
+                ),
+              ),
             ),
           ),
           FutureBuilder<List<dynamic>>(
@@ -137,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         color: Color.fromARGB(255, 0, 53, 10).withOpacity(
-                            0.9),
+                            0.9), 
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                                 topRight: Radius.circular(4),
                               ),
                               color: Color.fromARGB(255, 0, 48,
-                                  7),
+                                  7), 
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -169,13 +178,13 @@ class _HomePageState extends State<HomePage> {
                                 const Icon(
                                   Icons.more_vert,
                                   color: Colors
-                                      .white,
+                                      .white, 
                                 )
                               ],
                             ),
                           ),
                           Image.network(
-                            post['imageUrl'],
+                            post['imageUrl'], 
                           ),
                           Container(
                             padding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
@@ -184,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 const Padding(
                                   padding: EdgeInsets.only(
-                                      top: 8.0),
+                                      top: 8.0), 
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -198,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                                       Padding(
                                         padding: EdgeInsets.only(
                                             top:
-                                                8.0),
+                                                8.0), 
                                         child: Icon(
                                           Icons.save_alt,
                                           color: Colors.white,

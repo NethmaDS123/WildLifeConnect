@@ -7,15 +7,14 @@ import 'package:wildlifeconnect/pages/Auth/secure_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image/image.dart' as img;
 
-class TestMapPage extends StatefulWidget {
-  const TestMapPage({Key? key, String? location, String? imageUrl})
-      : super(key: key);
+class LocationImageMapUpdate extends StatefulWidget {
+  const LocationImageMapUpdate({super.key, String? location, String? imageUrl});
 
   @override
-  _TestMapPageState createState() => _TestMapPageState();
+  _LocationImageMapUpdateState createState() => _LocationImageMapUpdateState();
 }
 
-class _TestMapPageState extends State<TestMapPage> {
+class _LocationImageMapUpdateState extends State<LocationImageMapUpdate> {
   late Future<List<dynamic>> posts;
   late Timer _timer;
   final Completer<GoogleMapController> _controller =
@@ -71,7 +70,7 @@ class _TestMapPageState extends State<TestMapPage> {
 
   Future<void> _loadMarkerData() async {
     List<dynamic> postData =
-        await posts; // This line will await the posts, consider adjusting this logic
+        await posts;
 
     for (var post in postData) {
       final String? location = post['location'];
@@ -84,7 +83,7 @@ class _TestMapPageState extends State<TestMapPage> {
           final double longitude = double.tryParse(locationSplit[1]) ?? 0.0;
 
           final Uint8List markerIcon = await _getMarkerIcon(
-              imageUrl); // Consider moving this out of the loop if it's the same for all markers
+              imageUrl); 
 
           final Marker marker = Marker(
             markerId: MarkerId(location),
@@ -111,13 +110,10 @@ class _TestMapPageState extends State<TestMapPage> {
     try {
       final http.Response response = await http.get(Uri.parse(imageUrl));
       if (response.statusCode == 200) {
-        // Decode the image to an Image object from the 'image' package
         img.Image image = img.decodeImage(response.bodyBytes)!;
 
-        // Resize the image (e.g., to 100x100 pixels)
         img.Image resizedImg = img.copyResize(image, width: 100, height: 100);
 
-        // Convert the Image object back to Uint8List
         return Uint8List.fromList(img.encodePng(resizedImg));
       } else {
         throw Exception('Failed to load image data: ${response.statusCode}');
@@ -132,13 +128,14 @@ class _TestMapPageState extends State<TestMapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recent Sightings'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        leading: const BackButton(
+          color: Colors.white,
         ),
+        title: const Text(
+          'Recent Sightings',
+          style: TextStyle(color: Colors.white), 
+        ),
+        backgroundColor: Colors.black, 
       ),
       body: FutureBuilder<List<dynamic>>(
         future: posts,
