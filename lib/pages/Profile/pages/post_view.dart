@@ -112,8 +112,8 @@ class PostView extends StatelessWidget {
     final confirmation = await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Delete Account'),
-            content: const Text('Are you sure you want to delete this post?.'),
+            title: const Text('Delete Post'),
+            content: const Text('Are you sure you want to delete this post?'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(false),
