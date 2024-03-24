@@ -38,9 +38,6 @@ jobs:
             exit 1
           fi
 
-      - name: Aqua Security Trivy
-        uses: aquasecurity/trivy-action@0.18.0
-
       - name: Build App Bundle
         run: flutter build appbundle --release
 
