@@ -58,7 +58,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ElevatedButton(
                 onPressed: () => _deleteAccount(context),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text('Delete Account'),
+                child: const Text(
+                  'Delete Account',
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ],
           ),
