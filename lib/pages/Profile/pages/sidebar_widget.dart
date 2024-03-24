@@ -20,7 +20,7 @@ class SidebarWidget extends StatelessWidget {
                   fontFamily: 'Poppins',
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
               ),
               const SizedBox(
@@ -29,14 +29,14 @@ class SidebarWidget extends StatelessWidget {
               IconButton(
                 icon: const Icon(
                   Icons.arrow_forward_ios,
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 onPressed: () => {Navigator.pop(context)},
               ),
             ],
           ),
           const SizedBox(
-              height: 30), // spacing between main text and emergency contacts
+              height: 30),
           const Padding(
             padding: EdgeInsets.only(left: 20.0),
             child: Column(
@@ -51,7 +51,7 @@ class SidebarWidget extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 12.0,
                       fontFamily: 'Poppins',
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Color.fromARGB(255, 255, 255, 255),
                       fontWeight: FontWeight.w600),
                 ),
               ],

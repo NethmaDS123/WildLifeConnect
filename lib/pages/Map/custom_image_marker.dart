@@ -40,8 +40,6 @@ class _CustomImageMarkerState extends State<CustomImageMarker> {
     int size = image.width < image.height ? image.width : image.height;
     img.Image resizedImage = img.copyResizeCropSquare(image, size);
 
-    // Optionally: Further compress the image here if needed
-
     // Create a circular cropped version of the image
     img.Image circularImage =
         img.copyResize(resizedImage, width: 120, height: 120);

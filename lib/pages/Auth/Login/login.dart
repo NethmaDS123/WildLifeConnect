@@ -88,15 +88,6 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Text(
-                    "Hello",
-                    style: TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0)),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 10.0),
-                  const Text(
                     "Welcome Back to Wildlife Connect!",
                     style: TextStyle(
                         fontSize: 23,
@@ -104,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Color.fromARGB(255, 0, 0, 0)),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 50.0),
+                  const SizedBox(height: 100.0),
                   Card(
                     elevation: 4,
                     shape: RoundedRectangleBorder(

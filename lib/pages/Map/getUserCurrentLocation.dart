@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart'; // Import geolocator package
+import 'package:geolocator/geolocator.dart';
 import 'dart:async';
 
 class Location extends StatefulWidget {
@@ -16,7 +16,7 @@ class LocationState extends State<Location> {
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
-  Marker? _userMarker;
+  Marker? _userMarker; // Declare _userMarker as nullable
 
   static const CameraPosition yalaLocation = CameraPosition(
     bearing: 0.0,
@@ -28,6 +28,7 @@ class LocationState extends State<Location> {
   @override
   void initState() {
     super.initState();
+    // Call _getCurrentLocation() when the Location class is initialized
     _getCurrentLocation();
   }
 
@@ -35,14 +36,7 @@ class LocationState extends State<Location> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(
-          color: Colors.white,
-        ),
-        title: const Text(
-          'Get Current Location',
-          style: TextStyle(color: Colors.white), 
-        ),
-        backgroundColor: Colors.black, 
+        title: Text(widget.title),
       ),
       body: GoogleMap(
         mapType: MapType.normal,
@@ -51,7 +45,7 @@ class LocationState extends State<Location> {
         zoomControlsEnabled: false,
         markers: _userMarker != null
             ? {_userMarker!}
-            : {}, 
+            : {}, // Check if _userMarker is not null
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
@@ -67,25 +61,26 @@ class LocationState extends State<Location> {
   }
 
   Future<void> _getCurrentLocation() async {
-    
+    // Check if location services are enabled
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled, show dialog
+      // Location services are not enabled, show dialog or open settings
       return;
     }
 
     // Check if permission to access location is granted
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
-      // permission to access location is denied, ask for permission
+      // Permission to access location is denied, ask for permission
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // if permission is still denied, show dialog or open settings
+        // Permission is still denied, show dialog or open settings
         return;
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
+      // Permission is denied forever, handle appropriately.
       return;
     }
 
@@ -103,6 +98,7 @@ class LocationState extends State<Location> {
       );
     });
 
+    // Use position data to update the map's camera position
     CameraPosition newPosition = CameraPosition(
       target: LatLng(position.latitude, position.longitude),
       zoom: 16.0,

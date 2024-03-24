@@ -3,6 +3,7 @@ import 'package:wildlifeconnect/pages/Library/API/animal_service.dart';
 import 'package:wildlifeconnect/pages/Library/AnimalInfoPage/animal_info_page.dart';
 import 'package:wildlifeconnect/pages/Library/components/animal_card.dart';
 import 'package:wildlifeconnect/pages/Library/API/animalModel.dart';
+import 'package:wildlifeconnect/pages/Tokens/tokens.dart';
 import 'components/search_bar.dart' as wb;
 
 class LibraryPage extends StatefulWidget {
@@ -34,8 +35,8 @@ class _LibraryPageState extends State<LibraryPage> {
 
   Future<Map<String, List<Animal>>> fetchAndGroupAnimals(
       {String query = ''}) async {
-    List<Animal> animals = await fetchAnimals();
-    // filter animals based on the search query
+    List<Animal> animals = await fetchAnimals(); // Fetch all animals
+    // Filter animals based on the search query
     List<Animal> filteredAnimals = query.isEmpty
         ? animals
         : animals
@@ -60,23 +61,24 @@ class _LibraryPageState extends State<LibraryPage> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
       ),
       body: Stack(
         children: [
           Positioned.fill(
             child: Image.network(
               'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-               fit: BoxFit.cover,
+              fit: BoxFit.cover,
             ),
           ),
-          Column( // search bar UI
+          Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 50.0, 8.0, 50.0),
+                padding: const EdgeInsets.fromLTRB(8.0, 40.0, 8.0, 8.0),
                 child: Card(
                   elevation: 10,
-                  color: Colors.transparent,
+                  color: Colors
+                      .transparent, // Set search bar card color to transparent
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: wb.SearchBar(
@@ -85,10 +87,10 @@ class _LibraryPageState extends State<LibraryPage> {
                   ),
                 ),
               ),
-              Expanded( // whole animal library card
+              Expanded(
                 child: Card(
                   elevation: 10,
-                  color: const Color.fromRGBO(0, 0, 0, 0.75),
+                  color: const Color.fromRGBO(0, 0, 0, 0.65),
                   shadowColor: const Color.fromRGBO(38, 36, 38, 0.498),
                   child: FutureBuilder<Map<String, List<Animal>>>(
                     future: groupedAnimalsFuture,
@@ -120,12 +122,13 @@ class _LibraryPageState extends State<LibraryPage> {
                                     style: const TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white, 
+                                      color: Colors
+                                          .white,
                                     ),
                                   ),
                                 ),
-                                SizedBox( // individual animal cards
-                                  height: 170,
+                                SizedBox(
+                                  height: 175,
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
                                     itemCount: entry.value.length,
@@ -133,20 +136,22 @@ class _LibraryPageState extends State<LibraryPage> {
                                       Animal animal = entry.value[index];
                                       return Padding(
                                         padding: const EdgeInsets.only(
-                                            left: 10.0), 
+                                            left: 10.0),
                                         child: Container(
-                                          width: 135,
+                                          width: 140,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Colors.black.withOpacity(1.0),
-                                                blurRadius: 1, 
+                                                color: Colors.black
+                                                    .withOpacity(1.0),
+                                                blurRadius: 1, // Blur radius
                                               ),
                                             ],
                                             border: Border.all(
-                                              color: Colors.white.withOpacity(1.0), 
+                                              color: Colors.white.withOpacity(
+                                                  1.0),
                                               width: 1.5, 
                                             ),
                                           ),
@@ -157,7 +162,8 @@ class _LibraryPageState extends State<LibraryPage> {
                                                 Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    AnimalInfoPage(animal: animal),
+                                                    AnimalInfoPage(
+                                                        animal: animal),
                                               ),
                                             ),
                                           ),
