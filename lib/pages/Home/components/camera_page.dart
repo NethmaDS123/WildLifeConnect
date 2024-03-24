@@ -99,6 +99,7 @@ class _CameraPageState extends State<CameraPage> {
         Get.to(() => PredictionPage(
               imgUrl: location,
               prediction: prediction!,
+              imageFile: _imageFile!
             ));
       } else {
         print('Error getting prediction');

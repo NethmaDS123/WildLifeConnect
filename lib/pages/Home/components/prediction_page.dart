@@ -1,17 +1,24 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wildlifeconnect/pages/Tokens/tokens.dart';
 
 class PredictionPage extends StatelessWidget {
   final String imgUrl;
   final String prediction;
+  final File imageFile;
 
   const PredictionPage({
     Key? key,
     required this.imgUrl,
     required this.prediction,
+    required this.imageFile,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    File _imageFile = imageFile;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -66,9 +73,14 @@ class PredictionPage extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () => {}, // Add Button2 logic
+            onPressed: () => {
+              Get.to(() => TokenGenerator(
+                animalName: prediction,
+                imageFile: _imageFile
+              ))
+            }, // Add Button2 logic
             child: Text(
-              'Button2',
+              'Generate Token',
               style: TextStyle(
                   color: Colors.black, fontSize: 16, fontFamily: 'Poppins'),
             ),

@@ -76,30 +76,21 @@ Color _getRarityColor(String rarity) {
   }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Token Generator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const TokenGenerator(),
-    );
-  }
-}
-
 class TokenGenerator extends StatefulWidget {
-  const TokenGenerator({super.key});
+  final String animalName;
+  final File imageFile;
+
+  const TokenGenerator({
+    Key? key,
+    required this.animalName,
+    required this.imageFile,
+  }) : super(key: key);
   @override
   // ignore: library_private_types_in_public_api
   _TokenGeneratorState createState() => _TokenGeneratorState();
 }
 
 class _TokenGeneratorState extends State<TokenGenerator> {
-  final TextEditingController _animalNameController = TextEditingController();
   Token? _generatedToken;
   bool _isButtonDisabled = false;
 
@@ -144,24 +135,20 @@ class _TokenGeneratorState extends State<TokenGenerator> {
     }
   }
 
-  Future<void> _handleButtonPress() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  Future<void> _handleButtonPress(String animalName, File imageFile) async {
+    setState(() {
+      _generatedToken = generateToken(animalName, imageFile);
+      _isButtonDisabled = true;
+    });
 
-    if (pickedFile != null) {
-      setState(() {
-        String animalName = _animalNameController.text;
-        _generatedToken = generateToken(animalName, File(pickedFile.path));
-        _isButtonDisabled = true;
-      });
-
-      // Save token to server
-      await _saveToken(_generatedToken!);
-    }
+    // Save token to server
+    await _saveToken(_generatedToken!);
   }
 
   @override
   Widget build(BuildContext context) {
+    String animalName = widget.animalName;
+    File imageFile = widget.imageFile;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Token Generator'),
@@ -171,13 +158,8 @@ class _TokenGeneratorState extends State<TokenGenerator> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              controller: _animalNameController,
-              decoration: const InputDecoration(labelText: 'Animal Name'),
-            ),
-            const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: _isButtonDisabled ? null : _handleButtonPress,
+                onPressed: _isButtonDisabled ? null : () => _handleButtonPress(animalName, imageFile),
               child: const Text('Generate Token'),
             ),
             const SizedBox(height: 16.0),
