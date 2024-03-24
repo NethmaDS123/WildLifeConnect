@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class PredictionPage extends StatefulWidget {
-  const PredictionPage({super.key});
+class PredictionPage extends StatelessWidget {
+  final String imgUrl;
+  final String prediction;
 
-  @override
-  State<PredictionPage> createState() => _PredictionPageState();
-}
+  const PredictionPage({
+    Key? key,
+    required this.imgUrl,
+    required this.prediction,
+  }) : super(key: key);
 
-class _PredictionPageState extends State<PredictionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: BackButton(
-          onPressed: () => Get.back(),
+        leading: const BackButton(
           color: Colors.white,
         ),
       ),
@@ -24,9 +24,9 @@ class _PredictionPageState extends State<PredictionPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Center(
+          Center(
             child: Text(
-              'Leopard',
+              prediction,
               style: TextStyle(
                   color: Colors.white, fontFamily: 'Poppins', fontSize: 30),
             ),
@@ -37,10 +37,8 @@ class _PredictionPageState extends State<PredictionPage> {
           Container(
             height: 400,
             width: 600,
-            child: const Image(
-              image: NetworkImage(
-                'https://w0.peakpx.com/wallpaper/688/907/HD-wallpaper-young-leopard-colors-landscape-nature.jpg',
-              ),
+            child: Image(
+              image: NetworkImage(imgUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -54,7 +52,7 @@ class _PredictionPageState extends State<PredictionPage> {
             height: 20,
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {}, // Add Button1 logic
             child: Text(
               'Button1',
               style: TextStyle(
@@ -68,7 +66,7 @@ class _PredictionPageState extends State<PredictionPage> {
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {}, // Add Button2 logic
             child: Text(
               'Button2',
               style: TextStyle(
@@ -82,7 +80,7 @@ class _PredictionPageState extends State<PredictionPage> {
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () => {},
+            onPressed: () => {}, // Add Button3 logic
             child: Text(
               'Button3',
               style: TextStyle(
