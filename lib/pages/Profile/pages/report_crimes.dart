@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class SideBar extends StatefulWidget {
@@ -23,6 +25,7 @@ class _SideBarState extends State<SideBar> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
+          // Main content
           Container(
             color: Colors.white,
           ),
@@ -58,7 +61,7 @@ class _SideBarState extends State<SideBar> {
                     ),
                     const SizedBox(
                         height:
-                            30),
+                            30), // spacing between main text and emergency contacts
                     const Padding(
                       padding: EdgeInsets.only(left: 20.0),
                       child: Column(

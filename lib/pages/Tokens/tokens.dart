@@ -86,6 +86,7 @@ class TokenGenerator extends StatefulWidget {
     required this.imageFile,
   }) : super(key: key);
   @override
+  // ignore: library_private_types_in_public_api
   _TokenGeneratorState createState() => _TokenGeneratorState();
 }
 
@@ -108,7 +109,7 @@ class _TokenGeneratorState extends State<TokenGenerator> {
     var file = await http.MultipartFile.fromPath(
       'image',
       token.imageFile.path,
-      contentType: MediaType('image', 'jpeg'),
+      contentType: MediaType('image', 'jpeg'), // Adjust content type if necessary
     );
     request.files.add(file);
 
@@ -151,16 +152,6 @@ class _TokenGeneratorState extends State<TokenGenerator> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Token Generator'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.home),
-            onPressed: () {
-              Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/navbar', (route) => false);
-            },
-            color: Colors.black,
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
