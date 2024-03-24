@@ -113,9 +113,7 @@ class _CreatePostState extends State<CreatePost> {
           _location = null;
         });
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to upload post: ${response.body}')),
-        );
+        print("Posting failed");
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
