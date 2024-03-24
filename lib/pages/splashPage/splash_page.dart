@@ -1,4 +1,4 @@
-import 'package:wildlifeconnect/pages/Auth/Signup/signup.dart';
+import 'package:wildlifeconnect/pages/Auth/Login/login.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -23,7 +23,7 @@ class SplashScreen extends StatelessWidget {
         ],
       ),
       //Checks to see if user is logged in or not
-      nextScreen: const SignUpPage(),
+      nextScreen: const LoginPage(),
       splashIconSize: 800,
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
     );
