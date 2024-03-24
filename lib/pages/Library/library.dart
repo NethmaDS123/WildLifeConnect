@@ -62,20 +62,6 @@ class _LibraryPageState extends State<LibraryPage> {
           ),
         ),
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.add_box,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const TokenGenerator()),
-              );
-            },
-          ),
-        ],
       ),
       body: Stack(
         children: [
