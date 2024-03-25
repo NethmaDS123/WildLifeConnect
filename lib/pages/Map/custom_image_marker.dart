@@ -34,24 +34,25 @@ class _CustomImageMarkerState extends State<CustomImageMarker> {
     // Decode the image using the 'image' package
     img.Image? image = img.decodeImage(imageData);
     if (image == null)
-      return Uint8List(0); // Return an empty Uint8List if decoding fails
+      return Uint8List(0); 
 
-    // Resize the image to a square based on the smaller dimension to maintain aspect ratio
+  
     int size = image.width < image.height ? image.width : image.height;
     img.Image resizedImage = img.copyResizeCropSquare(image, size);
 
-    // Create a circular cropped version of the image
+   
+
+    // circular cropped version of the image
     img.Image circularImage =
         img.copyResize(resizedImage, width: 120, height: 120);
 
-    // Adding a simple white border
+    // adding a white border
     img.drawCircle(circularImage, 60, 60, 60, img.getColor(255, 255, 255, 255));
 
-    // Encode the image back to Uint8List
     return Uint8List.fromList(img.encodePng(circularImage));
   }
 
-  Future<void> _loadData() async {
+  Future<void> _loadData() async { // load the location and the image to the marker
     if (widget.image != null && widget.location != null) {
       final Uint8List byteData = await widget.image!.readAsBytes();
       final Uint8List resizedImageData = await _processImageForMarker(byteData);
@@ -68,7 +69,7 @@ class _CustomImageMarkerState extends State<CustomImageMarker> {
         String title = 'Located on: $formattedDate at $formattedTime h';
 
         final Marker marker = Marker(
-          markerId: MarkerId('UniqueID'), // Ensure this is unique
+          markerId: const MarkerId('UniqueID'),
           position: LatLng(latitude, longitude),
           icon: BitmapDescriptor.fromBytes(resizedImageData),
           infoWindow: InfoWindow(title: title),

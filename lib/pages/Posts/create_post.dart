@@ -8,16 +8,16 @@ import 'package:http_parser/http_parser.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class CreatePost extends StatefulWidget {
-  const CreatePost({super.key});
+  const CreatePost({Key? key}) : super(key: key);
 
   @override
   _CreatePostState createState() => _CreatePostState();
 }
 
 class _CreatePostState extends State<CreatePost> {
-  String? _location; // To store the location
+  String? _location; 
 
-// Function to get current location
+  // Function to get current location
   Future<void> _getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -48,8 +48,6 @@ class _CreatePostState extends State<CreatePost> {
       _location = "${position.latitude}, ${position.longitude}";
     });
   }
-
-//picking image to post
 
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
@@ -82,15 +80,13 @@ class _CreatePostState extends State<CreatePost> {
     // Add caption to request
     request.fields['caption'] = _captionController.text;
 
-    // Include location if available
     if (_location != null) {
       request.fields['location'] = _location!;
     }
 
-    // Determine the mime type of the selected file
     var mimeTypeData =
         lookupMimeType(_image!.path, headerBytes: [0xFF, 0xD8])?.split('/');
-    // Ensure mimeTypeData is not null before proceeding
+    
     if (mimeTypeData != null) {
       var file = await http.MultipartFile.fromPath(
         'image',
@@ -104,7 +100,7 @@ class _CreatePostState extends State<CreatePost> {
 
       if (response.statusCode == 200) {
         print("Post uploaded successfully");
-        // Optionally reset state to allow for another post
+        // reset state to allow for another post
         setState(() {
           _image = null;
           _captionController.clear();
@@ -124,7 +120,7 @@ class _CreatePostState extends State<CreatePost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
         title: const Text(
           'Create Post',
           style: TextStyle(
@@ -139,56 +135,166 @@ class _CreatePostState extends State<CreatePost> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        // Use SingleChildScrollView to prevent overflow
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                controller: _captionController,
-                decoration: InputDecoration(
-                  labelText: 'Caption',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0),
+      body: Stack(
+        children: [
+          // Background Image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            // to prevent overflow
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                  child: Card(
+                    elevation: 10,
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: TextFormField(
+                        controller: _captionController,
+                        decoration: InputDecoration(
+                          labelText: 'Caption',
+                          labelStyle: const TextStyle(
+                              color: Colors.white), // Label color
+                          hintText: 'Enter caption',
+                          hintStyle: const TextStyle(
+                              color: Colors.white), // Placeholder color
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: const BorderSide(
+                              color: Colors.white, // Border color
+                              width: 1.5, // Border width
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: const BorderSide(
+                              color: Colors.white, // Border color
+                              width: 1.5, // Border width
+                            ),
+                          ),
+                        ),
+                        style:
+                            const TextStyle(color: Colors.white), // Text color
+                        maxLines: null,
+                      ),
+                    ),
                   ),
                 ),
-                maxLines: null,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: "Location (optional)",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0),
+
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
+                  child: Card(
+                    elevation: 10,
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          labelText: "Location (optional)",
+                          labelStyle: const TextStyle(
+                              color: Colors.white), // Label color
+                          hintText: 'Enter location',
+                          hintStyle: const TextStyle(
+                              color: Colors.white), // Placeholder color
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: const BorderSide(
+                              color: Colors.white, // Border color
+                              width: 1.5, // Border width
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: const BorderSide(
+                              color: Colors.white, // Border color
+                              width: 1.5, // Border width
+                            ),
+                          ),
+                        ),
+                        style:
+                            const TextStyle(color: Colors.white), // Text color
+                        onChanged: (value) {
+                          _location = value;
+                        },
+                      ),
+                    ),
                   ),
                 ),
-                onChanged: (value) {
-                  _location = value;
-                },
-              ),
+
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0), 
+                      child: ElevatedButton(
+                        onPressed: _getCurrentLocation,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          foregroundColor: Colors.white,
+                          side: const BorderSide(
+                            color: Colors.white,
+                            width: 1.5,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                        ),
+                        child: const Text('Use Current Location'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0), 
+                      child: ElevatedButton(
+                        onPressed: _pickImage,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          foregroundColor: Colors.white,
+                          side: const BorderSide(
+                            color: Colors.white,
+                            width: 1.5,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                        ),
+                        child: const Text('Pick Image'),
+                      ),
+                    ),
+                  ],
+                ),
+
+                _image != null
+                    ? Image.file(File(_image!.path))
+                    : const Text(
+                        'No image selected',
+                        style: TextStyle(
+                          color: Colors.white, 
+                        ),
+                      ),
+
+                if (_location != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Current Location: $_location",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white, 
+                      ),
+                    ),
+                  ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: _getCurrentLocation,
-              child: const Text('Use Current Location'),
-            ),
-            ElevatedButton(
-              onPressed: _pickImage,
-              child: const Text('Pick Image'),
-            ),
-            _image != null
-                ? Image.file(File(_image!.path))
-                : const Text('No image selected'),
-            // Optionally, display the current location if available
-            if (_location != null)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Location: $_location"),
-              ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
