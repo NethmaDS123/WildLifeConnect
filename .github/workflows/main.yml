@@ -51,4 +51,4 @@ jobs:
           packageName: com.wildlifeconnect.app
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           track: internal
-          status: draft # Here is the key change to address the error you were encountering.
+          status: draft
